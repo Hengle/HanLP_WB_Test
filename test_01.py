@@ -131,7 +131,7 @@ def xxx(input1):
     print(s)
 
 
-spam = ['apples', 'bananas', 'tofu', 'cats', 'a', 'b', 'c']
+spam = ['apples', 'bananas', 'tofu', 'cats', 'a', 'b', 'c', 'd']
 xxx(spam)
 
 grid = [['.', '.', '.', '.', '.', '.'],
