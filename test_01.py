@@ -119,3 +119,27 @@ print('a=', a)
 print('b=', b)
 print('c=', c)
 print('d=', d)
+
+
+def xxx(input1):
+    s = ''
+    for i in range(len(input1)):
+        if i == len(input1) - 1:
+            s += 'and ' + input1[i]
+        else:
+            s += input1[i] + ", "
+    print(s)
+
+
+spam = ['apples', 'bananas', 'tofu', 'cats', 'a', 'b', 'c']
+xxx(spam)
+
+grid = [['.', '.', '.', '.', '.', '.'],
+        ['.', 'O', 'O', '.', '.', '.'],
+        ['O', 'O', 'O', 'O', '.', '.'],
+        ['O', 'O', 'O', 'O', 'O', '.'],
+        ['.', 'O', 'O', 'O', 'O', 'O'],
+        ['O', 'O', 'O', 'O', 'O', '.'],
+        ['O', 'O', 'O', 'O', '.', '.'],
+        ['.', 'O', 'O', '.', '.', '.'],
+        ['.', '.', '.', '.', '.', '.']]
