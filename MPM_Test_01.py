@@ -1,3 +1,5 @@
+# https://zhuanlan.zhihu.com/p/97700605
+
 import taichi as ti
 
 quality = 1                                                             # Use a larger value for higher-res simulations
