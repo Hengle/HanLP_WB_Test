@@ -143,3 +143,51 @@ grid = [['.', '.', '.', '.', '.', '.'],
         ['O', 'O', 'O', 'O', '.', '.'],
         ['.', 'O', 'O', '.', '.', '.'],
         ['.', '.', '.', '.', '.', '.']]
+
+
+"""
+with as 语法的说明：
+
+    with open(r'c:\test.txt', 'r') as f:
+        data = f.read()
+
+with 后面接的对象返回的结果赋值给 f，当 open 函数返回的文件对象赋值给了 f，with 会自已获取上下文件的异常信息。
+with 是如何做到的呢？
+with 后面返回的对象要求必须两__enter__()/__exit__()这两个方法，而文件对象f刚好是有这两个方法的，故应用自如。
+
+python中官方定义说明如下(https://docs.python.org/2/reference/datamodel.html#context-managers)：
+
+    object.__enter__(self)
+    进入与此对象相关的运行时上下文。with语句将将此方法的返回值绑定到语句的AS子句中指定的目标（如果有设置的话）
+ 
+    object.__exit__(self, exc_type, exc_value, traceback)
+    退出与此对象相关的运行时上下文。参数描述导致上下文退出的异常。如果上下文运行时没有异常发生，那么三个参数都将置为None。
+    如果有异常发生，并且该方法希望抑制异常（即阻止它被传播），则它应该返回True。否则，异常将在退出该方法时正常处理。
+ 
+    请注意, __exit__()方法不应该重新抛出传入的异常，这是调用者的职责。
+"""
+
+
+class Test:
+    def __enter__(self):
+        print('__enter__() is call!')
+        return self
+
+    @staticmethod
+    def do_something():
+        x = 1 / 0
+        print('do something!')
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print('__exit__() is call!')
+        print(f'type:{exc_type}')
+        print(f'value:{exc_value}')
+        print(f'trace:{traceback}')
+        print('__exit()__ is call!')
+        # 如果有异常发生，并且该方法希望抑制异常抛出（即阻止它被传播），则它应该返回True。
+        # 否则，异常将在退出该方法时正常处理。
+        return True
+
+
+with Test() as sample:
+    sample.do_something()
