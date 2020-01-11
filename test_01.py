@@ -4,6 +4,10 @@ import pprint
 import copy
 
 
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('控制流')
+
+
 def test_01():
     name = ''
     while name != 'WB':
@@ -25,8 +29,6 @@ def test_02():
         print('Be sure to have enough room for all your guests.')
     print('Done')
     print("DDD")
-
-
 # test_02()
 
 
@@ -49,12 +51,13 @@ def get_answer(answer_number):
         return 'Outlook not so good'
     elif answer_number == 9:
         return 'Very doubtful'
-
-
-print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+# print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 # for x in range(9):
 #   print(getAnswer(random.randint(1, 9)))
 
+
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('全局变量与变量的作用域')
 
 eggs = 10
 
@@ -72,6 +75,9 @@ def test_03():
 # test_03()
 # print('~~~')
 # print(eggs)
+
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('try ... except ... 语法学习')
 
 
 def spam1(divide_by):
@@ -91,13 +97,16 @@ print(spam2(0))
 print(spam2(1))
 
 
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('深拷贝和浅拷贝，它们都是对于可变数据的操作，用于去除引用，浅拷贝去的浅，深拷贝去的深')
+
+
 def eggs2(some_parameter):
     some_parameter.append('Hello')
     print(some_parameter)
 
 
 spam = [1, ['x', 'y', 'z'], 3]
-
 # spam 被作为参数传递给函数 eggs2() 意味着它的值被复制给了 someParameter 但是请注意，
 # spam 中存储的是列表的引用，所以，函数直接修改了引用所指的列表。
 # eggs2(spam)
@@ -120,6 +129,10 @@ print('c=', c)
 print('d=', d)
 
 
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('代码实践 4.10.1 逗号代码')
+
+
 def xxx(input1):
     s = ''
     for i in range(len(input1)):
@@ -133,6 +146,8 @@ def xxx(input1):
 spam = ['apples', 'bananas', 'tofu', 'cats', 'a', 'b', 'c', 'd']
 xxx(spam)
 
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('代码实践 4.10.2 字符图网格')
 grid = [['.', '.', '.', '.', '.', '.'],
         ['.', 'O', 'O', '.', '.', '.'],
         ['O', 'O', 'O', 'O', '.', '.'],
@@ -153,6 +168,9 @@ for y in range(array_num):
     print('|')
 print('|===================|')
 
+
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('With ... As ... 语法研究')
 """
 with as 语法的说明：
 
@@ -201,16 +219,24 @@ class Test:
 with Test() as sample:
     sample.do_something()
 
-print('----------------------------------')
-message = 'It was a bright cold day in April, and the clocks were striking thirteen.'
-count = {}
-for character in message:
-    count.setdefault(character, 0)
-    count[character] = count[character] + 1
-print(count)
-# pprint.pprint(count)
-# print(pprint.pformat(count))
 
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('字典 setdefault()')
+
+
+def dictionary_test():
+    message = 'It was a bright cold day in April, and the clocks were striking thirteen.'
+    count = {}
+    for character in message:
+        count.setdefault(character, 0)
+        count[character] = count[character] + 1
+    print(count)
+    # pprint.pprint(count)
+    # print(pprint.pformat(count))
+
+
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('字典，对真实世界检模：井字棋盘')
 theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
             'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ',
             'low-L': ' ', 'low-M': ' ', 'low-R': ' '}
@@ -224,11 +250,29 @@ def print_board(board):
     print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
 
 
-print('----------------------------------')
-print_board(theBoard)
-print('----------------------------------')
-theBoard = {'top-L': 'O', 'top-M': 'O', 'top-R': 'O',
-            'mid-L': 'X', 'mid-M': 'X', 'mid-R': ' ',
-            'low-L': ' ', 'low-M': ' ', 'low-R': 'X'}
-print_board(theBoard)
-print('----------------------------------')
+def turn_board():
+    print('----------------------------------')
+    print('初始棋局')
+    print_board(theBoard)
+    print('----------------------------------')
+
+    turn = 'X'
+    for i in range(9):
+        print('----------------------------------')
+        print_board(theBoard)
+        print('----------------------------------')
+        print('Turn for ' + turn + '. Move on which space?')
+        move = input()
+        theBoard[move] = turn
+        if turn == 'X':
+            turn = 'O'
+        else:
+            turn = 'X'
+
+    print('----------------------------------')
+    print('最终棋局')
+    print_board(theBoard)
+    print('----------------------------------')
+
+
+turn_board()
