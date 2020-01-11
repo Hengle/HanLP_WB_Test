@@ -144,14 +144,14 @@ grid = [['.', '.', '.', '.', '.', '.'],
         ['.', 'O', 'O', '.', '.', '.'],
         ['.', '.', '.', '.', '.', '.']]
 
-print('-------------------')
+print('==================|')
 row_num = len(grid)
 array_num = len(grid[0])
 for y in range(array_num):
     for x in range(row_num):
         print(grid[x][y], end=' ')
     print('|')
-print('-------------------')
+print('==================|')
 
 """
 with as 语法的说明：
