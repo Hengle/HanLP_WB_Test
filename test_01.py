@@ -144,14 +144,15 @@ grid = [['.', '.', '.', '.', '.', '.'],
         ['.', 'O', 'O', '.', '.', '.'],
         ['.', '.', '.', '.', '.', '.']]
 
-print('==================|')
+print('|===================|')
 row_num = len(grid)
 array_num = len(grid[0])
 for y in range(array_num):
+    print('|', end=' ')
     for x in range(row_num):
         print(grid[x][y], end=' ')
     print('|')
-print('==================|')
+print('|===================|')
 
 """
 with as 语法的说明：
@@ -199,3 +200,11 @@ class Test:
 
 with Test() as sample:
     sample.do_something()
+
+
+message = 'It was a bright cold day in April, and the clocks were striking thirteen.'
+count = {}
+for character in message:
+    count.setdefault(character, 0)
+    count[character] = count[character] + 1
+print(count)
