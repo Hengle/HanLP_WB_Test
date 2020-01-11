@@ -201,7 +201,7 @@ class Test:
 with Test() as sample:
     sample.do_something()
 
-
+print('----------------------------------')
 message = 'It was a bright cold day in April, and the clocks were striking thirteen.'
 count = {}
 for character in message:
@@ -209,7 +209,6 @@ for character in message:
     count[character] = count[character] + 1
 print(count)
 # pprint.pprint(count)
-# print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 # print(pprint.pformat(count))
 
 theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
@@ -225,4 +224,11 @@ def print_board(board):
     print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
 
 
+print('----------------------------------')
 print_board(theBoard)
+print('----------------------------------')
+theBoard = {'top-L': 'O', 'top-M': 'O', 'top-R': 'O',
+            'mid-L': 'X', 'mid-M': 'X', 'mid-R': ' ',
+            'low-L': ' ', 'low-M': ' ', 'low-R': 'X'}
+print_board(theBoard)
+print('----------------------------------')
