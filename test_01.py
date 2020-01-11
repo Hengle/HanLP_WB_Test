@@ -183,6 +183,7 @@ class Test:
 
     @staticmethod
     def do_something():
+        global x
         x = 1 / 0
         print('do something!')
 
