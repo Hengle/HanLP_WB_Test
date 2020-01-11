@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
+import pprint
 import copy
 
 
@@ -9,8 +10,6 @@ def test_01():
         print('Please type your name.')
         name = input()
     print('Thank you!')
-
-
 # test_01()
 
 
@@ -31,24 +30,24 @@ def test_02():
 # test_02()
 
 
-def getAnswer(answerNumber):
-    if answerNumber == 1:
+def get_answer(answer_number):
+    if answer_number == 1:
         return 'It is certain'
-    elif answerNumber == 2:
+    elif answer_number == 2:
         return 'It is decidedly so'
-    elif answerNumber == 3:
+    elif answer_number == 3:
         return 'Yes'
-    elif answerNumber == 4:
+    elif answer_number == 4:
         return 'Reply hazy try again'
-    elif answerNumber == 5:
+    elif answer_number == 5:
         return 'Ask again later'
-    elif answerNumber == 6:
+    elif answer_number == 6:
         return 'Concentrate and ask again'
-    elif answerNumber == 7:
+    elif answer_number == 7:
         return 'My reply is no'
-    elif answerNumber == 8:
+    elif answer_number == 8:
         return 'Outlook not so good'
-    elif answerNumber == 9:
+    elif answer_number == 9:
         return 'Very doubtful'
 
 
@@ -208,3 +207,21 @@ for character in message:
     count.setdefault(character, 0)
     count[character] = count[character] + 1
 print(count)
+# pprint.pprint(count)
+# print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+# print(pprint.pformat(count))
+
+theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
+            'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ',
+            'low-L': ' ', 'low-M': ' ', 'low-R': ' '}
+
+
+def print_board(board):
+    print(board['top-L'] + '|' + board['top-M'] + '|' + board['top-R'])
+    print('-+-+-')
+    print(board['mid-L'] + '|' + board['mid-M'] + '|' + board['mid-R'])
+    print('-+-+-')
+    print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
+
+
+print_board(theBoard)
