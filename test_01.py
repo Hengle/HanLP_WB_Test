@@ -116,7 +116,7 @@ print(cheese)
 print(spam)
 # eggs2(copy.deepcopy(spam))
 # print(spam)
-print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('-------------------')
 a = [1, 2, 3, 4, ['a', 'b']]  # 原始对象
 b = a  # 赋值，传对象的引用
 c = copy.copy(a)
@@ -236,7 +236,7 @@ def dictionary_test():
 
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-print('字典，对真实世界检模：井字棋盘')
+print('字典，对真实世界建模：井字棋盘')
 theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
             'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ',
             'low-L': ' ', 'low-M': ' ', 'low-R': ' '}
@@ -251,14 +251,11 @@ def print_board(board):
 
 
 def turn_board():
-    print('----------------------------------')
-    print('初始棋局')
-    print_board(theBoard)
-    print('----------------------------------')
-
     turn = 'X'
     for i in range(9):
         print('----------------------------------')
+        if i == 0:
+            print('初始棋局状态')
         print_board(theBoard)
         print('----------------------------------')
         print('Turn for ' + turn + '. Move on which space?')
@@ -270,9 +267,8 @@ def turn_board():
             turn = 'X'
 
     print('----------------------------------')
-    print('最终棋局')
+    print('最终棋局状态')
     print_board(theBoard)
     print('----------------------------------')
 
-
-turn_board()
+# turn_board()
