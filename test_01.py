@@ -75,13 +75,13 @@ def test_03():
 # print(eggs)
 
 
-def spam1(divideBy):
-    return 42 / divideBy
+def spam1(divide_by):
+    return 42 / divide_by
 
 
-def spam2(divideBy):
+def spam2(divide_by):
     try:
-        return 42 / divideBy
+        return 42 / divide_by
     except ZeroDivisionError:
         print('Error: Invalid argument.')
 
@@ -92,9 +92,9 @@ print(spam2(0))
 print(spam2(1))
 
 
-def eggs2(someParameter):
-    someParameter.append('Hello')
-    print(someParameter)
+def eggs2(some_parameter):
+    some_parameter.append('Hello')
+    print(some_parameter)
 
 
 spam = [1, ['x', 'y', 'z'], 3]
@@ -144,6 +144,14 @@ grid = [['.', '.', '.', '.', '.', '.'],
         ['.', 'O', 'O', '.', '.', '.'],
         ['.', '.', '.', '.', '.', '.']]
 
+print('-------------------')
+row_num = len(grid)
+array_num = len(grid[0])
+for y in range(array_num):
+    for x in range(row_num):
+        print(grid[x][y], end=' ')
+    print('|')
+print('-------------------')
 
 """
 with as 语法的说明：
