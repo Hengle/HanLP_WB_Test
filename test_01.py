@@ -272,3 +272,45 @@ def turn_board():
     print('----------------------------------')
 
 # turn_board()
+
+
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('嵌套的字典和列表')
+
+
+def use_get():
+    # 在访问一个键的值之前，检查该键是否存在于字典中，这很麻烦。好在，字典有一个 get()方法，
+    # 它有两个参数：要取得其值的键，以及如果该键不存在时，返回的备用值。
+    picnic_items = {'apples': 5, 'cups': 2}
+    print('I am bringing ' + str(picnic_items.get('cups', 0)) + ' cups.')
+    print('I am bringing ' + str(picnic_items.get('eggs', 0)) + ' eggs.')
+
+
+# 字典，包含客人带来的东西
+all_guests = {'Alice': {'apples': 5, 'pretzels': 12},
+              'Bob': {'ham sandwiches': 3, 'apples': 2},
+              'Carol': {'cups': 3, 'apple pies': 1}}
+
+
+def total_brought(guests, item):    # 没有声明数据类型
+    # 计算所有客人带来的某种食物的数量
+    num_brought = 0
+    for k, v in guests.items():
+        num_brought = num_brought + v.get(item, 0)
+    return num_brought
+
+
+def calculate_food():
+    food = {}
+    # 统计食物的种类
+    for guest_items in all_guests.items():
+        for food_name in guest_items[1].keys():
+            food.setdefault(food_name, 0)
+    print(food)     # 展示所有食物种类
+    for food_name in food.keys():
+        print(' ' + food_name + ' = ', end='')
+        print(total_brought(all_guests, food_name), end='')
+        print(', ', end='')
+
+
+calculate_food()
