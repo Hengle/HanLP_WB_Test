@@ -80,21 +80,21 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 print('try ... except ... 语法学习')
 
 
-def spam1(divide_by):
+def spam4(divide_by):
     return 42 / divide_by
 
 
-def spam2(divide_by):
+def spam5(divide_by):
     try:
         return 42 / divide_by
     except ZeroDivisionError:
         print('Error: Invalid argument.')
 
 
-print(spam2(2))
-print(spam2(12))
-print(spam2(0))
-print(spam2(1))
+print(spam5(2))
+print(spam5(12))
+print(spam5(0))
+print(spam5(1))
 
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
@@ -106,16 +106,16 @@ def eggs2(some_parameter):
     print(some_parameter)
 
 
-spam = [1, ['x', 'y', 'z'], 3]
-# spam 被作为参数传递给函数 eggs2() 意味着它的值被复制给了 someParameter 但是请注意，
-# spam 中存储的是列表的引用，所以，函数直接修改了引用所指的列表。
-# eggs2(spam)
-cheese = copy.copy(spam)
+string3 = [1, ['x', 'y', 'z'], 3]
+# string3 被作为参数传递给函数 eggs2() 意味着它的值被复制给了 someParameter 但是请注意，
+# string3 中存储的是列表的引用，所以，函数直接修改了引用所指的列表。
+# eggs2(string3)
+cheese = copy.copy(string3)
 cheese[0] = 100
 print(cheese)
-print(spam)
-# eggs2(copy.deepcopy(spam))
-# print(spam)
+print(string3)
+# eggs2(copy.deepcopy(string3))
+# print(string3)
 print('-------------------')
 a = [1, 2, 3, 4, ['a', 'b']]  # 原始对象
 b = a  # 赋值，传对象的引用
@@ -143,8 +143,8 @@ def xxx(input1):
     print(s)
 
 
-spam = ['apples', 'bananas', 'tofu', 'cats', 'a', 'b', 'c', 'd']
-xxx(spam)
+string2 = ['apples', 'bananas', 'tofu', 'cats', 'a', 'b', 'c', 'd']
+xxx(string2)
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('代码实践 4.10.2 字符图网格')
@@ -328,20 +328,20 @@ inventory = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
 dragon_loot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']
 
 
-def display_inventory(inv):
-    print('--------------')
-    print("Inventory:")
-    print('--------------')
+def display_inventory(inv, left_width, right_width):
+    print(''.center(left_width + right_width, '~'))
+    print('Inventory:'.center(left_width + right_width))
+    print(''.center(left_width + right_width, '~'))
     total = 0
     for k, v in inv.items():
-        print(k + ' = ' + str(v))
+        print(k.ljust(left_width, '.') + str(v).rjust(right_width, '.'))
         total += v
-    print('--------------')
-    print('total = ' + str(total))
+    print(''.center(left_width + right_width, '~'))
+    print('total = '.ljust(left_width, '.') + str(total).rjust(right_width, '.'))
 
 
-display_inventory(inventory)
-print('===================')
+display_inventory(inventory, 10, 6)
+print('=============================')
 
 
 def add_to_inventory(inv, added_items):
@@ -352,13 +352,59 @@ def add_to_inventory(inv, added_items):
 
 
 add_to_inventory(inventory, dragon_loot)
-display_inventory(inventory)
+display_inventory(inventory, 10, 10)
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('字符串处理')
 
-spam = 'asd\'\
+string1 = r'asd\'\
 ss\
 egg'
 
-print(spam)
+print(string1)
+
+
+def multi_line_comment():
+    """
+    此多行注释用于说明
+    multi_line_comment()函数用途。
+    """
+    print('Hello!')
+
+
+# multi_line_comment()
+
+
+def string_cut():
+    spam = 'Hello, World!'
+    print(spam[0])
+    print(spam[4])
+    print(spam[-1])
+    print(spam[0:5])
+    print(spam[:2])
+    print(spam[5:])
+    print(spam[:])
+    print(spam.lower())
+    print(spam.upper())
+    print(spam)
+
+
+string_cut()
+
+
+def input_age():
+    while True:
+        print('Enter your age:')
+        age = input()
+        if age.isdecimal():
+            break
+        print('Please enter a number for your age.')
+    while True:
+        print('Select a new password (letters and numbers only):')
+        password = input()
+        if password.isalnum():
+            break
+        print('Passwords can only have letters and numbers.')
+
+
+# input_age()
