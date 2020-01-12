@@ -315,6 +315,28 @@ def calculate_food():
         print(' ' + food_name + ' = ', end='')
         print(total_brought(all_guests, food_name), end='')
         print(', ', end='')
+    print()
 
 
 calculate_food()
+
+
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('好玩游戏的物品清单')
+
+inventory = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
+
+
+def display_inventory(inv):
+    print('--------------')
+    print("Inventory:")
+    print('--------------')
+    total = 0
+    for k, v in inv.items():
+        print(k + ' = ' + str(v))
+        total += v
+    print('--------------')
+    print('total = ' + str(total))
+
+
+display_inventory(inventory)
