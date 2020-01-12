@@ -325,6 +325,7 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 print('好玩游戏的物品清单')
 
 inventory = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
+dragon_loot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']
 
 
 def display_inventory(inv):
@@ -340,3 +341,24 @@ def display_inventory(inv):
 
 
 display_inventory(inventory)
+print('===================')
+
+
+def add_to_inventory(inv, added_items):
+    for item in added_items:
+        print(item)
+        inv.setdefault(item, 0)     # item 存在时，返回其值，否则添加这个键，设其值为0
+        inv[item] += 1
+
+
+add_to_inventory(inventory, dragon_loot)
+display_inventory(inventory)
+
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('字符串处理')
+
+spam = 'asd\'\
+ss\
+egg'
+
+print(spam)
