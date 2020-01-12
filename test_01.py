@@ -231,9 +231,13 @@ def dictionary_test():
         count.setdefault(character, 0)
         count[character] = count[character] + 1
     print(count)
-    # pprint.pprint(count)
+    pprint.pprint(count)
     # print(pprint.pformat(count))
+    sss = {'aaaaaaaaaaaaaaaaaaaaaaaa': 1, 'bbbbbbbbbbbbbbbbbbbbbbbb': 2, 'cccccccccccccccccccccccc': 1}
+    pprint.pprint(sss)
 
+
+dictionary_test()
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('字典，对真实世界建模：井字棋盘')
@@ -292,10 +296,10 @@ all_guests = {'Alice': {'apples': 5, 'pretzels': 12},
               'Carol': {'cups': 3, 'apple pies': 1}}
 
 
-def total_brought(guests, item):    # 没有声明数据类型
+def total_brought(guests, item):
     # 计算所有客人带来的某种食物的数量
     num_brought = 0
-    for k, v in guests.items():
+    for k, v in guests.items():     # 手法清奇
         num_brought = num_brought + v.get(item, 0)
     return num_brought
 
