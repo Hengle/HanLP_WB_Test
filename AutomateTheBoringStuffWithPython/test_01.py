@@ -411,4 +411,30 @@ def input_age():
 
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-print('章内项目：口令保管箱 => 见 pw.py')
+print('表格打印')
+table_data = [['apples', 'oranges', 'cherries', 'banana'],
+              ['Alice', 'Bob', 'Carol', 'David'],
+              ['dogs', 'cats', 'moose', 'goose']]
+
+
+def grid(data):
+    print('————————————————————————')
+    length_max = [0] * len(table_data)
+    for i in range(table_data.__len__()):
+        for j in range(table_data[0].__len__()):
+            if table_data[i][j].__len__() > length_max[i]:
+                length_max[i] = table_data[i][j].__len__()
+        print(length_max[i])
+
+    print('————————————————————————')
+    for j in range(table_data[0].__len__()):
+        for i in range(table_data.__len__()):
+            if i == 0:
+                print(data[i][j].rjust(length_max[i], ' '), end=' ')
+            else:
+                print(data[i][j].ljust(length_max[i], ' '), end=' ')
+        print('')
+    print('————————————————————————')
+
+
+grid(table_data)
