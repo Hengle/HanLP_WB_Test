@@ -1,4 +1,5 @@
 #! python3
+# coding=gbk
 # pw.py - An insecure password locker program.
 """
 第一行开头的写法"#!"是一种 Unix/Linux 特性，这些操作系统上面的 解释器 指令 允许脚本和数据文件充当系统命令，无需在调用时由用户指定解释器，
