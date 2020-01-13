@@ -27,7 +27,7 @@ def paint(t: ti.f32):
 
 gui = ti.GUI("Fractal", (n * 2, n))
 
-for i in range(1000000):
-    paint(i * 0.03)
+for idx in range(1000000):
+    paint(idx * 0.03)
     gui.set_image(pixels)
     gui.show()
