@@ -473,15 +473,8 @@ def use_is_phone_number():
         if is_phone_number(chunk):
             print('Phone number found: ' + chunk)
     print('Done')
+# use_is_phone_number()
 
-
-use_is_phone_number()
-
-phone_num_regex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
-mo = phone_num_regex.search('My number is 415-555-4242.')
-print(mo.group())
-print(mo.group(1))
-print(mo.group(2))
 
 """
 基本表达式：r'\d\d\d-\d\d\d-\d\d\d\d'
@@ -490,3 +483,10 @@ print(mo.group(2))
     通过括号可以将匹配到的文本分组，第一对括号是第1组，第二对括号是第2组。向group()传入整数1或者2，就可获取匹配文本的不同部分
 
 """
+# 1、用括号分组
+phone_num_regex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+mo = phone_num_regex.search('My number is 415-555-4242.')
+print(mo.group())
+print(mo.group(0))
+print(mo.group(1))
+print(mo.group(2))
