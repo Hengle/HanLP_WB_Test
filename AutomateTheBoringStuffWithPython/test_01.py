@@ -2,6 +2,7 @@
 import random
 import pprint
 import copy
+import re
 
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
@@ -441,7 +442,7 @@ grid(table_data)
 
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-print('正则表达式')
+print('正则表达式 regex')
 
 
 def is_phone_number(text):
@@ -463,4 +464,29 @@ def is_phone_number(text):
     return True
 
 
-print(is_phone_number('123-456-7890'))
+def use_is_phone_number():
+    print(is_phone_number('123-456-7890'))
+
+    message = 'Call me at 415-555-1011 tomorrow. 415-555-9999 is my office.'
+    for i in range(len(message)):
+        chunk = message[i:i+12]
+        if is_phone_number(chunk):
+            print('Phone number found: ' + chunk)
+    print('Done')
+
+
+use_is_phone_number()
+
+phone_num_regex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+mo = phone_num_regex.search('My number is 415-555-4242.')
+print(mo.group())
+print(mo.group(1))
+print(mo.group(2))
+
+"""
+基本表达式：r'\d\d\d-\d\d\d-\d\d\d\d'
+正则表达式的基本用法：
+1、用括号分组：(\d\d\d)-(\d\d\d-\d\d\d\d)
+    通过括号可以将匹配到的文本分组，第一对括号是第1组，第二对括号是第2组。向group()传入整数1或者2，就可获取匹配文本的不同部分
+
+"""
