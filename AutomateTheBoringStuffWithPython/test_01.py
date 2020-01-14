@@ -494,7 +494,14 @@ def use_is_phone_number():
 5、用加号 + 表示匹配其之前的分组一次或多次，注意，至少一次
 
 6、用花括号 {} 匹配其前面的分组 特定次数，(Ha){3} == 'HaHaHa'
-
+    除了一个数字，还可以指定一个范围，即在花括号中写下一个最小值、一个逗号和一个最大值。
+    (Ha){3,5} 将匹配 'HaHaHa'、'HaHaHaHa'和'HaHaHaHaHa'。
+    (Ha){3,}  将匹配 3 次或更多次实例，
+    (Ha){,5}  将匹配 0 到 5 次实例。
+    这里有一个问题，'HaHaHa'和'HaHaHaHa'也能够有效地匹配正则表达式(Ha){3,5}，但实际上返回的是'HaHaHaHaHa'。
+    Python 的正则表达式默认是“贪心”的，这表示在有二义的情况下，它们会尽可能匹配最长的字符串。
+    花括号的“非贪心”版本匹配尽可能最短的字符串，即在结束的花括号后跟着一个问号：re.compile(r'(Ha){3,5}?')。
+    请注意，问号在正则表达式中可能有两种含义：声明非贪心匹配或表示可选的分组。这两种含义是完全无关的。
 """
 # 1、用括号分组
 print('————————————————\n1、使用括号：\n————————————————')
@@ -566,3 +573,22 @@ mo14 = haRegex.search('HaHaHa')
 mo15 = haRegex.search('Ha')
 print(mo14.group())
 print(mo15)
+print('———————— 贪心，非贪心 ————————')
+greedy_Ha_regex = re.compile(r'(Ha){3,5}')          # 贪心形式，默认
+mo16 = greedy_Ha_regex.search('HaHaHaHaHa')
+non_greedy_Ha_regex = re.compile(r'(Ha){3,5}?')     # 非贪心形式，加 ?
+mo17 = non_greedy_Ha_regex.search('HaHaHaHaHa')
+print(mo16.group())
+print(mo17.group())
+
+print('————————————————————————————————————————————————————————————————————————————————————')
+print('.findall() 方法')
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')           # has no groups
+print(phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000'))
+# ['415-555-9999', '212-555-0000']
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')     # has groups
+print(phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000'))
+# [('415', '555', '9999'), ('212', '555', '0000')]
+
+print('————————————————————————————————————————————————————————————————————————————————————')
+print('字符分类')
