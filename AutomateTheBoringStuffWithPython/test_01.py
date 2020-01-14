@@ -445,7 +445,7 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 print('正则表达式 regex')
 
 
-def is_phone_number(text):
+def is_phone_number(text):  # 不用正则表达式，非常繁琐
     if len(text) != 12:
         return False
     for i in range(0, 3):
@@ -477,16 +477,27 @@ def use_is_phone_number():
 
 
 """
-基本表达式：r'\d\d\d-\d\d\d-\d\d\d\d'
 正则表达式的基本用法：
+
 1、用括号分组：(\d\d\d)-(\d\d\d-\d\d\d\d)
     通过括号可以将匹配到的文本分组，第一对括号是第1组，第二对括号是第2组。向group()传入整数1或者2，就可获取匹配文本的不同部分
 
+2、用管道匹配多个分组
+    字符|称为“管道”，它有“或者”的含义。正则表达式 r'Batman|Tina Fey'将匹配'Batman'或'Tina Fey'。
+    如果 Batman 和 Tina Fey 都出现在被查找的字符串中，第一次出现的匹配文本，将作为 Match 对象返回。
+    
+3、用问号表示其前面的分组是可选的，注意，分组的表示方法是使用括号
+    你可以认为 ? 是在说，“匹配这个问号之前的分组零次或一次”。
+
+4、用星号‘*’表示匹配其之前的分组零次或多次，注意，分组的表示方法是使用括号
+
+5、用加号‘+’表示匹配其之前的分组一次或多次，注意，至少一次
+
 """
 # 1、用括号分组
+print('————————————————\n1、使用括号：\n————————————————')
 phone_num_regex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
 mo = phone_num_regex.search('My number is 415-555-4242.')
-print('————————————————\n1、用括号分组：\n————————————————')
 print(mo.group())
 print(mo.group(0))
 print(mo.group(1))
@@ -494,3 +505,54 @@ print(mo.group(2))
 print(mo.groups())
 area_code, main_number = mo.groups()
 print(area_code, main_number)
+
+# 2、管道符号 | 表示“或者”，返回第一个匹配到的文本
+print('————————————————\n2、使用管道：\n————————————————')
+hero_regex = re.compile(r'Batman|Tina Fey')
+mo1 = hero_regex.search('Batman and Tina Fey, Batman.')     # 返回找到的第 1 个
+print(mo1)
+print(mo1.group())
+print(mo1.group(0))
+# print(mo1.group(1))     # 出错
+mo2 = hero_regex.findall('Batman and Tina Fey, Batman.')
+print(mo2)
+print('~~~~~~~~~~~~~~~~~~')
+batRegex = re.compile(r'Bat(man|mobile|copter|bat)')        # 返回找到的第 1 个，注意括号的使用
+mo3 = batRegex.search('xBatmobilex lost a wheel xBatbatx')
+print(mo3)
+print(mo3.group())
+print(mo3.group(0))     # 完全匹配的文本
+print(mo3.group(1))     # 括号内匹配的文本
+
+# 3、用问号 ？ 表示 “可选" 的匹配
+print('————————————————\n2、使用问号：\n————————————————')
+batRegex = re.compile(r'Bat(wo)?man')
+mo4 = batRegex.search('The Adventures of Batman')
+mo5 = batRegex.search('The Adventures of Batwoman')
+print(mo4.group())
+print(mo5.group())
+phoneRegex = re.compile(r'(\d\d\d-)?\d\d\d-\d\d\d\d')
+mo6 = phoneRegex.search('My number is 415-555-4242')
+mo7 = phoneRegex.search('My number is 555-4242')
+print(mo6.group())
+print(mo7.group())
+
+# 4、用星号 * 表示 匹配其前面的分组 零次 或 多次
+print('————————————————\n2、使用星号：\n————————————————')
+batRegex = re.compile(r'Bat(wo)*man')
+mo8 = batRegex.search('The Adventures of Batman')
+mo9 = batRegex.search('The Adventures of Batwoman')
+mo10 = batRegex.search('The Adventures of Batwowowowoman')
+print(mo8.group())
+print(mo9.group())
+print(mo10.group())
+
+# 5、用星号 + 表示 匹配其前面的分组 一次 或 多次，至少一次
+print('————————————————\n2、使用加号：\n————————————————')
+batRegex = re.compile(r'Bat(wo)+man')
+mo11 = batRegex.search('The Adventures of Batman')
+mo12 = batRegex.search('The Adventures of Batwoman')
+mo13 = batRegex.search('The Adventures of Batwowowowoman')
+print(mo11)     # 返回 None，print(mo11.group()) 会出错
+print(mo12.group())
+print(mo13.group())
