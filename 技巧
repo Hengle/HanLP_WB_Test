@@ -1,0 +1,57 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+数据类型：
+
+列表(list)     可变的 数据类型，类似数组
+字符串(str)    不可变的 数据类型，“改变”一个字符串的正确方法是，用老字符串的片段构造一个新的字符串。
+元组(tuple)    与列表的区别只有两点，1、使用圆括号，2、它的值不能被修改，添加或者删除。
+
+>>> type(('x'))
+<class 'str'>
+
+>>> type(('x',))    # 只有一个值，可以通过在后面加一个逗号，表示这是一个元组，列表也可以后面带逗号
+<class 'tuple'>
+
+>>> type(['x',])
+<class 'list'>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+多重赋值：
+
+如果你有一个列表，或者元组，可以用它同时给多个变量赋值，变量的数目必须和列表/元组的长度相等。
+
+例一：
+>>> cat = ['fat', 'black', 'loud']
+>>> size, color, disposition = cat
+>>> size
+'fat'
+
+例二：
+>>> guests = {'Alice': {'apples': 5, 'pretzels': 12},
+...           'Bob': {'ham sandwiches': 3, 'apples': 2},
+...           'Carol': {'cups': 3, 'apple pies': 1}}
+>>> guests.items()
+dict_items(
+    [
+        ('Alice', {'apples': 5, 'pretzels': 12}),
+        ('Bob', {'ham sandwiches': 3, 'apples': 2}),
+        ('Carol', {'cups': 3, 'apple pies': 1})
+    ]
+)
+
+这是一个 元组 列表，所以：
+
+for k, v in guests.items():     # 手法清奇的多重赋值，
+
+guests.items() 返回的是一个 元组 列表，
+意味着 k 遍历一个 keys 组成的 字符串 列表，
+而同时 v 遍历一个 values 组成的 字典 列表。
+
+例三：
+>>> import re
+>>> phone_num_regex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+>>> mo = phone_num_regex.search('My number is 415-555-4242.')
+>>> mo
+<re.Match object; span=(13, 25), match='415-555-4242'>
+>>> mo.groups()
+('415', '555-4242')                     # 这是一个元组
+area_code, main_number = mo.groups()    # 多重赋值

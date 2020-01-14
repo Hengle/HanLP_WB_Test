@@ -300,7 +300,7 @@ all_guests = {'Alice': {'apples': 5, 'pretzels': 12},
 def total_brought(guests, item):
     # 计算所有客人带来的某种食物的数量
     num_brought = 0
-    for k, v in guests.items():     # 手法清奇
+    for k, v in guests.items():     # 手法清奇的多重赋值
         num_brought = num_brought + v.get(item, 0)
     return num_brought
 
@@ -486,7 +486,11 @@ def use_is_phone_number():
 # 1、用括号分组
 phone_num_regex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
 mo = phone_num_regex.search('My number is 415-555-4242.')
+print('————————————————\n1、用括号分组：\n————————————————')
 print(mo.group())
 print(mo.group(0))
 print(mo.group(1))
 print(mo.group(2))
+print(mo.groups())
+area_code, main_number = mo.groups()
+print(area_code, main_number)
