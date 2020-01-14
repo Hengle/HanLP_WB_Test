@@ -1,3 +1,6 @@
+#! python3
+# coding=gbk
+
 # import nltk
 # nltk.download('wordnet')
 

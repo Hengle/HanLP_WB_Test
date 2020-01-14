@@ -1,3 +1,5 @@
+#! python3
+# coding=gbk
 
 import random
 import pprint

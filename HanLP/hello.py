@@ -1,3 +1,6 @@
+#! python3
+# coding=gbk
+
 from pyhanlp import *
 
 print(HanLP.segment('您好，欢迎在Python中调用HanLP的API'))
