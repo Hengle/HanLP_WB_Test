@@ -6,7 +6,6 @@ import pprint
 import copy
 import re
 
-
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('控制流')
 
@@ -17,6 +16,8 @@ def test_01():
         print('Please type your name.')
         name = input()
     print('Thank you!')
+
+
 # test_01()
 
 
@@ -32,6 +33,8 @@ def test_02():
         print('Be sure to have enough room for all your guests.')
     print('Done')
     print("DDD")
+
+
 # test_02()
 
 
@@ -54,6 +57,8 @@ def get_answer(answer_number):
         return 'Outlook not so good'
     elif answer_number == 9:
         return 'Very doubtful'
+
+
 # print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 # for x in range(9):
 #   print(getAnswer(random.randint(1, 9)))
@@ -99,7 +104,6 @@ print(spam5(12))
 print(spam5(0))
 print(spam5(1))
 
-
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('深拷贝和浅拷贝，它们都是对于可变数据的操作，用于去除引用，浅拷贝去的浅，深拷贝去的深')
 
@@ -130,7 +134,6 @@ print('a=', a)
 print('b=', b)
 print('c=', c)
 print('d=', d)
-
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('代码实践 4.10.1 逗号代码')
@@ -170,7 +173,6 @@ for y in range(array_num):
         print(grid[x][y], end=' ')
     print('|')
 print('|===================|')
-
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('With ... As ... 语法研究')
@@ -221,7 +223,6 @@ class Test:
 
 with Test() as sample:
     sample.do_something()
-
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('字典 setdefault()')
@@ -278,6 +279,7 @@ def turn_board():
     print_board(theBoard)
     print('----------------------------------')
 
+
 # turn_board()
 
 
@@ -302,7 +304,7 @@ all_guests = {'Alice': {'apples': 5, 'pretzels': 12},
 def total_brought(guests, item):
     # 计算所有客人带来的某种食物的数量
     num_brought = 0
-    for k, v in guests.items():     # 手法清奇的多重赋值
+    for k, v in guests.items():  # 手法清奇的多重赋值
         num_brought = num_brought + v.get(item, 0)
     return num_brought
 
@@ -313,7 +315,7 @@ def calculate_food():
     for guest_items in all_guests.items():
         for food_name in guest_items[1].keys():
             food.setdefault(food_name, 0)
-    print(food)     # 展示所有食物种类
+    print(food)  # 展示所有食物种类
     for food_name in food.keys():
         print(' ' + food_name + ' = ', end='')
         print(total_brought(all_guests, food_name), end='')
@@ -322,7 +324,6 @@ def calculate_food():
 
 
 calculate_food()
-
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('好玩游戏的物品清单')
@@ -350,7 +351,7 @@ print('=============================')
 def add_to_inventory(inv, added_items):
     for item in added_items:
         print(item)
-        inv.setdefault(item, 0)     # item 存在时，返回其值，否则添加这个键，设其值为0
+        inv.setdefault(item, 0)  # item 存在时，返回其值，否则添加这个键，设其值为0
         inv[item] += 1
 
 
@@ -442,7 +443,6 @@ def grid(data):
 
 grid(table_data)
 
-
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('正则表达式 regex')
 
@@ -471,10 +471,12 @@ def use_is_phone_number():
 
     message = 'Call me at 415-555-1011 tomorrow. 415-555-9999 is my office.'
     for i in range(len(message)):
-        chunk = message[i:i+12]
+        chunk = message[i:i + 12]
         if is_phone_number(chunk):
             print('Phone number found: ' + chunk)
     print('Done')
+
+
 # use_is_phone_number()
 
 
@@ -564,7 +566,7 @@ print(area_code, main_number)
 # 2、管道符号 | 表示“或者”，返回第一个匹配到的文本
 print('————————————————\n2、使用管道：\n————————————————')
 hero_regex = re.compile(r'Batman|Tina Fey')
-mo1 = hero_regex.search('Batman and Tina Fey, Batman.')     # 返回找到的第 1 个
+mo1 = hero_regex.search('Batman and Tina Fey, Batman.')  # 返回找到的第 1 个
 print(mo1)
 print(mo1.group())
 print(mo1.group(0))
@@ -572,12 +574,12 @@ print(mo1.group(0))
 mo2 = hero_regex.findall('Batman and Tina Fey, Batman.')
 print(mo2)
 print('~~~~~~~~~~~~~~~~~~')
-batRegex = re.compile(r'Bat(man|mobile|copter|bat)')        # 返回找到的第 1 个，注意括号的使用
+batRegex = re.compile(r'Bat(man|mobile|copter|bat)')  # 返回找到的第 1 个，注意括号的使用
 mo3 = batRegex.search('xBatmobilex lost a wheel xBatbatx')
 print(mo3)
 print(mo3.group())
-print(mo3.group(0))     # 完全匹配的文本
-print(mo3.group(1))     # 括号内匹配的文本
+print(mo3.group(0))  # 完全匹配的文本
+print(mo3.group(1))  # 括号内匹配的文本
 
 # 3、用问号 ？ 表示 “可选" 的匹配
 print('————————————————\n3、使用问号：\n————————————————')
@@ -608,7 +610,7 @@ batRegex = re.compile(r'Bat(wo)+man')
 mo11 = batRegex.search('The Adventures of Batman')
 mo12 = batRegex.search('The Adventures of Batwoman')
 mo13 = batRegex.search('The Adventures of Batwowowowoman')
-print(mo11)     # 返回 None，print(mo11.group()) 会出错
+print(mo11)  # 返回 None，print(mo11.group()) 会出错
 print(mo12.group())
 print(mo13.group())
 
@@ -620,21 +622,24 @@ mo15 = haRegex.search('Ha')
 print(mo14.group())
 print(mo15)
 print('———————— 贪心，非贪心 ————————')
-greedy_Ha_regex = re.compile(r'(Ha){3,5}')          # 贪心形式，默认
+greedy_Ha_regex = re.compile(r'(Ha){3,5}')  # 贪心形式，默认
 mo16 = greedy_Ha_regex.search('HaHaHaHaHa')
-non_greedy_Ha_regex = re.compile(r'(Ha){3,5}?')     # 非贪心形式，加 ?
+non_greedy_Ha_regex = re.compile(r'(Ha){3,5}?')  # 非贪心形式，加 ?
 mo17 = non_greedy_Ha_regex.search('HaHaHaHaHa')
 print(mo16.group())
 print(mo17.group())
 
 print('————————————————————————————————————————————————————————————————————————————————————')
 print('.findall() 方法')
-phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')           # has no groups
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')  # has no groups
 print(phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000'))
 # ['415-555-9999', '212-555-0000']
-phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')     # has groups
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')  # has groups
 print(phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000'))
 # [('415', '555', '9999'), ('212', '555', '0000')]
 
 print('————————————————————————————————————————————————————————————————————————————————————')
 print('字符分类')
+xmasRegex = re.compile(r'\d+\s\w+')
+pprint.pprint(xmasRegex.findall('01 drummers, 02 pipers, 03 lords, 04 ladies, 05 maids, 06 swans, '
+                                '07 geese, 08 rings, 09 birds, 10 hens, 11 doves, 12 partridge'))
