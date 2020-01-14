@@ -479,7 +479,7 @@ def use_is_phone_number():
 """
 正则表达式的基本用法：
 
-1、用括号分组：(\d\d\d)-(\d\d\d-\d\d\d\d)
+1、用括号分组：r'(\d\d\d)-(\d\d\d-\d\d\d\d)'
     通过括号可以将匹配到的文本分组，第一对括号是第1组，第二对括号是第2组。向group()传入整数1或者2，就可获取匹配文本的不同部分
 
 2、用管道匹配多个分组
@@ -489,9 +489,11 @@ def use_is_phone_number():
 3、用问号表示其前面的分组是可选的，注意，分组的表示方法是使用括号
     你可以认为 ? 是在说，“匹配这个问号之前的分组零次或一次”。
 
-4、用星号‘*’表示匹配其之前的分组零次或多次，注意，分组的表示方法是使用括号
+4、用星号 * 表示匹配其之前的分组零次或多次，注意，分组的表示方法是使用括号
 
-5、用加号‘+’表示匹配其之前的分组一次或多次，注意，至少一次
+5、用加号 + 表示匹配其之前的分组一次或多次，注意，至少一次
+
+6、用花括号 {} 匹配其前面的分组 特定次数，(Ha){3} == 'HaHaHa'
 
 """
 # 1、用括号分组
@@ -525,7 +527,7 @@ print(mo3.group(0))     # 完全匹配的文本
 print(mo3.group(1))     # 括号内匹配的文本
 
 # 3、用问号 ？ 表示 “可选" 的匹配
-print('————————————————\n2、使用问号：\n————————————————')
+print('————————————————\n3、使用问号：\n————————————————')
 batRegex = re.compile(r'Bat(wo)?man')
 mo4 = batRegex.search('The Adventures of Batman')
 mo5 = batRegex.search('The Adventures of Batwoman')
@@ -538,7 +540,7 @@ print(mo6.group())
 print(mo7.group())
 
 # 4、用星号 * 表示 匹配其前面的分组 零次 或 多次
-print('————————————————\n2、使用星号：\n————————————————')
+print('————————————————\n4、使用星号：\n————————————————')
 batRegex = re.compile(r'Bat(wo)*man')
 mo8 = batRegex.search('The Adventures of Batman')
 mo9 = batRegex.search('The Adventures of Batwoman')
@@ -548,7 +550,7 @@ print(mo9.group())
 print(mo10.group())
 
 # 5、用星号 + 表示 匹配其前面的分组 一次 或 多次，至少一次
-print('————————————————\n2、使用加号：\n————————————————')
+print('————————————————\n5、使用加号：\n————————————————')
 batRegex = re.compile(r'Bat(wo)+man')
 mo11 = batRegex.search('The Adventures of Batman')
 mo12 = batRegex.search('The Adventures of Batwoman')
@@ -556,3 +558,11 @@ mo13 = batRegex.search('The Adventures of Batwowowowoman')
 print(mo11)     # 返回 None，print(mo11.group()) 会出错
 print(mo12.group())
 print(mo13.group())
+
+# 6、用花括号 {} 匹配其前面的分组 特定次数
+print('————————————————\n6、使用花括号：\n————————————————')
+haRegex = re.compile(r'(Ha){3}')
+mo14 = haRegex.search('HaHaHa')
+mo15 = haRegex.search('Ha')
+print(mo14.group())
+print(mo15)
