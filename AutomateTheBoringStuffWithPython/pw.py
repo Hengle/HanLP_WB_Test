@@ -12,6 +12,7 @@
 """
 import sys
 import pyperclip
+
 PASSWORDS = {'email': 'F7minlBDDuvMJuxESSKHFhTxFtjVB6',
              'blog': 'VmALvQyKAxiVH5G8v01if1MLZF3sdt',
              'luggage': '12345'}
@@ -20,7 +21,7 @@ if len(sys.argv) < 2:
     print('Usage: python pw.py [account] - copy account password')
     sys.exit()
 
-account = sys.argv[1]   # 第一个命令行参数是“账户名”
+account = sys.argv[1]  # 第一个命令行参数是“账户名”
 if account in PASSWORDS:
     pyperclip.copy(PASSWORDS[account])
     print(account + ' 的密码已经复制到剪贴板，直接按 Ctrl + V 即可粘贴到指定位置。')

@@ -2,24 +2,24 @@
 
 import taichi as ti
 
-quality = 1                                                             # Use a larger value for higher-res simulations
+quality = 1  # Use a larger value for higher-res simulations
 n_particles, n_grid = 9000 * quality ** 2, 128 * quality
 dx, inv_dx = 1 / n_grid, float(n_grid)
 dt = 1e-4 / quality
 p_vol, p_rho = (dx * 0.5) ** 2, 1
 p_mass = p_vol * p_rho
-E, nu = 0.1e4, 0.2                                                          # Young's modulus and Poisson's ratio
-mu_0, lambda_0 = E / (2 * (1 + nu)), E * nu / ((1 + nu) * (1 - 2 * nu))     # Lame parameters
+E, nu = 0.1e4, 0.2  # Young's modulus and Poisson's ratio
+mu_0, lambda_0 = E / (2 * (1 + nu)), E * nu / ((1 + nu) * (1 - 2 * nu))  # Lame parameters
 
-x = ti.Vector(2, dt=ti.f32, shape=n_particles)                              # position
-v = ti.Vector(2, dt=ti.f32, shape=n_particles)                              # velocity
-C = ti.Matrix(2, 2, dt=ti.f32, shape=n_particles)                           # affine velocity field
-F = ti.Matrix(2, 2, dt=ti.f32, shape=n_particles)                           # deformation gradient
-material = ti.var(dt=ti.i32, shape=n_particles)                             # material id
-Jp = ti.var(dt=ti.f32, shape=n_particles)                                   # plastic deformation
-grid_v = ti.Vector(2, dt=ti.f32, shape=(n_grid, n_grid))                    # grid node momemtum/velocity
-grid_m = ti.var(dt=ti.f32, shape=(n_grid, n_grid))                          # grid node mass
-ti.cfg.arch = ti.cuda                                                       # Try to run on GPU
+x = ti.Vector(2, dt=ti.f32, shape=n_particles)  # position
+v = ti.Vector(2, dt=ti.f32, shape=n_particles)  # velocity
+C = ti.Matrix(2, 2, dt=ti.f32, shape=n_particles)  # affine velocity field
+F = ti.Matrix(2, 2, dt=ti.f32, shape=n_particles)  # deformation gradient
+material = ti.var(dt=ti.i32, shape=n_particles)  # material id
+Jp = ti.var(dt=ti.f32, shape=n_particles)  # plastic deformation
+grid_v = ti.Vector(2, dt=ti.f32, shape=(n_grid, n_grid))  # grid node momemtum/velocity
+grid_m = ti.var(dt=ti.f32, shape=(n_grid, n_grid))  # grid node mass
+ti.cfg.arch = ti.cuda  # Try to run on GPU
 
 
 @ti.kernel
@@ -27,7 +27,7 @@ def substep():
     for i, j in ti.ndrange(n_grid, n_grid):
         grid_v[i, j] = [0, 0]
         grid_m[i, j] = 0
-    for p in range(n_particles):                                    # Particle state update and scatter to grid (P2G)
+    for p in range(n_particles):  # Particle state update and scatter to grid (P2G)
         base = (x[p] * inv_dx - 0.5).cast(int)
         fx = x[p] * inv_dx - base.cast(float)
         # Quadratic kernels  [http://mpm.graphics   Eqn. 123, with x=fx, fx-1,fx-2]
@@ -82,7 +82,7 @@ def substep():
             new_v += weight * g_v
             new_C += 4 * inv_dx * weight * ti.outer_product(g_v, dpos)
         v[p], C[p] = new_v, new_C
-        x[p] += dt * v[p]   # advection
+        x[p] += dt * v[p]  # advection
 
 
 import random

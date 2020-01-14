@@ -37,8 +37,8 @@ print(HanLP.extractSummary(document, 3))
 def main():
     HanLP.Config.enableDebug()  # 为了避免你等得无聊，开启调试模式说点什么:-)
     # print(HanLP.segment("王国维和服务员"))
-    print(HanLP.parseDependency("徐先生还具体帮助他确定了把画雄鹰、松鼠和麻雀作为主攻目标"))    # 依存句法分析
-    print(HanLP.parseDependency("萨哈夫说，伊拉克将同联合国销毁伊拉克大规模杀伤性武器特别委员会继续保持合作。"))    # 依存句法分析
+    print(HanLP.parseDependency("徐先生还具体帮助他确定了把画雄鹰、松鼠和麻雀作为主攻目标"))  # 依存句法分析
+    print(HanLP.parseDependency("萨哈夫说，伊拉克将同联合国销毁伊拉克大规模杀伤性武器特别委员会继续保持合作。"))  # 依存句法分析
 
 
 if __name__ == '__main__':
