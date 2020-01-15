@@ -772,4 +772,4 @@ download_dir = os.path.join(os.path.expanduser('~'), 'Downloads')  # »ñÈ¡µ±Ç°ÓÃ»
 print(download_dir)  # C:\Users\bwang\Downloads
 
 # os.makedirs(os.path.join(download_dir, 'test1'))
-Path(os.path.join(download_dir, 'test1')).mkdir(parents=True, exist_ok=True)  # ´´½¨ÎÄ¼þ¼Ð
+Path(os.path.join(download_dir, 'test1')).mkdir(parents=True, exist_ok=True)  # °²È«µÄ´´½¨ÎÄ¼þ¼Ð
