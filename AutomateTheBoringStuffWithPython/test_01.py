@@ -6,6 +6,7 @@ import pprint
 import copy
 import re
 import os
+from pathlib import Path
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('控制流')
@@ -755,16 +756,20 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 print(os.path.join('usr', 'bin', 'spam'))
 
 file = 'xx.txt'
-fold = 'test'
 
-print(os.path.join(r'C:\Users\bwang\Downloads', file))
+print(os.path.join(r'C:\Users\bwang\Downloads', file))  # 创建路径
 
-print(os.getcwd())
+print(os.getcwd())  # 当前路径，本代码所在路径
 print(os.path.join(os.getcwd(), file))
-os.chdir(r'C:\Users\bwang\Downloads')
-print(os.getcwd())
+
+os.chdir(r'C:\Users\bwang\Downloads')  # 切换当前路径到指定路径
+
+print(os.getcwd())  # 查看切换后的当前路径
 print(os.path.join(os.getcwd(), file))
 print(os.path.join(os.path.abspath('..\\'), file))  # 工作目录的父目录
 
-print(os.path.join(os.path.expanduser('~'), 'Downloads'))
-os.makedirs(os.path.join(os.path.expanduser('~'), 'Downloads', fold))
+download_dir = os.path.join(os.path.expanduser('~'), 'Downloads')  # 获取当前用户路径
+print(download_dir)  # C:\Users\bwang\Downloads
+
+# os.makedirs(os.path.join(download_dir, 'test1'))
+Path(os.path.join(download_dir, 'test1')).mkdir(parents=True, exist_ok=True)  # 创建文件夹
