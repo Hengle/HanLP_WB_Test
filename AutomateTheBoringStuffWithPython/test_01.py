@@ -685,3 +685,15 @@ print('¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡
 print(r'Í¨Åä·û .')
 atRegex = re.compile(r'.at')  # Æ¥Åä ÈÎÒâ×Ö·û + 'at'
 print(atRegex.findall('The cat in the hat sat on the flat mat.'))  # ['cat', 'hat', 'sat', 'lat', 'mat']
+
+nameRegex = re.compile(r'First Name: .* Last Name: .*')  # ÏÔÈ»£¬.* Ö¸ÈÎÒâ×Ö·û
+mo18 = nameRegex.search('First Name: Al Last Name: Sweigart')
+print(mo18.group())  # »ñÈ¡µ½Õû¸ö×Ö·û´®
+print('¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªÊ¹ÓÃ·Ö×é¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª')
+nameRegexGroup = re.compile(r'First Name: (.*) Last Name: (.*)')  # Í¨¹ýÀ¨ºÅ£¬»¹¿ÉÒÔµÃµ½·Ö×é×Ö·û
+mo19 = nameRegexGroup.search('First Name: Al Last Name: Sweigart')
+print(mo19.group())
+print(mo19.group(0))
+print(mo19.group(1))
+print(mo19.group(2))
+print(mo19.groups())
