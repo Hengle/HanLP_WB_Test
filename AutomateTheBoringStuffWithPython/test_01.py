@@ -508,7 +508,7 @@ r"""
     »¨À¨ºÅµÄ¡°·ÇÌ°ÐÄ¡±°æ±¾Æ¥Åä¾¡¿ÉÄÜ×î¶ÌµÄ×Ö·û´®£¬¼´ÔÚ½áÊøµÄ»¨À¨ºÅºó¸ú×ÅÒ»¸öÎÊºÅ£ºre.compile(r'(Ha){3,5}?')¡£
     Çë×¢Òâ£¬ÎÊºÅÔÚÕýÔò±í´ïÊ½ÖÐ¿ÉÄÜÓÐÁ½ÖÖº¬Òå£ºÉùÃ÷·ÇÌ°ÐÄÆ¥Åä»ò±íÊ¾¿ÉÑ¡µÄ·Ö×é¡£ÕâÁ½ÖÖº¬ÒåÊÇÍêÈ«ÎÞ¹ØµÄ¡£
     
-7¡¢×÷Îª findall()·½·¨µÄ·µ»Ø½á¹ûµÄ×Ü½á£¬Çë¼Ç×¡ÏÂÃæÁ½µã£º
+7¡¢×÷Îª findall() ·½·¨µÄ·µ»Ø½á¹ûµÄ×Ü½á£¬Çë¼Ç×¡ÏÂÃæÁ½µã£º
     1£®Èç¹ûµ÷ÓÃÔÚÒ»¸ö Ã»ÓÐ ·Ö×éµÄÕýÔò±í´ïÊ½ÉÏ£¬ÀýÈç\d\d\d-\d\d\d-\d\d\d\d£¬
     ·½·¨findall()½«·µ»ØÒ»¸öÆ¥Åä×Ö·û´®µÄÁÐ±í£¬ ÀýÈç['415-555-9999', '212-555-0000']¡£
     2£®Èç¹ûµ÷ÓÃÔÚÒ»¸ö ÓÐ ·Ö×éµÄÕýÔò±í´ïÊ½ÉÏ£¬ÀýÈç(\d\d\d)-(\d\d\d)-(\d\d\d\d)£¬
@@ -524,6 +524,10 @@ r"""
 10¡¢Í¨Åä·û .
     ±íÊ¾»»ÐÐ·û \n ÒÔÍâËùÓÐµÄ×Ö·û
 
+11¡¢Ê¹ÓÃ sub() ·½·¨¿ÉÒÔÌæ»»×Ö·û´®
+
+12¡¢Ê¹ÓÃ re.VERBOSE ²ÎÊý ÈÃ re.compile() ºöÂÔÕýÔò±í´ïÊ½ÖÐµÄ¿Õ°×ºÍ×¢ÊÍ¡£
+    ÕâÒâÎ¶×Å£¬´ËÊ±¿ÉÒÔÍ¨¹ý»»ÐÐ²¢Ìí¼Ó×¢ÊÍ£¬À´°ïÖúÀí½â¸´ÔÓµÄÕýÔò±í´ïÊ½¡£
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ×Ö·ûÀàÐÍ    Ê¾Àý
     ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
@@ -716,3 +720,18 @@ print('¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡
 print('ÓÃ sub() ·½·¨Ìæ»»×Ö·û´®')
 namesRegex = re.compile(r'Agent \w+')
 print(namesRegex.sub('CENSORED', 'Agent Alice gave the secret documents to Agent Bob.'))
+agentNamesRegex = re.compile(r'Agent \w(\w)\w*')  # 'Agent (Ò»¸ö·Ö×é×Ö·û)Èô¸É×Ö·û'
+print(agentNamesRegex.sub(r'*\1***', 'Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.'))
+
+print('¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª')
+print('Ê¹ÓÃ re.VERBOSE')
+phoneRegex = re.compile(r'((\d{3}|\(\d{3}\))?(\s|-|\.)?\d{3}(\s|-|\.)\d{4}(\s*(ext|x|ext.)\s*\d{2,5})?)')  # ¿´µÃ¶®Ã´£¿
+
+phoneRegex2 = re.compile(r'''(
+                (\d{3}|\(\d{3}\))?              # ÇøºÅ£¬3¸öÊý×Ö£¬»òÕßÀ¨ºÅÀïµÄ3¸öÊý×Ö£¬»òÕß²»´æÔÚ
+                (\s|-|\.)?                      # ¿Õ¸ñ£¬»òÕß-£¬»òÕß.£¬»òÕß²»´æÔÚ
+                \d{3}                           # Ç°3¸öÊý×Ö
+                (\s|-|\.)                       # ¿Õ¸ñ£¬»òÕß-£¬»òÕß.
+                \d{4}                           # ºó4¸öÊý×Ö
+                (\s*(ext|x|ext.)\s*\d{2,5})?    # (ÓÐ»òÎÞÈô¸É¿Õ¸ñ + À¨ºÅÄÚµÄext»òÕßx»òÕßext. + ÓÐ»òÎÞÈô¸É¿Õ¸ñ + 2~5¸öÊý×Ö)?
+)''', re.VERBOSE)
