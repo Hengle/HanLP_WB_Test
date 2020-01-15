@@ -29,7 +29,17 @@ matches = []  # 用于存放找到的结果
 
 # 遍历文本，寻找电话号码
 for groups in phoneRegex.findall(text):
-    phoneNum = '-'.join([groups[1], groups[3], groups[5]])
+
+    if len(groups[1]) == 0:
+        area_code = '000'
+    elif len(groups[1]) == 5:
+        area_code = groups[1][1:4]
+    else:
+        area_code = groups[1]
+
+#    phoneNum = '-'.join([groups[1], groups[3], groups[5]])
+    phoneNum = '-'.join([area_code, groups[3], groups[5]])
+
     if groups[8] != '':  # 如果由分机号
         phoneNum += ' x' + groups[8]
     matches.append(phoneNum)  # 保存电话号码
