@@ -706,5 +706,13 @@ print('————————不匹配换行————————')
 noNewlineRegex = re.compile('.*')
 print(noNewlineRegex.search('Serve the public trust.\nProtect the innocent.\nUphold the law.').group())
 print('————————匹配换行————————')
-newlineRegex = re.compile('.*', re.DOTALL)
+newlineRegex = re.compile('.*', re.DOTALL)  # 第2个参数 re.DOTALL 其实就是 DotAll 表示 . 匹配所有字符，包括换行
 print(newlineRegex.search('Serve the public trust.\nProtect the innocent.\nUphold the law.').group())
+print('————————忽略大小写————————')
+robocop = re.compile(r'robocop', re.I)  # 第二个参数 re.I 或者 re.IGNORECASE 表示忽略大小写
+print(robocop.search('RoboCop is part man, part machine, all cop.').group())  # 'RoboCop'
+
+print('————————————————————————————————————————————————————————————————————————————————————')
+print('用 sub() 方法替换字符串')
+namesRegex = re.compile(r'Agent \w+')
+print(namesRegex.sub('CENSORED', 'Agent Alice gave the secret documents to Agent Bob.'))
