@@ -5,6 +5,7 @@ import random
 import pprint
 import copy
 import re
+import os
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('控制流')
@@ -749,5 +750,8 @@ for phoneNum in phoneRegex2.findall('as 425-589-4885, (110)258.6255, 358-4568 x 
     print(phoneNum[0])
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-print('第七章 模式匹配与正则表达式')
+print('第八章 读写文件')
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print(os.path.join('usr', 'bin', 'spam'))
+file = 'xx.txt'
+print(os.path.join(r'C:\Users\bwang\Downloads', file))
