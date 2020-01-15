@@ -783,3 +783,10 @@ print('——————————分解path——————————')
 testpath = os.path.join(download_dir, 'test1', file)
 print(os.path.basename(testpath))
 print(os.path.dirname(testpath))
+print(os.path.split(testpath))
+print(testpath.split(os.path.sep))  # 本质上是分解字符串，间隔参数是 os.path.sep == \ (windows系统)
+print(os.path.sep)
+
+print('——————————查看文件大小和文件夹内容——————————')
+print(os.path.getsize(os.path.join(download_dir, 'mls-mpm88.zip'))/1)  # 指定文件的大小，字节
+print(os.listdir(download_dir))  # 文件夹中的内容
