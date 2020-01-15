@@ -736,5 +736,6 @@ phoneRegex2 = re.compile(r'''(
     (\s*(ext|x|ext.)\s*(\d{2,5}))?  # (有或无若干空格 + 括号内的ext或者x或者ext. + 有或无若干空格 + 2~5个数字)?
 )''', re.VERBOSE)
 
-for phoneNum in phoneRegex2.findall('as 425-589-4885, (110)258.6255, 358-4568 x 25531, 110-258-1254 ext. 2586'):
+for phoneNum in phoneRegex2.findall('as 425-589-4885, (110)258.6255, 358-4568 x 25531, '
+                                    '234 0988, 110-258-1254 ext. 2586'):
     print(phoneNum[0])
