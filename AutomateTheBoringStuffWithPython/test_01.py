@@ -796,3 +796,5 @@ totalSize = 0
 for filename in os.listdir(download_dir):
     totalSize = totalSize + os.path.getsize(os.path.join(download_dir, filename))
 print(str(round(totalSize/1024/1024, 1)) + 'M')  # 只算了文件，没算文件夹
+
+print('——————————检查路径有效性——————————')
