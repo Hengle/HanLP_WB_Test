@@ -515,6 +515,15 @@ r"""
     方法findall()将返回一个字符串的元组的列表(每个分组对应一个字符串)，例如[('415', '555', '1122'), ('212', '555', '0000')]。
     
 8、字符分类的缩写代码 https://blog.csdn.net/weixin_40693324/article/details/78785608
+
+9、定位符 ^ 和 $
+    可以在正则表达式的开始处使用插入符号（^），表明匹配必须发生在被查找文本开始处。
+    类似地，可以再正则表达式的末尾加上美元符号（$），表示该字符串必须以这个正则表达式的模式结束。
+    可以同时使用^和$，表明整个字符串必须匹配该模式，也就是说，只匹配该字符串的某个子集是不够的。
+
+10、通配符 .
+    表示换行符 \n 以外所有的字符
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     字符类型    示例
     ————————————————————————————————————————————————————————————
@@ -650,3 +659,29 @@ vowelRegex = re.compile(r'[aeiouAEIOU]')
 print(vowelRegex.findall('RoboCop eats baby food. BABY FOOD.'))
 consonantRegex = re.compile(r'[^aeiouAEIOU]')
 print(consonantRegex.findall('RoboCop eats baby food. BABY FOOD.'))
+
+print('————————————————————————————————————————————————————————————————————————————————————')
+print(r'定位符 ^, $')
+beginsWithHello = re.compile(r'^Hello')  # 表示以 Hello 开头的文本
+print(beginsWithHello.search('Hello world!'))  # <re.Match object; span=(0, 5), match='Hello'>
+print(beginsWithHello.search('He said hello.'))  # None
+
+endsWithNumber = re.compile(r'\d$')  # 表示以数字结束
+endsWith2Numbers = re.compile(r'\d{2}$')  # 表示以2个数字结束
+endsWith3Numbers = re.compile(r'\d{3}$')  # 表示以3个数字结束
+print(endsWithNumber.search('test23'))  # <re.Match object; span=(5, 6), match='3'>
+print(endsWith2Numbers.search('test23'))  # <re.Match object; span=(4, 6), match='23'>
+print(endsWith3Numbers.search('test23'))  # None
+
+wholeStringIsNum = re.compile(r'^\d+$')  # 从头到尾都是有数字组成，至少要有1个数字
+wholeStringIsNum2 = re.compile(r'^\d*$')  # 从头到尾都是有数字组成，可以是0个数字
+print(wholeStringIsNum.search('1234567890'))  # <re.Match object; span=(0, 10), match='1234567890'>
+print(wholeStringIsNum.search('12345xyz67890'))  # None
+print(wholeStringIsNum.search('12 34567890'))  # None
+print(wholeStringIsNum.search(''))  # None
+print(wholeStringIsNum2.search(''))  # <re.Match object; span=(0, 0), match=''>
+
+print('————————————————————————————————————————————————————————————————————————————————————')
+print(r'通配符 .')
+atRegex = re.compile(r'.at')  # 匹配 任意字符 + 'at'
+print(atRegex.findall('The cat in the hat sat on the flat mat.'))  # ['cat', 'hat', 'sat', 'lat', 'mat']
