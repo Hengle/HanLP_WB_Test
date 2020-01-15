@@ -697,8 +697,14 @@ print(mo19.group(0))  # == mo19.group()
 print(mo19.group(1))
 print(mo19.group(2))
 print(mo19.groups())
-
+print('————————贪心/懒惰————————')
 greedyRegex = re.compile(r'<.*>')  # 贪心模式
 print('贪心模式：' + greedyRegex.search('<To serve man> for dinner.>').group())  # <To serve man> for dinner.>
 nongreedyRegex = re.compile(r'<.*?>')  # 懒惰模式
 print('懒惰模式：' + nongreedyRegex.search('<To serve man> for dinner.>').group())  # <To serve man>
+print('————————不匹配换行————————')
+noNewlineRegex = re.compile('.*')
+print(noNewlineRegex.search('Serve the public trust.\nProtect the innocent.\nUphold the law.').group())
+print('————————匹配换行————————')
+newlineRegex = re.compile('.*', re.DOTALL)
+print(newlineRegex.search('Serve the public trust.\nProtect the innocent.\nUphold the law.').group())
