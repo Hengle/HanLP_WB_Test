@@ -479,7 +479,6 @@ def use_is_phone_number():
 
 # use_is_phone_number()
 
-
 r"""
 比较完整的参考文档：https://www.jianshu.com/p/bb7d5386507c，https://deerchao.cn/tutorials/regex/regex.htm
 正则表达式的基本用法：
@@ -721,7 +720,8 @@ print('用 sub() 方法替换字符串')
 namesRegex = re.compile(r'Agent \w+')
 print(namesRegex.sub('CENSORED', 'Agent Alice gave the secret documents to Agent Bob.'))
 agentNamesRegex = re.compile(r'Agent \w(\w)\w*')  # 'Agent (一个分组字符)若干字符'
-print(agentNamesRegex.sub(r'*\1***', 'Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.'))
+print(agentNamesRegex.sub(r'*\1***',
+                          'Agent Alice told Agent Carol that Agent Eve knew Agent Bob was a double agent.'))
 
 print('————————————————————————————————————————————————————————————————————————————————————')
 print('使用 re.VERBOSE')
@@ -735,3 +735,5 @@ phoneRegex2 = re.compile(r'''(
                 \d{4}                           # 后4个数字
                 (\s*(ext|x|ext.)\s*\d{2,5})?    # (有或无若干空格 + 括号内的ext或者x或者ext. + 有或无若干空格 + 2~5个数字)?
 )''', re.VERBOSE)
+for phoneNum in phoneRegex2.findall('as 425-589-4885, (110)258.6255, 358-4568 x 25531, 110-258-1254 ext 2586'):
+    print(phoneNum[0])
