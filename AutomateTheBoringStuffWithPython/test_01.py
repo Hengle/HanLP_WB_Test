@@ -753,5 +753,18 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 print('第八章 读写文件')
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print(os.path.join('usr', 'bin', 'spam'))
+
 file = 'xx.txt'
+fold = 'test'
+
 print(os.path.join(r'C:\Users\bwang\Downloads', file))
+
+print(os.getcwd())
+print(os.path.join(os.getcwd(), file))
+os.chdir(r'C:\Users\bwang\Downloads')
+print(os.getcwd())
+print(os.path.join(os.getcwd(), file))
+print(os.path.join(os.path.abspath('..\\'), file))  # 工作目录的父目录
+
+print(os.path.join(os.path.expanduser('~'), 'Downloads'))
+os.makedirs(os.path.join(os.path.expanduser('~'), 'Downloads', fold))
