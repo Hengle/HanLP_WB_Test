@@ -778,3 +778,8 @@ print(download_dir)  # C:\Users\bwang\Downloads
 print('——————————安全创建文件夹——————————')
 # os.makedirs(os.path.join(download_dir, 'test1'))
 Path(os.path.join(download_dir, 'test1')).mkdir(parents=True, exist_ok=True)  # 安全的创建文件夹
+
+print('——————————分解path——————————')
+testpath = os.path.join(download_dir, 'test1', file)
+print(os.path.basename(testpath))
+print(os.path.dirname(testpath))
