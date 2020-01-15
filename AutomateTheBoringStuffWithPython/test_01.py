@@ -1,7 +1,6 @@
 #! python3
 # coding=gbk
 
-import random
 import pprint
 import copy
 import re
@@ -759,17 +758,22 @@ file = 'xx.txt'
 
 print(os.path.join(r'C:\Users\bwang\Downloads', file))  # 创建路径
 
+print('——————————切换当前路径——————————')
 print(os.getcwd())  # 当前路径，本代码所在路径
 print(os.path.join(os.getcwd(), file))
-
 os.chdir(r'C:\Users\bwang\Downloads')  # 切换当前路径到指定路径
-
 print(os.getcwd())  # 查看切换后的当前路径
 print(os.path.join(os.getcwd(), file))
+
+print('——————————绝对路径与相对路径——————————')
+print(os.path.abspath('.'))
+print(os.path.abspath('..'))
 print(os.path.join(os.path.abspath('..\\'), file))  # 工作目录的父目录
 
+print('——————————当前用户路径——————————')
 download_dir = os.path.join(os.path.expanduser('~'), 'Downloads')  # 获取当前用户路径
 print(download_dir)  # C:\Users\bwang\Downloads
 
+print('——————————安全创建文件夹——————————')
 # os.makedirs(os.path.join(download_dir, 'test1'))
 Path(os.path.join(download_dir, 'test1')).mkdir(parents=True, exist_ok=True)  # 安全的创建文件夹
