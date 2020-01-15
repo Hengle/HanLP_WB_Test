@@ -45,3 +45,16 @@ if len(matches) > 0:  # 如果找到了
     print('\n'.join(matches))  # 打印在屏幕上
 else:
     print('No phone numbers or email addresses found.')  # 没有找到
+
+r'''
+测试网页：https://nostarch.com/contactus 打开网页，Ctrl+A，Ctrl+C，运行本程序，得到如下结果：
+(hanlp) E:\Proj_Pycharm\HanLP_Test\AutomateTheBoringStuffWithPython>python phoneAndEmail.py
+Copied to clipboard:
+800-420-7240
+415-863-9900
+415-863-9950
+info@nostarch.com
+media@nostarch.com
+academic@nostarch.com
+info@nostarch.com
+'''
