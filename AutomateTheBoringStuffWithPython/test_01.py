@@ -643,3 +643,10 @@ print('忖憲蛍窃')
 xmasRegex = re.compile(r'\d+\s\w+')
 pprint.pprint(xmasRegex.findall('01 drummers, 02 pipers, 03 lords, 04 ladies, 05 maids, 06 swans, '
                                 '07 geese, 08 rings, 09 birds, 10 hens, 11 doves, 12 partridge'))
+
+print('！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！')
+print('徭協吶忖憲蛍窃')
+vowelRegex = re.compile(r'[aeiouAEIOU]')
+print(vowelRegex.findall('RoboCop eats baby food. BABY FOOD.'))
+consonantRegex = re.compile(r'[^aeiouAEIOU]')
+print(consonantRegex.findall('RoboCop eats baby food. BABY FOOD.'))
