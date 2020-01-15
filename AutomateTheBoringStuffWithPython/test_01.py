@@ -693,7 +693,12 @@ print('————————使用分组————————')
 nameRegexGroup = re.compile(r'First Name: (.*) Last Name: (.*)')  # 通过括号，还可以得到分组字符
 mo19 = nameRegexGroup.search('First Name: Al Last Name: Sweigart')
 print(mo19.group())
-print(mo19.group(0))
+print(mo19.group(0))  # == mo19.group()
 print(mo19.group(1))
 print(mo19.group(2))
 print(mo19.groups())
+
+greedyRegex = re.compile(r'<.*>')  # 贪心模式
+print('贪心模式：' + greedyRegex.search('<To serve man> for dinner.>').group())  # <To serve man> for dinner.>
+nongreedyRegex = re.compile(r'<.*?>')  # 懒惰模式
+print('懒惰模式：' + nongreedyRegex.search('<To serve man> for dinner.>').group())  # <To serve man>
