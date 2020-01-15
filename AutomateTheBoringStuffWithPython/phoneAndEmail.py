@@ -4,6 +4,7 @@
 import pyperclip
 import re
 
+# 构造电话号码的正则表达式
 phoneRegex = re.compile(r'''(
     (\d{3}|\(\d{3}\))?              # 有或无区号，3个数字，或者括号里的3个数字
     (\s|-|\.)?                      # 有或无分割，空格，或者-，或者.
@@ -13,7 +14,13 @@ phoneRegex = re.compile(r'''(
     (\s*(ext|x|ext.)\s*(\d{2,5}))?  # 有或无分机号，包含(有或无若干空格 + 一定有ext|x|ext. + 有或无若干空格 + 一定有2~5个数字)
 )''', re.VERBOSE)
 
+# 构造电子邮件的正则表达式
+emailRegex = re.compile(r'''(
+    [a-zA-Z0-9._%+-]+               # 用户名，由一个或多个字符组成，可使用 字母/数字/'.'/'_'/'%'/'+'/'-'
+    @                               # @ 符号
+    [a-zA-Z0-9.-]+                  # 域名，由一个或多个字符组成，可使用 字母/数字/'.'/'-'
+    (\.[a-zA-Z]{2,4})               # 点 + 后缀，后缀由 2~4 个 字母 构成
+)''', re.VERBOSE)
 
-# TODO: Create email regex.
 # TODO: Find matches in clipboard text.
 # TODO: Copy results to the clipboard.
