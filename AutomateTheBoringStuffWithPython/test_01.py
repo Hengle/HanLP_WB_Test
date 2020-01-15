@@ -790,3 +790,9 @@ print(os.path.sep)
 print('——————————查看文件大小和文件夹内容——————————')
 print(os.path.getsize(os.path.join(download_dir, 'mls-mpm88.zip'))/1)  # 指定文件的大小，字节
 print(os.listdir(download_dir))  # 文件夹中的内容
+print(os.path.getsize(os.path.join(download_dir, 'Word_Password_Recovery_Master'))/1)  # 指定文件的大小，字节
+
+totalSize = 0
+for filename in os.listdir(download_dir):
+    totalSize = totalSize + os.path.getsize(os.path.join(download_dir, filename))
+print(totalSize)
