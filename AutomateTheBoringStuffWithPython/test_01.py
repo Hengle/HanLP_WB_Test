@@ -768,7 +768,7 @@ print(os.path.join(os.getcwd(), file))
 print('——————————绝对路径与相对路径——————————')
 print(os.path.abspath('.'))
 print(os.path.abspath('..'))
-print(os.path.join(os.path.abspath('..\\'), file))  # 工作目录的父目录
+print(os.path.join(os.path.abspath('..'), file))  # 工作目录的父目录
 
 print('——————————当前用户路径——————————')
 download_dir = os.path.join(os.path.expanduser('~'), 'Downloads')  # 获取当前用户路径
