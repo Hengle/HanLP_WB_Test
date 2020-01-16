@@ -808,15 +808,11 @@ open() 的第二个参数可以使用：
 'w'  覆写模式，只能写，不能读，从头开始写，无视之前已经存在的内容
 'a'  添加模式，在已有文件末尾追加内容
 'r+' 读写模式，可读可写
-
 如果文件不存在，以只读方式打开，会报错，以覆写/追加的模式打开，会按此名字创建一个空文件。
-
 需要调用close()方法关闭文件后，才能再次打开该文件。
-
 '''
 file = 'wb.txt'
-# with open(os.path.join(download_dir, file), 'w') as f:
-with open(os.path.join('./data', file), 'w') as f:
+with open(os.path.join('./data', file), 'w') as f:  # 只能写，不能读，'r+' 不能新建文件
     f.write('xX=WB=Xx\n   \n_sss_!')
     print('f = ' + str(f))
     print('type(f) = ' + str(type(f)))

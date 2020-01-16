@@ -28,8 +28,8 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
 for quizNum in range(3):
 
     # 创建考卷文件和答案文件
-    quizFile = open('capitalsquiz%s.txt' % (quizNum + 1), 'w')  # 创建考卷文件
-    answerKeyFile = open('capitalsquiz_answers%s.txt' % (quizNum + 1), 'w')  # 创建答案文件
+    quizFile = open(r'data\capitalsquiz%s.txt' % (quizNum + 1), 'w')  # 创建考卷文件
+    answerKeyFile = open(r'data\capitalsquiz_answers%s.txt' % (quizNum + 1), 'w')  # 创建答案文件
 
     # 创建考卷头的内容
     quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')  # 考卷头：姓名，日期，班级
