@@ -24,7 +24,7 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
             'Virginia': 'Richmond', 'Washington': 'Olympia', 'WestVirginia': 'Charleston',
             'Wisconsin': 'Madison', 'Wyoming': 'Cheyenne'}
 
-# 创建 35 份试卷。
+# 创建 3 份试卷。
 for quizNum in range(3):
 
     # 创建考卷文件和答案文件
