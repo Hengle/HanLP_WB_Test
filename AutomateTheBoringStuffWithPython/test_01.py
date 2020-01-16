@@ -790,18 +790,18 @@ print(testpath.split(os.path.sep))  # 本质上是分解字符串，间隔参数是 os.path.sep
 print(os.path.sep)
 
 print('——————————查看文件大小和文件夹内容——————————')
-print(os.path.getsize(os.path.join(download_dir, 'mls-mpm88.zip'))/1)  # 指定文件的大小，字节
+print(os.path.getsize(os.path.join(download_dir, 'mls-mpm88.zip')) / 1)  # 指定文件的大小，字节
 print(os.listdir(download_dir))  # 文件夹中的内容
-print(os.path.getsize(os.path.join(download_dir, 'test1'))/1)  # 指定文件的大小，字节
+print(os.path.getsize(os.path.join(download_dir, 'test1')) / 1)  # 指定文件的大小，字节
 
 totalSize = 0
 for filename in os.listdir(download_dir):
     totalSize = totalSize + os.path.getsize(os.path.join(download_dir, filename))
-print(str(round(totalSize/1024/1024, 1)) + 'M')  # 只算了文件，没算文件夹
+print(str(round(totalSize / 1024 / 1024, 1)) + 'M')  # 只算了文件，没算文件夹
 
 print('——————————回到最初的工作文件夹——————————')
 os.chdir(code_home)  # 回到初始的工作路径
-print(os.getcwd()+'\n')
+print(os.getcwd() + '\n')
 
 print('——————————检查路径有效性——————————')
 # print(os.path.exists(r'C:\Windows'))
@@ -855,6 +855,7 @@ fileObj.close()
 # pprint.pformat() 产生的文本的格式不仅易于阅读，同时也是语法上正确的 python 代码，可以直接导入使用。
 
 import myCats  # 可以执行通过
+
 print(myCats.cats)
 print(myCats.cats[0])
 print(myCats.cats[0]['name'])
@@ -862,4 +863,3 @@ print(myCats.cats[0]['name'])
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('第九章 组织文件')
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-
