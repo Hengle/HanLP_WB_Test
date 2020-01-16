@@ -757,34 +757,30 @@ print('第八章 读写文件')
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print(os.path.join('usr', 'bin', 'spam'))
 
-file = 'xx.txt'
-
-print(os.path.join(r'C:\Users\bwang\Downloads', file))  # 创建路径
-
-print('——————————切换当前路径——————————')
+print('——————————工作路径——————————')
 code_home = os.getcwd()  # 保存初始工作路径，即代码所在的路径
 print(code_home)
-print(os.path.join(code_home, file))
-os.chdir(r'C:\Users\bwang\Downloads')  # 将工作路径切换到下载文件夹
-print(os.getcwd())  # 查看切换后的工作路径
-print(os.path.join(os.getcwd(), file))
+
+print('——————————切换工作路径——————————')
+download_dir = os.path.join(os.path.expanduser('~'), 'Downloads')  # 获取当前用户路径
+print('切换的目标路径：' + download_dir)  # C:\Users\bwang\Downloads
+os.chdir(download_dir)  # 将工作路径切换到下载文件夹
 
 print('——————————绝对路径与相对路径——————————')
 print(os.path.abspath('.'))
 print(os.path.abspath('..'))
-print(os.path.join(os.path.abspath('..'), file))  # 工作目录的父目录
 print(os.path.relpath(r'C:\Windows', '.'))
 
-print('——————————当前用户路径——————————')
-download_dir = os.path.join(os.path.expanduser('~'), 'Downloads')  # 获取当前用户路径
-print(download_dir)  # C:\Users\bwang\Downloads
+print('——————————切回默认工作路径——————————')
+os.chdir(code_home)  # 切回默认工作路径
+print(os.getcwd() + '\n')  # 确认
 
 print('——————————安全创建文件夹——————————')
 # os.makedirs(os.path.join(download_dir, 'test1'))
-Path(os.path.join(download_dir, 'test1')).mkdir(parents=True, exist_ok=True)  # 安全的创建文件夹
+Path(os.path.join(download_dir, 'test')).mkdir(parents=True, exist_ok=True)  # 安全的创建文件夹
 
 print('——————————分解path——————————')
-testpath = os.path.join(download_dir, 'test1', file)
+testpath = os.path.join(download_dir, 'test.txt')
 print(os.path.basename(testpath))
 print(os.path.dirname(testpath))
 print(os.path.split(testpath))
@@ -794,16 +790,12 @@ print(os.path.sep)
 print('——————————查看文件大小和文件夹内容——————————')
 print(os.path.getsize(os.path.join(download_dir, 'mls-mpm88.zip')) / 1)  # 指定文件的大小，字节
 print(os.listdir(download_dir))  # 文件夹中的内容
-print(os.path.getsize(os.path.join(download_dir, 'test1')) / 1)  # 指定文件的大小，字节
+print(os.path.getsize(os.path.join(download_dir, 'test')) / 1)  # 指定文件的大小，字节
 
 totalSize = 0
 for filename in os.listdir(download_dir):
     totalSize = totalSize + os.path.getsize(os.path.join(download_dir, filename))
 print(str(round(totalSize / 1024 / 1024, 1)) + 'M')  # 只算了文件，没算文件夹
-
-print('——————————回到最初的工作文件夹——————————')
-os.chdir(code_home)  # 回到初始的工作路径
-print(os.getcwd() + '\n')
 
 print('——————————检查路径有效性——————————')
 # print(os.path.exists(r'C:\Windows'))
@@ -822,14 +814,19 @@ open() 的第二个参数可以使用：
 需要调用close()方法关闭文件后，才能再次打开该文件。
 
 '''
-with open(os.path.join(download_dir, file), 'r+') as f:
+file = 'wb.txt'
+# with open(os.path.join(download_dir, file), 'w') as f:
+with open(os.path.join('./data', file), 'w') as f:
     f.write('xX=WB=Xx\n   \n_sss_!')
     print('f = ' + str(f))
     print('type(f) = ' + str(type(f)))
+
+# with open(os.path.join(download_dir, file), 'r+') as f:
+with open(os.path.join('./data', file), 'r+') as f:
     f.seek(0)  # 之前写完后，游标停在文件末尾，需要挪到开头
     print('读取整个文本，作为一个字符串：\n————————————————————————————\n' + f.read())  # 读整篇，返回的是一个字符串
     f.seek(0)  # 读完后，游标又会停在文件末尾，需要挪到开头
-    print('\n读取多行文本，按行存入列表：\n————————————————————————————\n' + str(f.readlines()))  # 读多行，按行存入列表(list)
+    print('\n读取多行文本，按行存入列表：\n————————————————————————————\n' + str(f.readlines()))  # 读多行，按行存入列表
     f.seek(0)  # 将游标重置到文件开头
     print('\n从从游标位置开始，读一行文本，包含换行符。\n————————————————————————————\n'
           'start -=| ' + f.readline(100) + ' |=- end')  # 最多读一行
