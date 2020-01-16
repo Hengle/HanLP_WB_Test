@@ -806,8 +806,13 @@ print('——————————创建文件，写入文本，读取文本——————————')
 open() 的第二个参数可以使用：
 'r'  只读模式，默认值
 'w'  覆写模式，只能写，不能读，从头开始写，无视之前已经存在的内容
-'a'  添加模式，在已有文件末尾追加
+'a'  添加模式，在已有文件末尾追加内容
 'r+' 读写模式，可读可写
+
+如果文件不存在，以只读方式打开，会报错，以覆写/追加的模式打开，会按此名字创建一个空文件。
+
+需要调用close()方法关闭文件后，才能再次打开该文件。
+
 '''
 with open(os.path.join(download_dir, file), 'r+') as f:
     f.write('xX=WB=Xx\n   \n_sss_!')
@@ -818,4 +823,10 @@ with open(os.path.join(download_dir, file), 'r+') as f:
     f.seek(0)  # 读完后，游标又会停在文件末尾，需要挪到开头
     print('\n读取多行文本，按行存入列表：\n————————————————————————————\n' + str(f.readlines()))  # 读多行，按行存入列表(list)
     f.seek(0)  # 将游标重置到文件开头
-    print('\n从从游标位置开始，读一行文本，包含换行符。\n————————————————————————————\nstart -=| ' + f.readline(100) + ' |=- end')  # 最多读一行
+    print('\n从从游标位置开始，读一行文本，包含换行符。\n————————————————————————————\n'
+          'start -=| ' + f.readline(100) + ' |=- end')  # 最多读一行
+
+# open(os.path.join(download_dir, 'xxx'), 'r')
+# FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\bwang\\Downloads\\xxx'
+
+print('——————————用 shelve 模块保存变量——————————')
