@@ -836,5 +836,7 @@ shelfFile['cats'] = ['Z', 'P', 'S']
 shelfFile.close()
 
 sf = shelve.open('wb_data')  # 重新打开文件
+print(list(sf.keys()))
+print(list(sf.values()))
 print(sf['cats'])  # 验证数据是否正确保存
 shelfFile.close()  # 关闭文件
