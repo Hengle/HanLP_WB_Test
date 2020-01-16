@@ -6,6 +6,7 @@ import copy
 import re
 import os
 from pathlib import Path
+import shelve
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('控制流')
@@ -830,3 +831,10 @@ with open(os.path.join(download_dir, file), 'r+') as f:
 # FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\bwang\\Downloads\\xxx'
 
 print('——————————用 shelve 模块保存变量——————————')
+shelfFile = shelve.open('wb_data')  # 传入文件名，返回的是一个 shelfFile 它类似一个字典，可以在其中保存键值对
+shelfFile['cats'] = ['Z', 'P', 'S']
+shelfFile.close()
+
+sf = shelve.open('wb_data')  # 重新打开文件
+print(sf['cats'])  # 验证数据是否正确保存
+shelfFile.close()  # 关闭文件
