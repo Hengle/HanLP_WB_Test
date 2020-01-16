@@ -41,3 +41,24 @@ for quizNum in range(3):
     random.shuffle(states)  # 随机打乱周列表
 
     # 根据打乱顺序后的题目，创建答案选项
+    for questionNum in range(50):
+        correctAnswer = capitals[states[questionNum]]  # 正确的答案
+        wrongAnswers = list(capitals.values())  # 50 个原始顺序的值构成的列表
+        del wrongAnswers[wrongAnswers.index(correctAnswer)]  # 根据正确的答案，他是值，找到其索引，根据索引删除这个答案
+        wrongAnswers = random.sample(wrongAnswers, 3)  # 在剩下的错误答案中，随机选 3 个
+        answerOptions = wrongAnswers + [correctAnswer]  # 合并错误的答案和错误的答案，注意，正确答案 从 字符串 转为 列表
+        random.shuffle(answerOptions)  # 打乱合并后的答案
+
+        # 将题目写入试卷文件
+        quizFile.write('%s. What is the capital of %s?\n' % (questionNum + 1, states[questionNum]))
+
+        # 将答题选项写入试卷文件
+        for i in range(4):
+            quizFile.write(' %s. %s\n' % ('ABCD'[i], answerOptions[i]))
+        quizFile.write('\n')
+
+        # 将正确答案写入答案文件
+        answerKeyFile.write('%s. %s\n' % (questionNum + 1, 'ABCD'[answerOptions.index(correctAnswer)]))
+
+    quizFile.close()  # 关闭试卷文件
+    answerKeyFile.close()  # 关闭答案文件
