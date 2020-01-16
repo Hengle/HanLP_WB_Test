@@ -37,7 +37,7 @@ for groups in phoneRegex.findall(text):
     else:
         area_code = groups[1]
 
-#    phoneNum = '-'.join([groups[1], groups[3], groups[5]])
+    #    phoneNum = '-'.join([groups[1], groups[3], groups[5]])
     phoneNum = '-'.join([area_code, groups[3], groups[5]])
 
     if groups[8] != '':  # 如果由分机号
