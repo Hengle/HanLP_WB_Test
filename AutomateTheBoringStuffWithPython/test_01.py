@@ -843,7 +843,7 @@ shelfFile.close()  # 关闭文件
 
 # 已有数据
 cats = [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
-fileObj = open('data/myCats.py', 'w')  # 创建一个文件
+fileObj = open('myCats.py', 'w')  # 创建一个文件
 fileObj.write('cats = ' + pprint.pformat(cats) + '\n')
 fileObj.close()
 # 此时，文本中的内容是："cats = [{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]"
