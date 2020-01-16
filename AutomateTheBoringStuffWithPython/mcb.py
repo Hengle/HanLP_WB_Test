@@ -11,7 +11,7 @@ import shelve
 import pyperclip
 import sys
 
-mcbShelf = shelve.open('mcb')
+mcbShelf = shelve.open('data/mcb')
 
 if len(sys.argv) == 3 and sys.argv[1].lower() == 'save':  # 保存到剪贴板
     mcbShelf[sys.argv[2]] = pyperclip.paste()  # 将剪贴板中的内容保存到 shelve，关键字由第二个参数传递进来

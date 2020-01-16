@@ -831,11 +831,11 @@ with open(os.path.join('./data', file), 'r+') as f:
 # FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\bwang\\Downloads\\xxx'
 
 print('——————————用 shelve 模块保存变量——————————')
-shelfFile = shelve.open('wb_data')  # 传入文件名，返回的是一个 shelfFile 它类似一个字典，可以在其中保存键值对
+shelfFile = shelve.open('data/wb_data')  # 传入文件名，返回的是一个 shelfFile 它类似一个字典，可以在其中保存键值对
 shelfFile['cats'] = ['Z', 'P', 'S']
 shelfFile.close()
 
-sf = shelve.open('wb_data')  # 重新打开文件
+sf = shelve.open('data/wb_data')  # 重新打开文件
 print(list(sf.keys()))
 print(list(sf.values()))
 print(sf['cats'])  # 验证数据是否正确保存
@@ -843,7 +843,7 @@ shelfFile.close()  # 关闭文件
 
 # 已有数据
 cats = [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
-fileObj = open('myCats.py', 'w')  # 创建一个文件
+fileObj = open('data/myCats.py', 'w')  # 创建一个文件
 fileObj.write('cats = ' + pprint.pformat(cats) + '\n')
 fileObj.close()
 # 此时，文本中的内容是："cats = [{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]"
