@@ -760,10 +760,11 @@ file = 'xx.txt'
 print(os.path.join(r'C:\Users\bwang\Downloads', file))  # 创建路径
 
 print('——————————切换当前路径——————————')
-print(os.getcwd())  # 当前路径，本代码所在路径
-print(os.path.join(os.getcwd(), file))
-os.chdir(r'C:\Users\bwang\Downloads')  # 切换当前路径到指定路径
-print(os.getcwd())  # 查看切换后的当前路径
+code_home = os.getcwd()  # 保存初始工作路径，即代码所在的路径
+print(code_home)
+print(os.path.join(code_home, file))
+os.chdir(r'C:\Users\bwang\Downloads')  # 将工作路径切换到下载文件夹
+print(os.getcwd())  # 查看切换后的工作路径
 print(os.path.join(os.getcwd(), file))
 
 print('——————————绝对路径与相对路径——————————')
@@ -797,6 +798,10 @@ totalSize = 0
 for filename in os.listdir(download_dir):
     totalSize = totalSize + os.path.getsize(os.path.join(download_dir, filename))
 print(str(round(totalSize/1024/1024, 1)) + 'M')  # 只算了文件，没算文件夹
+
+print('——————————回到最初的工作文件夹——————————')
+os.chdir(code_home)  # 回到初始的工作路径
+print(os.getcwd()+'\n')
 
 print('——————————检查路径有效性——————————')
 # print(os.path.exists(r'C:\Windows'))
@@ -840,3 +845,17 @@ print(list(sf.keys()))
 print(list(sf.values()))
 print(sf['cats'])  # 验证数据是否正确保存
 shelfFile.close()  # 关闭文件
+
+# 已有数据
+cats = [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
+fileObj = open('myCats.py', 'w')  # 创建一个文件
+fileObj.write('cats = ' + pprint.pformat(cats) + '\n')
+fileObj.close()
+# 此时，文本中的内容是："cats = [{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]"
+# pprint.pformat() 产生的文本的格式不仅易于阅读，同时也是语法上正确的 python 代码，可以直接导入使用。
+
+import myCats  # 可以执行通过
+print(myCats.cats)
+print(myCats.cats[0])
+print(myCats.cats[0]['name'])
+
