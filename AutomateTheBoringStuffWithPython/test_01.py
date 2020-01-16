@@ -790,7 +790,7 @@ print(os.path.sep)
 print('——————————查看文件大小和文件夹内容——————————')
 print(os.path.getsize(os.path.join(download_dir, 'mls-mpm88.zip'))/1)  # 指定文件的大小，字节
 print(os.listdir(download_dir))  # 文件夹中的内容
-print(os.path.getsize(os.path.join(download_dir, 'Word_Password_Recovery_Master'))/1)  # 指定文件的大小，字节
+print(os.path.getsize(os.path.join(download_dir, 'test1'))/1)  # 指定文件的大小，字节
 
 totalSize = 0
 for filename in os.listdir(download_dir):
@@ -798,3 +798,24 @@ for filename in os.listdir(download_dir):
 print(str(round(totalSize/1024/1024, 1)) + 'M')  # 只算了文件，没算文件夹
 
 print('——————————检查路径有效性——————————')
+# print(os.path.exists(r'C:\Windows'))
+# print(os.path.exists(r'C:\sometest'))
+
+print('——————————创建文件，写入文本，读取文本——————————')
+'''
+open() 的第二个参数可以使用：
+'r'  只读模式，默认值
+'w'  覆写模式，只能写，不能读，从头开始写，无视之前已经存在的内容
+'a'  添加模式，在已有文件末尾追加
+'r+' 读写模式，可读可写
+'''
+with open(os.path.join(download_dir, file), 'r+') as f:
+    f.write('xX=WB=Xx\n   \n_sss_!')
+    print('f = ' + str(f))
+    print('type(f) = ' + str(type(f)))
+    f.seek(0)  # 之前写完后，游标停在文件末尾，需要挪到开头
+    print('读取整个文本，作为一个字符串：\n————————————————————————————\n' + f.read())  # 读整篇，返回的是一个字符串
+    f.seek(0)  # 读完后，游标又会停在文件末尾，需要挪到开头
+    print('\n读取多行文本，按行存入列表：\n————————————————————————————\n' + str(f.readlines()))  # 读多行，按行存入列表(list)
+    f.seek(0)  # 将游标重置到文件开头
+    print('\n从从游标位置开始，读一行文本，包含换行符。\n————————————————————————————\nstart -=| ' + f.readline(100) + ' |=- end')  # 最多读一行
