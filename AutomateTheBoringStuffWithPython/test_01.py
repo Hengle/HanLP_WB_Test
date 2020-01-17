@@ -863,5 +863,3 @@ print('µÚÊ®ËÄÕÂ JSON')
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 stringOfJsonData = '{"name": "Zophie", "isCat": true, "miceCaught": 0, "felineIQ": null}'
 print(json.loads(stringOfJsonData))
-
-# ccc
