@@ -1,9 +1,0 @@
-DEBUG:root:This message should go to the log file
-INFO:root:foo is running
-INFO:root:So should this
-WARNING:root:And this, too
-DEBUG:root:This message should go to the log file
-INFO:root:foo is running, So should this
-WARNING:root:And this, too
-ERROR:root:由于严重的问题，程序的某些功能已经不能正常执行
-CRITICAL:root:严重的错误，表明程序已不能继续执行
