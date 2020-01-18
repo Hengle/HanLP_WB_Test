@@ -9,8 +9,6 @@ def foo():
     logging.debug('This message should go to the log file')
     logging.info('foo is running, So should this')
     logging.warning('And this, too')
-    logging.error('error')
-    logging.critical('critical')
 
 
 foo()
