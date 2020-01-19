@@ -16,6 +16,12 @@ def test_01():
 
 
 # test_01()
+"""
+* 和 **
+    实际上，真正的 Python 参数传递语法是 * 和 **。*args 和 **kwargs 只是一种约定俗成的编程实践。我们也可以写成 *vars 和 **kvars。
+    这两个是 python 中的可变参数。*args 表示任何多个无名参数，它是一个 tuple，**kwargs 表示关键字参数，它是一个 dict。
+    并且同时使用 *args 和 **kwargs 时，必须将 *args 放在 **kwargs 之前。
+"""
 
 
 # 简单装饰器
@@ -69,8 +75,17 @@ class Foo(object):  # 定义类装饰器
 
 
 @Foo
-def d(myinput):
-    print('-= %s =-' % myinput)
+def d(*args, **kwargs):
+    for arg in args:
+        print('-= %s =-' % arg)
+    if kwargs is not None:
+        for key, value in kwargs.items():
+            print('{} = {}'.format(key, value))
 
 
-d('XXX')
+d('a', 'b', 'c', '1', '2', '3', n1='python', n2='C++', n3='125', n4=125)
+d()
+
+s = map(lambda x: 2 * x + 1, range(6))
+for i in s:
+    print(i)
