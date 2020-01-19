@@ -33,6 +33,7 @@ def test_02():
     """
     这一句代码中，将 bar 函数作为变量传入 decorator 装饰器中，然后 bar 方法在 decorator 中的函数 wrapper 函数实现，
     同时包装新的功能，将新的函数 wrapper 作为变量返回 ，所以 bar 的新值是 经过 decorator 装饰的 wrapper 新方法。
+    所以，装饰器装饰函数的时候，是将函数作为变量传入装饰器内部，实际调用的是装饰器内部的函数（添加新功能之后的函数）
     """
     bar = decorator(bar)  # 神奇，函数可以被作为参数传递，也可以接受另外一个函数的返回
     bar()
@@ -49,7 +50,7 @@ def modify(func):  # 定义函数装饰器 传入 原本需要执行的函数
     return w  # 把 包裹函数 扔回去
 
 
-@modify  # 代替 b = modify(b)
+@modify  # 代替 b = modify(b)，Python 中，在函数定义的时候就加上 @+装饰器名字 可以代替赋值语句。
 def b(myinput):  # 原版需要执行的函数
     print('-= %s =-' % myinput)
 
