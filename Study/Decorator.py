@@ -46,10 +46,9 @@ def modify(func):  # 传入 原本需要执行的函数
     return w  # 把打包好的 函数 2 扔回去
 
 
-@modify
+@modify  # 代替 b = modify(b)
 def b():
     print('-= x =-')  # 原本需要执行的代码
 
 
-# x = modify(b)  # 返回的是 修饰器的代码 合并 原本需要执行的代码
 b()
