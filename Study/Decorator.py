@@ -39,25 +39,19 @@ def test_02():
 
 
 def modify(func):  # 定义函数装饰器 传入 原本需要执行的函数
-    def w():  # 定义 函数 2，函数 2 只是把 修饰器添加的代码 和 原本要执行的函数的代码 打包到一起
-        logging.warning('%s is running' % func.__name__)
-        return func()
+    def w(*args):  # 定义 包裹函数 传入 参数，在此函数中，将 装饰器代码 和 原本需要执行的代码 包裹在一起
+        logging.warning('%s is running' % func.__name__)  # 装饰器代码
+        return func(*args)  # 原版需要执行的代码
 
-    return w  # 把打包好的 函数 2 扔回去
+    return w  # 把 包裹函数 扔回去
 
 
 @modify  # 代替 b = modify(b)
-def b():
-    print('-= i am b =-')
+def b(myinput):  # 原版需要执行的函数
+    print('-= %s =-' % myinput)
 
 
-@modify
-def c():
-    print('-= i am c =-')
-
-
-# b()
-# c()
+b('WB')
 
 
 class Foo(object):  # 定义类装饰器
