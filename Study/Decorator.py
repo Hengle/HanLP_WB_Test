@@ -63,7 +63,7 @@ class Foo(object):  # 定义类装饰器
 
     def __call__(self, *args, **kwargs):
         print('\n~~~ -= class decorator runing =- ~~~')
-        self._func(*args)
+        self._func(*args, **kwargs)
         print('~~~ -= class decorator ending =- ~~~')
 
 
