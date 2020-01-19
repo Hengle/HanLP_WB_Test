@@ -48,7 +48,13 @@ def modify(func):  # 传入 原本需要执行的函数
 
 @modify  # 代替 b = modify(b)
 def b():
-    print('-= x =-')  # 原本需要执行的代码
+    print('-= i am b =-')
+
+
+@modify
+def c():
+    print('-= i am c =-')
 
 
 b()
+c()
