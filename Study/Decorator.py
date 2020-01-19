@@ -20,18 +20,21 @@ def test_01():
 
 # 简单装饰器
 def test_02():
-    def use_logging(func):
-        def xxxwrapper(*args, **kwargs):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
             logging.warning('%s is running' % func.__name__)
-            # func()
             return func(*args, **kwargs)
 
-        return xxxwrapper
+        return wrapper
 
     def bar():
         print('i am bar')
 
-    bar = use_logging(bar)  # 神奇，函数可以被作为参数传递，也可以接受另外一个函数的返回
+    """
+    这一句代码中，将 bar 函数作为变量传入 decorator 装饰器中，然后 bar 方法在 decorator 中的函数 wrapper 函数实现，
+    同时包装新的功能，将新的函数 wrapper 作为变量返回 ，所以 bar 的新值是 经过 decorator 装饰的 wrapper 新方法。
+    """
+    bar = decorator(bar)  # 神奇，函数可以被作为参数传递，也可以接受另外一个函数的返回
     bar()
 
 
