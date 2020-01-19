@@ -40,7 +40,7 @@ def test_02():
 
 def modify(func):           # 传入 原本需要执行的函数
     def w():                # 定义 函数 2，函数 2 只是把 修饰器添加的代码 和 原本要执行的函数的代码 打包到一起
-        print('-= y =-')
+        logging.warning('%s is running' % func.__name__)
         return func()
     return w                # 把打包好的 函数 2 扔回去
 
