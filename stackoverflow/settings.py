@@ -56,6 +56,8 @@ DOWNLOAD_DELAY = 1
 DOWNLOADER_MIDDLEWARES = {
     'stackoverflow.middlewares.StackoverflowDownloaderMiddleware': 543,
 }
+#    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
+#    'mimvp_proxy_python_scrapy.middlewares.ProxyMiddleware': 100,
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
