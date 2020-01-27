@@ -97,5 +97,6 @@ SCHEDULER = 'scrapy_redis.scheduler.Scheduler'
 # redis 去重
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 # redis服务器地址
-REDIS_HOST = '151.101.193.69'
+# REDIS_HOST = '151.101.193.69'
+REDIS_HOST = '127.0.0.1'
 REDIS_PORT = 6379
