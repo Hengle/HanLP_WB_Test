@@ -1,9 +1,8 @@
-# from abc import ABC
 from stackoverflow.items import StackoverflowPythonItem
 import scrapy
 
 
-class StackoverflowPythonSpider(scrapy.Spider, ABC):
+class StackoverflowPythonSpider(scrapy.Spider):
     name = "stackoverflow-python"
 
     def start_requests(self):
