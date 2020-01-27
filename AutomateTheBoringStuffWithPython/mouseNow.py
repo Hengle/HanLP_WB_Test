@@ -6,7 +6,7 @@ import time
 print('Press Ctrl-C to quit.')
 
 
-def doit():
+def show_mouse_position():
     x, y = pyautogui.position()
     position_str = 'X=' + str(x).rjust(4) + '; Y=' + str(y).rjust(4)
     print(position_str, end='')
@@ -16,11 +16,10 @@ def doit():
 
 while True:
     pyautogui.click(1000, 200)
-    doit()
-    time.sleep(0.25)
+    show_mouse_position()
+
     pyautogui.click(1000, 500)
-    doit()
-    time.sleep(0.25)
+    show_mouse_position()
 
 """
 try:
