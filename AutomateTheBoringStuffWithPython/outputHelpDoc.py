@@ -13,4 +13,5 @@ def output_help_to_file(filepath, request):
     return
 
 
-output_help_to_file(r'pyautogui.dragRel.txt', 'pyautogui.dragRel')
+# output_help_to_file(r'help_doc/pyautogui.dragRel.txt', 'pyautogui.dragRel')
+output_help_to_file(r'help_doc/pyautogui.txt', 'pyautogui')

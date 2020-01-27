@@ -1,0 +1,29 @@
+Help on function dragRel in pyautogui:
+
+pyautogui.dragRel = dragRel(xOffset=0, yOffset=0, duration=0.0, tween=<function linear at 0x000001F17EDA6048>, button='primary', pause=None, logScreenshot=None, _pause=True, mouseDownUp=True)
+    Performs a mouse drag (mouse movement while a button is held down) to a
+    point on the screen, relative to its current position.
+    
+    The x and y parameters detail where the mouse event happens. If None, the
+    current mouse position is used. If a float value, it is rounded down. If
+    outside the boundaries of the screen, the event happens at edge of the
+    screen.
+    
+    Args:
+      x (int, float, None, tuple, optional): How far left (for negative values) or
+        right (for positive values) to move the cursor. 0 by default. If tuple, this is used for xOffset and yOffset.
+      y (int, float, None, optional): How far up (for negative values) or
+        down (for positive values) to move the cursor. 0 by default.
+      duration (float, optional): The amount of time it takes to move the mouse
+        cursor to the new xy coordinates. If 0, then the mouse cursor is moved
+        instantaneously. 0.0 by default.
+      tween (func, optional): The tweening function used if the duration is not
+        0. A linear tween is used by default. See the tweens.py file for
+        details.
+      button (str, int, optional): The mouse button released. TODO
+      mouseDownUp (True, False): When true, the mouseUp/Down actions are not perfomed.
+        Which allows dragging over multiple (small) actions. 'True' by default.
+    
+    Returns:
+      None
+
