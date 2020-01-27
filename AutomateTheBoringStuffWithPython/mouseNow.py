@@ -14,22 +14,13 @@ def show_mouse_position():
     print('\b' * len(position_str), end='', flush=True)
 
 
-while True:
-    pyautogui.click(1000, 200)
-    show_mouse_position()
-
-    pyautogui.click(1000, 500)
-    show_mouse_position()
-
-"""
 try:
     while True:
-        x, y = pyautogui.position()
-        positionStr = 'X = ' + str(x).rjust(4) + 'Y = ' + str(y).rjust(4)
-        print(positionStr, end='')
-        print('\b' * len(positionStr), end='', flush=True)
+        pyautogui.click(1000, 200)
+        show_mouse_position()
+
+        pyautogui.click(1000, 500)
+        show_mouse_position()
 
 except KeyboardInterrupt:
     print('\nDone.')  # °´ÏÂ Ctrl + C ¼´´òÓ¡ 'Done.'
-
-"""
