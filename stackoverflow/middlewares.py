@@ -103,6 +103,7 @@ class StackoverflowDownloaderMiddleware(object):
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
+"""
 # mimvp custom by yourself
 class ProxyMiddleware(object):
     def process_request(self, request, spider):
@@ -116,3 +117,4 @@ class ProxyMiddleware(object):
 #         proxy_user_pass = "USERNAME:PASSWORD"
 #         encoded_user_pass = base64.encodestring(proxy_user_pass)
 #         request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass
+"""
