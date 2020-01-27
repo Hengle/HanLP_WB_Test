@@ -1,4 +1,4 @@
-from stackoverflow.stackoverflow.items import StackoverflowItem
+from stackoverflow import StackoverflowItem
 import scrapy
 
 
