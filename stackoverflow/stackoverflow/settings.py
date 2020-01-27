@@ -16,7 +16,8 @@ NEWSPIDER_MODULE = 'stackoverflow.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'stackoverflow (+http://www.yourdomain.com)'
-USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/73.0.3683.86 Chrome/73.0.3683.86 Safari/537.36'
+USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/' \
+             '73.0.3683.86 Chrome/73.0.3683.86 Safari/537.36'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
