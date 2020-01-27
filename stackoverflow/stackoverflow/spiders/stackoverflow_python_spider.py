@@ -20,7 +20,7 @@ class StackoverflowPythonSpider(scrapy.Spider):
         question_list = response.xpath('//*[@id="questions"]')
 
         for question in question_list.xpath('./div'):
-            item = StackoverflowPythonItem()
+            item = StackoverflowItem()
             item['_id'] = question.attrib['id']
             item['questions'] = question.xpath('div[2]/h3/a/text()').extract()
             item['votes'] = question.xpath(
