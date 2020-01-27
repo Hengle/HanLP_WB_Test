@@ -7,8 +7,8 @@ class StackoverflowPythonSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = []
-        # _url = 'https://stackoverflow.com/questions/tagged/python?tab=votes&page={}&pagesize=15'
-        _url = 'https://stackoverflow.com/questions/tagged/python?tab=Votes'
+        _url = 'https://stackoverflow.com/questions/tagged/python?tab=votes&page={}&pagesize=15'
+        # _url = 'https://stackoverflow.com/questions/tagged/python?tab=Votes'
 
         for page in range(1, 11):
             urls.append(_url.format(page))
