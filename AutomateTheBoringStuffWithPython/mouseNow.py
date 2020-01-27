@@ -14,7 +14,7 @@ def show_mouse_position():
     print('\b' * len(position_str), end='', flush=True)
 
 
-try:
+def test_01():
     while True:
         pyautogui.click(1000, 200)
         show_mouse_position()
@@ -22,5 +22,19 @@ try:
         pyautogui.click(1000, 500)
         show_mouse_position()
 
-except KeyboardInterrupt:
-    print('\nDone.')  # °´ÏÂ Ctrl + C ¼´´òÓ¡ 'Done.'
+
+def test_02():
+    time.sleep(5)
+    pyautogui.click()  # click to put drawing program in focus
+    distance = 200
+    du = 0.002
+    while distance > 0:
+        pyautogui.dragRel(distance, 0, duration=du)  # move right
+        distance = distance - 5
+        pyautogui.dragRel(0, distance, duration=du)  # move down
+        pyautogui.dragRel(-distance, 0, duration=du)  # move left
+        distance = distance - 5
+        pyautogui.dragRel(0, -distance, duration=du)  # move up
+
+
+test_02()
