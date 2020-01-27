@@ -5,15 +5,22 @@ import time
 
 print('Press Ctrl-C to quit.')
 
-while True:
+
+def doit():
     x, y = pyautogui.position()
-    positionStr = 'X=' + str(x).rjust(4) + '; Y=' + str(y).rjust(4)
-    print(positionStr, end='')
-    time.sleep(0.5)
-    print('\b' * len(positionStr), end='', flush=True)
+    position_str = 'X=' + str(x).rjust(4) + '; Y=' + str(y).rjust(4)
+    print(position_str, end='')
+    time.sleep(0.25)
+    print('\b' * len(position_str), end='', flush=True)
+
+
+while True:
     pyautogui.click(1000, 200)
-    time.sleep(0.5)
+    doit()
+    time.sleep(0.25)
     pyautogui.click(1000, 500)
+    doit()
+    time.sleep(0.25)
 
 """
 try:
