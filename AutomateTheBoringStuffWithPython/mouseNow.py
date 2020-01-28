@@ -27,7 +27,7 @@ def test_02():
     time.sleep(5)
     pyautogui.click()  # click to put drawing program in focus
     distance = 200
-    du = 0.15
+    du = 0.5
     alpha = 2
     while distance > 0:
         pyautogui.dragRel(distance, 0, duration=du, _pause=True)  # move right
