@@ -16,7 +16,8 @@ NEWSPIDER_MODULE = 'stackoverflow.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'stackoverflow (+http://www.yourdomain.com)'
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ' \
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' \
+             'AppleWebKit/537.36 (KHTML, like Gecko) ' \
              'Chrome/79.0.3945.130 Safari/537.36'
 
 # Obey robots.txt rules
@@ -56,8 +57,6 @@ DOWNLOAD_DELAY = 1
 DOWNLOADER_MIDDLEWARES = {
     'stackoverflow.middlewares.StackoverflowDownloaderMiddleware': 543,
 }
-#    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
-#    'mimvp_proxy_python_scrapy.middlewares.ProxyMiddleware': 100,
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -97,6 +96,5 @@ SCHEDULER = 'scrapy_redis.scheduler.Scheduler'
 # redis 去重
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 # redis服务器地址
-# REDIS_HOST = '151.101.193.69'
 REDIS_HOST = '127.0.0.1'
 REDIS_PORT = 6379

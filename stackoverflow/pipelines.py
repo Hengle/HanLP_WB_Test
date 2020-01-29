@@ -7,11 +7,21 @@
 
 import pymongo
 
-
 # class StackoverflowPipeline(object):
 #     def process_item(self, item, spider):
 #         return item
 
+"""
+以下内容来自 settings.py
+# Configure item pipelines
+# See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+ITEM_PIPELINES = {
+    'stackoverflow.pipelines.StackoverflowPipeline': 300,
+}
+"""
+
+
+#     StackoverflowPipeline
 class StackoverflowPipeline(object):
     def __init__(self):
         # self.connection = pymongo.MongoClient('68.183.180.71', 27017)
