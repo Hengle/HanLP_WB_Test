@@ -1,3 +1,6 @@
+#! python3
+# coding=gbk
+
 from stackoverflow.items import StackoverflowItem
 import scrapy
 
