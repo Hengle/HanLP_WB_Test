@@ -9,7 +9,8 @@ class QuotesSpider(scrapy.Spider):
 
     # 生成网页链接：可以返回链接的列表，或者写一个链接生成器。
     def start_requests(self):
-        urls = [
+        # urls = [
+        start_urls = [
             'http://quotes.toscrape.com/page/1/',
             'http://quotes.toscrape.com/page/2/',
         ]
