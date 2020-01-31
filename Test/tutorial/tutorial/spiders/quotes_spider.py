@@ -24,6 +24,7 @@ class QuotesSpider(scrapy.Spider):
     # 还查找要遵循的新 URL 并从中创建新请求（Request）。
     # response 参数是 TextResponse 的一个实例，它保存着页面内容。
     def parse(self, response):
+        """
         page = response.url.split("/")[-2]
         logging.warning('response.url.split("/") = %s' % response.url.split("/"))
         # [root] WARNING: response.url.split("/") = ['http:', '', 'quotes.toscrape.com', 'page', '1', '']
@@ -31,3 +32,10 @@ class QuotesSpider(scrapy.Spider):
         with open(filename, 'wb') as f:
             f.write(response.body)
         self.log('Saved file %s' % filename)
+        """
+        for quote in response.css('div.quote'):
+            yield {
+                'text': quote.css('span.text::text').get(),
+                'author': quote.css('small.author::text').get(),
+                'tags': quote.css('div.tags a.tag::text').getall(),
+            }
