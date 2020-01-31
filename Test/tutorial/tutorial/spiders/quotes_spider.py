@@ -13,8 +13,8 @@ class QuotesSpider(scrapy.Spider):
             'http://quotes.toscrape.com/page/1/',
             'http://quotes.toscrape.com/page/2/',
         ]
-        for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse)
+        # for url in urls:
+        #     yield scrapy.Request(url=url, callback=self.parse)
 
     # parse()方法用来解析相应，它处理为每个请求下载的响应。它提取爬取的数据作为字典，
     # 还查找要遵循的新 URL 并从中创建新请求（Request）。
