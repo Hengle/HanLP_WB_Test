@@ -22,7 +22,7 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
         page = response.url.split("/")[-2]
         logging.warning('response.url.split("/") = %s' % response.url.split("/"))
-        logging.warning(page)
+        # [root] WARNING: response.url.split("/") = ['http:', '', 'quotes.toscrape.com', 'page', '1', '']
         filename = 'quotes-%s.html' % page
         with open(filename, 'wb') as f:
             f.write(response.body)
