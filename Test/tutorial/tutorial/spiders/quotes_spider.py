@@ -1,6 +1,6 @@
 #! python3
 # coding=gbk
-
+import logging
 import scrapy
 
 
@@ -21,6 +21,8 @@ class QuotesSpider(scrapy.Spider):
     # response 参数是 TextResponse 的一个实例，它保存着页面内容。
     def parse(self, response):
         page = response.url.split("/")[-2]
+        logging.warning('response.url.split("/") = %s' % response.url.split("/"))
+        logging.warning(page)
         filename = 'quotes-%s.html' % page
         with open(filename, 'wb') as f:
             f.write(response.body)
