@@ -26,10 +26,8 @@ class StackoverflowPythonSpider(scrapy.Spider):
             item = StackoverflowItem()
             item['_id'] = question.attrib['id']
             item['questions'] = question.xpath('div[2]/h3/a/text()').extract()
-            item['votes'] = question.xpath(
-                'div[1]/div[1]/div[1]/div[1]/span/strong/text()').extract()
-            item['answers'] = question.xpath(
-                'div[1]/div[1]/div[2]/strong/text()').extract()
+            item['votes'] = question.xpath('div[1]/div[1]/div[1]/div[1]/span/strong/text()').extract()
+            item['answers'] = question.xpath('div[1]/div[1]/div[2]/strong/text()').extract()
             item['views'] = question.xpath('div[1]/div[2]/@title').extract()
             item['links'] = question.xpath('div[2]/h3/a/@href').extract()
             yield item
