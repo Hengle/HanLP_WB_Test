@@ -49,3 +49,48 @@ class QuotesSpider(scrapy.Spider):
                 'author': quote.css('small.author::text').get(),
                 'tags': quote.css('div.tags a.tag::text').getall(),
             }
+
+
+class DoubanSpider(scrapy.Spider):
+    name = "douban"
+
+    def start_requests(self):
+        url = "https://movie.douban.com/chart"
+        yield scrapy.Request(url, callback=self.parse_rank)
+
+    def parse_rank(self, response):
+        for item in response.css('tr.item'):
+            detail_url = item.css('a.nbg::attr(href)').extract_first()  # 电影的详情链接
+            img_url = item.css('a.nbg > img::attr(src)').extract_first()  # 电影的图片链接
+            main_name = item.css('div.pl2 > a::text').extract_first()  # 电影的第一个名字
+            other_name = item.css('div.pl2 > a > span::text').extract_first()  # 电影的其它名字
+            brief = item.css('p.pl::text').extract_first()  # 电影简介
+            main_name = main_name.replace('\n', '').replace(' ', '')  # 去掉电影名字中的换行符和空格
+
+            yield {
+                'detail_url': detail_url,
+                'img_url': img_url,
+                'name': main_name + other_name,
+                'brief': brief
+            }
+
+            yield scrapy.Request(url=detail_url + 'comments?status=P',  # 获取短评论页面链接
+                                 callback=self.parse_comments,  # 指定解析函数
+                                 meta={'movie': main_name})  # 传递电影名字
+
+    def parse_comments(self, response):
+        for comments in response.css('.comment-item'):
+            username = comments.css('span.comment-info > a::text').extract_first()
+            comment = comments.css('span.short::text').extract_first()
+
+            yield {
+                'movie': response.meta['movie'],
+                'username': username,
+                'comment': comment
+            }
+
+        nexturl = response.css('a.next::attr(href)').extract_first()  # 下一页段评论
+        if nexturl:
+            yield scrapy.Request(url=response.url[:response.url.find('?')] + nexturl,
+                                 callback=self.parse_comments,
+                                 meta=response.meta)
