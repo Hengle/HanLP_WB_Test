@@ -10,6 +10,10 @@ import scrapy
     scrapy shell -s USER_AGENT='Mozilla/5.0'
     fetch('https://movie.douban.com/chart')
 
+>>> fetch('https://movie.douban.com/chart')
+2020-02-01 20:42:22 [scrapy.core.engine] INFO: Spider opened
+2020-02-01 20:42:29 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://movie.douban.com/robots.txt> (referer: None)
+2020-02-01 20:42:35 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://movie.douban.com/chart> (referer: None)
 """
 
 
