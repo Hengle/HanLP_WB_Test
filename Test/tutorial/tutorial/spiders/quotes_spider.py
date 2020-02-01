@@ -74,13 +74,14 @@ class DoubanSpider(scrapy.Spider):
             yield {
                 'detail_url': detail_url,
                 'img_url': img_url,
-                'name': main_name + other_name,
+                # 'name': main_name + other_name,
+                'name': main_name,
                 'brief': brief
             }
 
-            yield scrapy.Request(url=detail_url + 'comments?status=P',  # 获取短评论页面链接
-                                 callback=self.parse_comments,  # 指定解析函数
-                                 meta={'movie': main_name})  # 传递电影名字
+            # yield scrapy.Request(url=detail_url + 'comments?status=P',  # 获取短评论页面链接
+            #                     callback=self.parse_comments,  # 指定解析函数
+            #                     meta={'movie': main_name})  # 传递电影名字
 
     def parse_comments(self, response):
         for comments in response.css('.comment-item'):
