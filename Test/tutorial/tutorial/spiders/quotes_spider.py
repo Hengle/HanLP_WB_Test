@@ -3,6 +3,15 @@
 import logging
 import scrapy
 
+"""
+使用 scrapy shell 手动测试网页的响应：
+    scrapy shell -s USER_AGENT='Mozilla/5.0' https://movie.douban.com/chart
+或者：
+    scrapy shell -s USER_AGENT='Mozilla/5.0'
+    fetch('https://movie.douban.com/chart')
+
+"""
+
 
 class QuotesSpider(scrapy.Spider):
     name = "quotes"  # 爬虫的唯一标识
