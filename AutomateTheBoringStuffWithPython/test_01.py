@@ -787,7 +787,7 @@ print(testpath.split(os.path.sep))  # 本质上是分解字符串，间隔参数是 os.path.sep
 print(os.path.sep)
 
 print('——————————查看文件大小和文件夹内容——————————')
-print(os.path.getsize(os.path.join(download_dir, 'mls-mpm88.zip')) / 1)  # 指定文件的大小，字节
+print(os.path.getsize(os.path.join(download_dir, 'PBSetup70.exe')) / 1)  # 指定文件的大小，字节
 print(os.listdir(download_dir))  # 文件夹中的内容
 print(os.path.getsize(os.path.join(download_dir, 'test')) / 1)  # 指定文件的大小，字节
 
@@ -863,3 +863,14 @@ print('第十四章 JSON')
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 stringOfJsonData = '{"name": "Zophie", "isCat": true, "miceCaught": 0, "felineIQ": null}'
 print(json.loads(stringOfJsonData))
+
+print(
+    "\n".join(
+        "\t".join(["{} * {} = {}".format(y, x, x * y) for y in range(1, x + 1)]) for x in range(1, 10)
+    )
+)
+
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+
+for x in range(1, 10):
+    print('\t'.join(['{} * {} = {}'.format(y, x, x*y) for y in range(1, x + 1)]))
