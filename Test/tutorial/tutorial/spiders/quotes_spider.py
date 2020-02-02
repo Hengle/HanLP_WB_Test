@@ -67,7 +67,7 @@ class DoubanSpider(scrapy.Spider):
             detail_url = item.css('a.nbg::attr(href)').extract_first()  # 电影的详情链接
             img_url = item.css('a.nbg > img::attr(src)').extract_first()  # 电影的图片链接
             main_name = item.css('div.pl2 > a::text').extract_first()  # 电影的第一个名字
-            other_name = item.css('div.pl2 > a > span::text').extract_first(default=' ')  # 电影的其它名字，没找到返回一个空格
+            other_name = item.css('div.pl2 > a > span::text').extract_first(default='\\')  # 电影的其它名字，没找到返回一个空格
             brief = item.css('p.pl::text').extract_first()  # 电影简介
             main_name = main_name.replace('\n', '').replace(' ', '')  # 去掉电影名字中的换行符和空格
 
@@ -75,7 +75,6 @@ class DoubanSpider(scrapy.Spider):
                 'detail_url': detail_url,
                 'img_url': img_url,
                 'name': main_name + other_name,
-                # 'name': main_name,
                 'brief': brief
             }
 
