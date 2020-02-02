@@ -75,7 +75,7 @@ class DoubanSpider(scrapy.Spider):
                 'detail_url': detail_url,
                 'img_url': img_url,
                 'name': main_name + other_name,
-                'name': main_name,
+                # 'name': main_name,
                 'brief': brief
             }
 
