@@ -56,20 +56,20 @@ pg.setConfigOption('foreground', colors['light'])
 
 QPushButton_style = f"""
 QPushButton{{
-	color: {colors['light']};
-	background-color: transparent;
-	border: 1px solid #4589b2;
-	padding: 5px;
+    color: {colors['light']};
+    background-color: transparent;
+    border: 1px solid #4589b2;
+    padding: 5px;
 
 }}
 
 QPushButton::hover{{
-	background-color: rgba(255,255,255,.2);
+    background-color: rgba(255,255,255,.2);
 }}
 
 QPushButton::pressed{{
-	border: 1px solid {colors['himid']};
-	background-color: rgba(0,0,0,.3);
+    border: 1px solid {colors['himid']};
+    background-color: rgba(0,0,0,.3);
 }}"""
 
 QLabel_style = f"""
@@ -95,7 +95,7 @@ def custom_axis_item_resizeEvent(self, ev=None):
 
     # s = self.size()
 
-    ## Set the position of the label
+    # Set the position of the label
     nudge = 15
 
     br = self.label.boundingRect()
