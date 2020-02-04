@@ -924,3 +924,7 @@ print(Person2().my_add(3, 6))
 
 print(Person2.get_radius())  # 42
 print(Person2().get_radius())  # 42
+
+xxx = Person2
+xxx.radius = 100
+print(xxx.get_radius())
