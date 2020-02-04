@@ -898,13 +898,15 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 这意味着，Person 类的 __main__ 模块中拥有了一个实例，并显示了这个实例的内存地址
 
 class Person2:
+    def __init__(self, name):  # 用于初始化，__init__ 方法会在类的对象被实例化（Instantiated）时立即运行
+        self.name = name
+
     radius = 42
 
-    @staticmethod  # 静态方法，这种方法不会使用这个类相关的任何东西，没有 self 或者 cls 参数
-    def say_hi():
-        print('~~~~~~~~~ Hi !')
+    def say_hi(self):  # 默认，实例方法，会使用实例的属性
+        print('~~~~~~~~~ Hi! %s!' % self.name)
 
-    @staticmethod
+    @staticmethod  # 静态方法，这种方法不会使用这个类相关的任何东西，没有 self 或者 cls 参数
     def my_add(xa, ya):
         return xa + ya
 
@@ -913,17 +915,17 @@ class Person2:
         return cls.radius
 
 
+wb = Person2('Wangbo')
+wb.say_hi()
+
 print(Person2)  # 类 <class '__main__.Person2'>
-Person2.say_hi()  # 静态方法可以直接从类调用，省略了实例化对象，实例化对象是要分配资源的
-
-print(Person2())  # 类的实例 <__main__.Person2 object at 0x000001EB0B9E7948>
-Person2().say_hi()  # 静态方法也可以从类的实例调用
-
 print(Person2.my_add(3, 6))
-print(Person2().my_add(3, 6))
+
+print(Person2('xxx'))  # 类的实例 <__main__.Person2 object at 0x000001EB0B9E7948>
+print(Person2('xxx').my_add(3, 6))
 
 print(Person2.get_radius())  # 类的属性 42
-xxx = Person2()  # 创建一个类的实例，注意，不是 xxx = Person2
+xxx = Person2('xxx')  # 创建一个类的实例，注意，不是 xxx = Person2
 xxx.radius = 100  # 修改实例的属性为 100
 print(xxx.radius)  # 获取实例的属性
 print(xxx.get_radius())  # 类方法获取到的仍然是类的属性，而不是实例的属性
