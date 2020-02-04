@@ -917,3 +917,6 @@ Person2.say_hi()  # 静态方法可以直接从类调用，省略了实例化对象，实例化对象是要分
 Person2().say_hi()
 print(Person2.my_add(3, 6))
 print(Person2().my_add(3, 6))
+
+print(Person2)
+print(Person2())
