@@ -1004,3 +1004,21 @@ class Robot:
     def how_many(cls):
         """打印当前机器人的数量"""
         print("我们现在有 {} 个机器人在工作".format(cls.population))
+
+
+droid1 = Robot('R2-D2')
+droid1.say_hi()
+Robot.how_many()
+
+droid2 = Robot('C-3PO')
+droid2.say_hi()
+Robot.how_many()
+
+print('机器人工作中...\n')
+
+print('工作已经完成，可以销毁机器人')
+
+droid1.die()
+Robot.how_many()
+droid2.die()
+Robot.how_many()
