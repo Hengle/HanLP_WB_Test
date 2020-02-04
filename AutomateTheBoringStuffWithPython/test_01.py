@@ -942,7 +942,7 @@ class Pizza(object):
         return cls(fridge.get_cheese() + fridge.get_vegetables())
 
 (2)、调用静态类：如果你把一个静态方法拆分成多个静态方法，除非你使用类方法，否则你还是得硬编码类名。
-使用这种方式声明方法，Pizza类名明永远都不会在被直接引用，继承和方法覆盖都可以完美的工作。
+使用这种方式声明方法，Pizza 类名明永远都不会在被直接引用，继承和方法覆盖都可以完美的工作。
 
 class Pizza(object):
     def __init__(self, radius, height):
