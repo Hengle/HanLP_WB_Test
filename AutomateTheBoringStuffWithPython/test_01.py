@@ -927,3 +927,36 @@ xxx = Person2()  # 创建一个类的实例，注意，不是 xxx = Person2
 xxx.radius = 100  # 修改实例的属性为 100
 print(xxx.radius)  # 获取实例的属性
 print(xxx.get_radius())  # 类方法获取到的仍然是类的属性，而不是实例的属性
+# 所以，任何情况下，get_radius() 都是绑定到 类 上的。
+# 那么，这个类方法，到底有什么用呢？我们在什么时候才会去用它呢? 我想这才是我们想去关心的。
+"""
+(1)、工厂方法：它用于创建类的实例，例如一些预处理。
+如果使用@staticmethod代替，那我们不得不硬编码 Pizza 类名在函数中，这使得任何继承 Pizza 的类都不能使用我们这个工厂方法给它自己用。
+
+class Pizza(object):
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+ 
+    @classmethod
+    def from_fridge(cls, fridge):
+        return cls(fridge.get_cheese() + fridge.get_vegetables())
+
+(2)、调用静态类：如果你把一个静态方法拆分成多个静态方法，除非你使用类方法，否则你还是得硬编码类名。
+使用这种方式声明方法，Pizza类名明永远都不会在被直接引用，继承和方法覆盖都可以完美的工作。
+
+class Pizza(object):
+    def __init__(self, radius, height):
+        self.radius = radius
+        self.height = height
+ 
+    @staticmethod
+    def compute_area(radius):
+         return math.pi * (radius ** 2)
+ 
+    @classmethod
+    def compute_volume(cls, height, radius):
+         return height * cls.compute_area(radius)
+ 
+    def get_volume(self):
+        return self.compute_volume(self.height, self.radius)
+"""
