@@ -908,15 +908,19 @@ class Person2:
     def my_add(xa, ya):
         return xa + ya
 
-    @classmethod  # 类方法，这种方法不是绑定到类的实例上的，而是绑定到类上的
+    @classmethod  # 类方法，这种方法不是绑定到类的实例上的，而是绑定到类上的，所以不能从类的实例上调用
     def get_radius(cls):
         return cls.radius
 
 
 print(Person2)  # 类 <class '__main__.Person2'>
 Person2.say_hi()  # 静态方法可以直接从类调用，省略了实例化对象，实例化对象是要分配资源的
+
 print(Person2())  # 类的实例 <__main__.Person2 object at 0x000001EB0B9E7948>
 Person2().say_hi()  # 静态方法也可以从类的实例调用
+
 print(Person2.my_add(3, 6))
 print(Person2().my_add(3, 6))
 
+Person2.get_radius()  # 42
+Person2().get_radius()  # 42
