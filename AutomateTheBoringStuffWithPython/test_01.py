@@ -1014,11 +1014,10 @@ droid2 = Robot('C-3PO')
 droid2.say_hi()
 Robot.how_many()
 
-print('机器人工作中...\n')
+print('\n机器人工作中...\n')
 
 print('工作已经完成，可以销毁机器人')
 
 droid1.die()
-Robot.how_many()
 droid2.die()
 Robot.how_many()
