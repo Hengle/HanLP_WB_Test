@@ -60,7 +60,6 @@ QPushButton{{
     background-color: transparent;
     border: 1px solid #4589b2;
     padding: 5px;
-
 }}
 
 QPushButton::hover{{

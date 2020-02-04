@@ -864,11 +864,9 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 stringOfJsonData = '{"name": "Zophie", "isCat": true, "miceCaught": 0, "felineIQ": null}'
 print(json.loads(stringOfJsonData))
 
-print(
-    "\n".join(
+print("\n".join(
         "\t".join(["{} * {} = {}".format(y, x, x * y) for y in range(1, x + 1)]) for x in range(1, 10)
-    )
-)
+    ))
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
