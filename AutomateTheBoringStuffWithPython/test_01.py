@@ -897,3 +897,7 @@ class Person2:
     @staticmethod
     def say_hi(self):
         print('~~~~~~~~~ Hi !')
+
+
+p2 = Person2()
+p2.say_hi(p2)
