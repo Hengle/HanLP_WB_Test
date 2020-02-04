@@ -970,3 +970,38 @@ class Pizza(object):
     def get_volume(self):
         return self.compute_volume(self.height, self.radius)
 """
+
+
+class Robot:
+    """表示有一个带有名字的机器人。"""
+    # 一个类变量，用来计数机器人的数量
+    population = 0
+
+    def __init__(self, name):
+        """初始化数据"""
+        self.name = name
+        print("正在初始化 {} ...".format(self.name))
+
+        # 机器人数量 +1
+        Robot.population += 1
+
+    def die(self):
+        """我挂了"""
+        print("{} 正在被销毁".format(self.name))
+
+        Robot.population -= 1
+
+        if Robot.population == 0:
+            print("{} 是最后一个了。".format(self.name))
+        else:
+            print("还有 {:d} 个机器人在工作。".format(Robot.population))
+
+    @staticmethod
+    def say_hi(self):
+        """来自机器人的问候"""
+        print("您好，我的主人，请叫我 {}".format(self.name))
+
+    @classmethod
+    def how_many(cls):
+        """打印当前机器人的数量"""
+        print("我们现在有 {} 个机器人在工作".format(cls.population))
