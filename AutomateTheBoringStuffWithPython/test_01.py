@@ -915,8 +915,10 @@ class Person2:
         return cls.radius
 
 
-wb = Person2('Wangbo')
+wb = Person2('WangBo')
 wb.say_hi()
+wzy = Person2('WangZhiYuan')
+wzy.say_hi()
 
 print(Person2)  # 类 <class '__main__.Person2'>
 print(Person2.my_add(3, 6))  # 通过类来调用静态方法
