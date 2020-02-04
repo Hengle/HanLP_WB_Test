@@ -913,10 +913,10 @@ class Person2:
         return cls.radius
 
 
+print(Person2)  # 类 <class '__main__.Person2'>
 Person2.say_hi()  # 静态方法可以直接从类调用，省略了实例化对象，实例化对象是要分配资源的
-Person2().say_hi()
+print(Person2())  # 类的实例 <__main__.Person2 object at 0x000001EB0B9E7948>
+Person2().say_hi()  # 静态方法也可以从类的实例调用
 print(Person2.my_add(3, 6))
 print(Person2().my_add(3, 6))
 
-print(Person2)
-print(Person2())
