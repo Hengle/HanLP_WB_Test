@@ -914,5 +914,6 @@ class Person2:
 
 
 Person2.say_hi()  # 静态方法可以直接从类调用，省略了实例化对象，实例化对象是要分配资源的
-Person2().say_hi()  #
+Person2().say_hi()
 print(Person2.my_add(3, 6))
+print(Person2().my_add(3, 6))
