@@ -925,4 +925,5 @@ print(Person2().my_add(3, 6))
 print(Person2.get_radius())  # 类的属性 42
 xxx = Person2()  # 创建一个类的实例，注意，不是 xxx = Person2
 xxx.radius = 100  # 修改实例的属性为 100
-print(xxx.get_radius())  # 获取到的仍然是类的属性，而不是实例的属性
+print(xxx.radius)  # 获取实例的属性
+print(xxx.get_radius())  # 类方法获取到的仍然是类的属性，而不是实例的属性
