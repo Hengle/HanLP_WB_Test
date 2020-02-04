@@ -996,7 +996,6 @@ class Robot:
         else:
             print("还有 {:d} 个机器人在工作。".format(Robot.population))
 
-    @staticmethod
     def say_hi(self):
         """来自机器人的问候"""
         print("您好，我的主人，请叫我 {}".format(self.name))
