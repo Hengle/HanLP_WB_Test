@@ -919,10 +919,10 @@ wb = Person2('Wangbo')
 wb.say_hi()
 
 print(Person2)  # 类 <class '__main__.Person2'>
-print(Person2.my_add(3, 6))
+print(Person2.my_add(3, 6))  # 通过类来调用静态方法
 
 print(Person2('xxx'))  # 类的实例 <__main__.Person2 object at 0x000001EB0B9E7948>
-print(Person2('xxx').my_add(3, 6))
+print(Person2('xxx').my_add(3, 6))  # 通过类的实例来调用静态方法，也是可以的，但是没有必要，因为会浪费资源
 
 print(Person2.get_radius())  # 类的属性 42
 xxx = Person2('xxx')  # 创建一个类的实例，注意，不是 xxx = Person2
