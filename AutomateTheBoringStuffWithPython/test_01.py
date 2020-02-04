@@ -848,11 +848,11 @@ fileObj.close()
 # 此时，文本中的内容是："cats = [{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]"
 # pprint.pformat() 产生的文本的格式不仅易于阅读，同时也是语法上正确的 python 代码，可以直接导入使用。
 
-import myCats  # 可以执行通过
+# import myCats  # 可以执行通过
 
-print(myCats.cats)
-print(myCats.cats[0])
-print(myCats.cats[0]['name'])
+# print(myCats.cats)
+# print(myCats.cats[0])
+# print(myCats.cats[0]['name'])
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('第九章 组织文件')
@@ -865,10 +865,27 @@ stringOfJsonData = '{"name": "Zophie", "isCat": true, "miceCaught": 0, "felineIQ
 print(json.loads(stringOfJsonData))
 
 print("\n".join(
-        "\t".join(["{} * {} = {}".format(y, x, x * y) for y in range(1, x + 1)]) for x in range(1, 10)
-    ))
+    "\t".join(["{} * {} = {}".format(y, x, x * y) for y in range(1, x + 1)]) for x in range(1, 10)
+))
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
 for x in range(1, 10):
-    print('\t'.join(['{} * {} = {}'.format(y, x, x*y) for y in range(1, x + 1)]))
+    print('\t'.join(['{} * {} = {}'.format(y, x, x * y) for y in range(1, x + 1)]))
+
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+
+
+# Python 编程从入门到实践 2016.pdf
+# 面向对象编程
+# 类
+class Person:
+    pass  # 空代码块
+
+
+p = Person()  # 实例化一个类
+print(p)
+# 控制台返回
+# <__main__.Person object at 0x000002AAADF3F9C8>
+# 这意味着，Person 类的 __main__ 模块中拥有了一个实例，并显示了这个实例的内存地址
+
