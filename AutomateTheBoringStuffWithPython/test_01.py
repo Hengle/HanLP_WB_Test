@@ -876,7 +876,9 @@ for x in range(1, 10):
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
 
+# ==========================================
 # Python 编程从入门到实践 2016.pdf
+# ==========================================
 # 面向对象编程
 # 类
 class Person:
@@ -885,7 +887,13 @@ class Person:
 
 p = Person()  # 实例化一个类
 print(p)
+
+
 # 控制台返回
 # <__main__.Person object at 0x000002AAADF3F9C8>
 # 这意味着，Person 类的 __main__ 模块中拥有了一个实例，并显示了这个实例的内存地址
 
+class Person2:
+    @staticmethod
+    def say_hi(self):
+        print('~~~~~~~~~ Hi !')
