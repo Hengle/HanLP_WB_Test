@@ -899,9 +899,9 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 class Person2:
     def __init__(self, name):  # 用于初始化，__init__ 方法会在类的对象被实例化（Instantiated）时立即运行
-        self.name = name
+        self.name = name  # 实例变量/对象变量
 
-    radius = 42
+    radius = 42  # 类变量
 
     def say_hi(self):  # 默认，实例方法，会使用实例的属性
         print('~~~~~~~~~ Hi! %s!' % self.name)
@@ -931,8 +931,19 @@ xxx = Person2('xxx')  # 创建一个类的实例，注意，不是 xxx = Person2
 xxx.radius = 100  # 修改实例的属性为 100
 print(xxx.radius)  # 获取实例的属性
 print(xxx.get_radius())  # 类方法获取到的仍然是类的属性，而不是实例的属性
+
+Person2.radius = 1  # 修改类变量
+print(xxx.radius)  # 实例的变量不会跟着变
+yyy = Person2('yyy')  # 实例化一个对象
+print(yyy.radius)  # 从类变量种复制过来的实例变量
+
 # 所以，任何情况下，get_radius() 都是绑定到 类 上的。
 # 那么，这个类方法，到底有什么用呢？我们在什么时候才会去用它呢? 我想这才是我们想去关心的。
+
+
+
+
+
 """
 (1)、工厂方法：它用于创建类的实例，例如一些预处理。
 如果使用@staticmethod代替，那我们不得不硬编码 Pizza 类名在函数中，这使得任何继承 Pizza 的类都不能使用我们这个工厂方法给它自己用。
