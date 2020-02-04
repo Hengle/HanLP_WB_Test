@@ -922,9 +922,7 @@ Person2().say_hi()  # 静态方法也可以从类的实例调用
 print(Person2.my_add(3, 6))
 print(Person2().my_add(3, 6))
 
-print(Person2.get_radius())  # 42
-print(Person2().get_radius())  # 42
-
-xxx = Person2
-xxx.radius = 100
-print(xxx.get_radius())
+print(Person2.get_radius())  # 类的属性 42
+xxx = Person2()  # 创建一个类的实例，注意，不是 xxx = Person2
+xxx.radius = 100  # 修改实例的属性为 100
+print(xxx.get_radius())  # 获取到的仍然是类的属性，而不是实例的属性
