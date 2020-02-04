@@ -864,6 +864,8 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 stringOfJsonData = '{"name": "Zophie", "isCat": true, "miceCaught": 0, "felineIQ": null}'
 print(json.loads(stringOfJsonData))
 
+# 单行打印乘法口诀表
+"""
 print("\n".join(
     "\t".join(["{} * {} = {}".format(y, x, x * y) for y in range(1, x + 1)]) for x in range(1, 10)
 ))
@@ -874,6 +876,7 @@ for x in range(1, 10):
     print('\t'.join(['{} * {} = {}'.format(y, x, x * y) for y in range(1, x + 1)]))
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+"""
 
 
 # ==========================================
@@ -894,10 +897,21 @@ print(p)
 # 这意味着，Person 类的 __main__ 模块中拥有了一个实例，并显示了这个实例的内存地址
 
 class Person2:
-    @staticmethod
-    def say_hi(self):
+    radius = 42
+
+    @staticmethod  # 静态方法，这种方法不会使用这个类相关的任何东西，没有 self 或者 cls 参数
+    def say_hi():
         print('~~~~~~~~~ Hi !')
 
+    @staticmethod
+    def my_add(xa, ya):
+        return xa + ya
 
-p2 = Person2()
-p2.say_hi(p2)
+    @classmethod  # 类方法，这种方法不是绑定到类的实例上的，而是绑定到类上的
+    def get_radius(cls):
+        return cls.radius
+
+
+Person2.say_hi()  # 静态方法可以直接从类调用，省略了实例化对象，实例化对象是要分配资源的
+Person2().say_hi()  #
+print(Person2.my_add(3, 6))
