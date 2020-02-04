@@ -979,7 +979,7 @@ class Robot:
 
     def __init__(self, name):
         """初始化数据"""
-        self.name = name
+        self.name = name  # 对象变量，属于 self 拥有
         print("正在初始化 {} ...".format(self.name))
 
         # 机器人数量 +1
