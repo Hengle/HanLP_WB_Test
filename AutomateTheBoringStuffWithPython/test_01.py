@@ -1005,6 +1005,18 @@ class Robot:
         """打印当前机器人的数量"""
         print("我们现在有 {} 个机器人在工作".format(cls.population))
 
+    @staticmethod
+    def h_m():
+        print("{}".format(Robot.population))
+
+    @staticmethod
+    def print_class_doc():
+        print(Robot.__doc__)
+
+    @staticmethod
+    def print_say_hi_doc():
+        print(Robot.say_hi.__doc__)
+
 
 droid1 = Robot('R2-D2')
 droid1.say_hi()
@@ -1021,3 +1033,6 @@ print('工作已经完成，可以销毁机器人')
 droid1.die()
 droid2.die()
 Robot.how_many()
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+Robot.print_class_doc()
+Robot.print_say_hi_doc()
