@@ -922,5 +922,5 @@ Person2().say_hi()  # 静态方法也可以从类的实例调用
 print(Person2.my_add(3, 6))
 print(Person2().my_add(3, 6))
 
-Person2.get_radius()  # 42
-Person2().get_radius()  # 42
+print(Person2.get_radius())  # 42
+print(Person2().get_radius())  # 42
