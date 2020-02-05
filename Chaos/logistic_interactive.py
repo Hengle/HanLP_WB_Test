@@ -12,19 +12,20 @@
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (QApplication, QHBoxLayout,
-                             QLabel, QSizePolicy, QSlider, QSpacerItem,
+                             QLabel, QSlider,
                              QVBoxLayout, QWidget)
+# QSizePolicy, QSpacerItem,
 
 from PyQt5 import QtWidgets, QtCore, QtGui
 import pyqtgraph as pg
 
-from numba import jit, prange, njit
+from numba import jit, njit  # , prange
 import numpy as np
 
-from pathlib import Path
+# from pathlib import Path
 import sys
 
-from time import time
+# from time import time
 import types
 
 colors = {
@@ -86,7 +87,7 @@ QCheckBox{{
 """
 
 
-def custom_axis_item_resizeEvent(self, ev=None):
+def custom_axis_item_resize_event(self, ev=None):
     """ custom implementation of AxisItem.resizeEvent to control `nudge`
 
         this overwrites the instance method for `AxisItem`
@@ -274,7 +275,7 @@ def cobweb_plot(plt, idx=-1,
     yaxis = plt.getAxis("left")
     # yaxis.setTickSpacing(.2, .2)
 
-    yaxis.resizeEvent = types.MethodType(custom_axis_item_resizeEvent, yaxis)
+    yaxis.resizeEvent = types.MethodType(custom_axis_item_resize_event, yaxis)
 
     yaxis.tickFont = numfont
     yaxis.setStyle(tickTextOffset=10, tickLength=10)
@@ -325,7 +326,7 @@ def series_plot(plt, y_vals, idx=100, r=0, xall=False):
     yaxis = plt.getAxis("left")
     # yaxis.setTickSpacing(.2, .2)
 
-    yaxis.resizeEvent = types.MethodType(custom_axis_item_resizeEvent, yaxis)
+    yaxis.resizeEvent = types.MethodType(custom_axis_item_resize_event, yaxis)
 
     yaxis.tickFont = numfont
     yaxis.setStyle(tickTextOffset=10, tickLength=10)

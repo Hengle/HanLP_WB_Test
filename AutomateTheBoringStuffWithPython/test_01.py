@@ -1079,12 +1079,19 @@ class Student(SchoolMember):
         print('Marks:{:d}'.format(self.marks))
 
 
+m = SchoolMember('Nobody', 0)
 t = Teacher('WangBo', 42, 30000)
 s = Student('WangZhiYuan', 7, 75)
 
 # ´òÓ¡Ò»ÐÐ¿Õ°×
 print()
 
-members = [t, s]
+members = [m, t, s]
 for member in members:
     member.tell()
+
+t = 'a', 'b'
+print(type(t))
+
+print(dict(zip('abc', range(3))))
+print(dict(zip(range(3), 'abc')))
