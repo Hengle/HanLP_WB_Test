@@ -308,7 +308,7 @@ def series_plot(plt, y_vals, idx=100, r=0, xall=False):
     plt.showGrid(x=True, y=True)
 
     s = 20 / len(t)
-    s = max(10, s)
+    s = max(10, int(s))
 
     line = plt.plot(x=t, y=y)
     line.setPen(color=colors['lomid'], width=3.0)
@@ -337,13 +337,15 @@ def series_plot(plt, y_vals, idx=100, r=0, xall=False):
     plt.titleLabel.item.setFont(txtfont)
 
 
-def bifurc_plot(plt, y_vals, r=0, ipop=0.5, discard=64):
+def bifurc_plot(plt, y_vals, r=0,
+                # ipop=0.5,
+                discard=64):
     if (y_vals.shape[0]) < discard:
         return
 
     ys = y_vals[discard:]
     xs = np.repeat(r, len(ys))
-    s = 1
+    # s = 1
     new_s = 5
 
     if len(plt.items) == 0:
@@ -382,7 +384,9 @@ def bifurc_plot(plt, y_vals, r=0, ipop=0.5, discard=64):
         ss = np.repeat(1, len(xs))
         ss[0:n_new] = new_s
 
-        bs = [brushes['lomid'] for b in range(len(xs))]
+        # bs = [brushes['lomid'] for b in range(len(xs))]
+        bs = [brushes['lomid']]
+
         bs[0:n_new] = [brushes['himid'] for _ in range(n_new)]
 
         bifurcation.setData(xs, ys, size=ss, brush=bs)
