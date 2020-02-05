@@ -10,21 +10,22 @@
 
 """
 
-# from pathlib import Path
-import sys
-# from time import time
-import types
-
-import numpy as np
-import pyqtgraph as pg
-from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (QApplication, QHBoxLayout,
-                             QLabel, QSlider,
+                             QLabel, QSizePolicy, QSlider, QSpacerItem,
                              QVBoxLayout, QWidget)
-from numba import jit, njit  # , prange
 
-# QSizePolicy, QSpacerItem,
+from PyQt5 import QtWidgets, QtCore, QtGui
+import pyqtgraph as pg
+
+from numba import jit, prange, njit
+import numpy as np
+
+from pathlib import Path
+import sys
+
+from time import time
+import types
 
 colors = {
     'lightest': "#eeeeee",
@@ -55,19 +56,20 @@ pg.setConfigOption('foreground', colors['light'])
 
 QPushButton_style = f"""
 QPushButton{{
-    color: {colors['light']};
-    background-color: transparent;
-    border: 1px solid #4589b2;
-    padding: 5px;
+	color: {colors['light']};
+	background-color: transparent;
+	border: 1px solid #4589b2;
+	padding: 5px;
+
 }}
 
 QPushButton::hover{{
-    background-color: rgba(255,255,255,.2);
+	background-color: rgba(255,255,255,.2);
 }}
 
 QPushButton::pressed{{
-    border: 1px solid {colors['himid']};
-    background-color: rgba(0,0,0,.3);
+	border: 1px solid {colors['himid']};
+	background-color: rgba(0,0,0,.3);
 }}"""
 
 QLabel_style = f"""
@@ -85,15 +87,15 @@ QCheckBox{{
 """
 
 
-def custom_axis_item_resize_event(self, ev=None):
-    """
-    custom implementation of AxisItem.resizeEvent to control `nudge`
-    this overwrites the instance method for `AxisItem`
+def custom_axis_item_resizeEvent(self, ev=None):
+    """ custom implementation of AxisItem.resizeEvent to control `nudge`
+
+        this overwrites the instance method for `AxisItem`
     """
 
     # s = self.size()
 
-    # Set the position of the label
+    ## Set the position of the label
     nudge = 15
 
     br = self.label.boundingRect()
@@ -225,17 +227,14 @@ def get_cobweb_points(model, r, x, n):
 
 def cobweb_plot(plt, idx=-1,
                 model=logistic_map, r=0, cobweb_x=0.5,
+
                 function_n=1000,
-                cobweb_n=100,
-                start=0, end=1,
-                diagonal_linewidth=1.35,
-                cobweb_linewidth=1,
-                # num_discard=0,
-                # title='', filename='', show=True, save=True,
-                # figsize=(6, 6),
-                # function_linewidth=1.5,
-                # folder='images', dpi=300, bbox_inches='tight', pad=0.1
-                ):
+
+                cobweb_n=100, num_discard=0,
+                title='', filename='', show=True, save=True,
+                start=0, end=1, figsize=(6, 6), diagonal_linewidth=1.35,
+                cobweb_linewidth=1, function_linewidth=1.5,
+                folder='images', dpi=300, bbox_inches='tight', pad=0.1):
     plt.clear()
 
     initial_pop = float(cobweb_x)
@@ -257,7 +256,7 @@ def cobweb_plot(plt, idx=-1,
 
     function_line = pg.PlotDataItem(x=func_x_vals, y=func_y_vals)
     function_line.setPen(color=colors['lomid'], width=3.0)
-    # function_line = plt.addItem(function_line)
+    function_line = plt.addItem(function_line)
 
     sizes = 1 / np.linspace(.1, 1, len(cobweb_x_vals))
     sizes = np.maximum(5, sizes)
@@ -276,7 +275,7 @@ def cobweb_plot(plt, idx=-1,
     yaxis = plt.getAxis("left")
     # yaxis.setTickSpacing(.2, .2)
 
-    yaxis.resizeEvent = types.MethodType(custom_axis_item_resize_event, yaxis)
+    yaxis.resizeEvent = types.MethodType(custom_axis_item_resizeEvent, yaxis)
 
     yaxis.tickFont = numfont
     yaxis.setStyle(tickTextOffset=10, tickLength=10)
@@ -308,7 +307,7 @@ def series_plot(plt, y_vals, idx=100, r=0, xall=False):
     plt.showGrid(x=True, y=True)
 
     s = 20 / len(t)
-    s = max(10, int(s))
+    s = max(10, s)
 
     line = plt.plot(x=t, y=y)
     line.setPen(color=colors['lomid'], width=3.0)
@@ -327,7 +326,7 @@ def series_plot(plt, y_vals, idx=100, r=0, xall=False):
     yaxis = plt.getAxis("left")
     # yaxis.setTickSpacing(.2, .2)
 
-    yaxis.resizeEvent = types.MethodType(custom_axis_item_resize_event, yaxis)
+    yaxis.resizeEvent = types.MethodType(custom_axis_item_resizeEvent, yaxis)
 
     yaxis.tickFont = numfont
     yaxis.setStyle(tickTextOffset=10, tickLength=10)
@@ -337,15 +336,13 @@ def series_plot(plt, y_vals, idx=100, r=0, xall=False):
     plt.titleLabel.item.setFont(txtfont)
 
 
-def bifurc_plot(plt, y_vals, r=0,
-                # ipop=0.5,
-                discard=64):
+def bifurc_plot(plt, y_vals, r=0, ipop=0.5, discard=64):
     if (y_vals.shape[0]) < discard:
         return
 
     ys = y_vals[discard:]
     xs = np.repeat(r, len(ys))
-    # s = 1
+    s = 1
     new_s = 5
 
     if len(plt.items) == 0:
@@ -384,9 +381,7 @@ def bifurc_plot(plt, y_vals, r=0,
         ss = np.repeat(1, len(xs))
         ss[0:n_new] = new_s
 
-        # bs = [brushes['lomid'] for b in range(len(xs))]
-        bs = [brushes['lomid']]
-
+        bs = [brushes['lomid'] for b in range(len(xs))]
         bs[0:n_new] = [brushes['himid'] for _ in range(n_new)]
 
         bifurcation.setData(xs, ys, size=ss, brush=bs)
