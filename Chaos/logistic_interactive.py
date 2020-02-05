@@ -225,14 +225,17 @@ def get_cobweb_points(model, r, x, n):
 
 def cobweb_plot(plt, idx=-1,
                 model=logistic_map, r=0, cobweb_x=0.5,
-
                 function_n=1000,
-
-                cobweb_n=100, num_discard=0,
-                title='', filename='', show=True, save=True,
-                start=0, end=1, figsize=(6, 6), diagonal_linewidth=1.35,
-                cobweb_linewidth=1, function_linewidth=1.5,
-                folder='images', dpi=300, bbox_inches='tight', pad=0.1):
+                cobweb_n=100,
+                start=0, end=1,
+                diagonal_linewidth=1.35,
+                cobweb_linewidth=1,
+                # num_discard=0,
+                # title='', filename='', show=True, save=True,
+                # figsize=(6, 6),
+                # function_linewidth=1.5,
+                # folder='images', dpi=300, bbox_inches='tight', pad=0.1
+                ):
     plt.clear()
 
     initial_pop = float(cobweb_x)
