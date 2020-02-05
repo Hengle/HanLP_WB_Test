@@ -86,9 +86,9 @@ QCheckBox{{
 
 
 def custom_axis_item_resize_event(self, ev=None):
-    """ custom implementation of AxisItem.resizeEvent to control `nudge`
-
-        this overwrites the instance method for `AxisItem`
+    """
+    custom implementation of AxisItem.resizeEvent to control `nudge`
+    this overwrites the instance method for `AxisItem`
     """
 
     # s = self.size()
