@@ -10,23 +10,21 @@
 
 """
 
+# from pathlib import Path
+import sys
+# from time import time
+import types
+
+import numpy as np
+import pyqtgraph as pg
+from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (QApplication, QHBoxLayout,
                              QLabel, QSlider,
                              QVBoxLayout, QWidget)
-# QSizePolicy, QSpacerItem,
-
-from PyQt5 import QtWidgets, QtCore, QtGui
-import pyqtgraph as pg
-
 from numba import jit, njit  # , prange
-import numpy as np
 
-# from pathlib import Path
-import sys
-
-# from time import time
-import types
+# QSizePolicy, QSpacerItem,
 
 colors = {
     'lightest': "#eeeeee",
