@@ -1097,11 +1097,12 @@ print(dict(zip('abc', range(3))))
 print(dict(zip(range(3), 'abc')))
 
 
-def describe_pet(animal_type, pet_name):
+def describe_pet(pet_name, animal_type='dog'):
     """显示宠物的信息"""
     print("\nI have a " + animal_type + ".")
     print("My " + animal_type + "'s name is " + pet_name + ".")
 
 
 describe_pet(pet_name='harry2', animal_type='hamster')
-describe_pet('hamster', 'harry')
+describe_pet('harry', 'hamster')
+describe_pet('xxx')
