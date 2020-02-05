@@ -257,7 +257,7 @@ def cobweb_plot(plt, idx=-1,
 
     function_line = pg.PlotDataItem(x=func_x_vals, y=func_y_vals)
     function_line.setPen(color=colors['lomid'], width=3.0)
-    function_line = plt.addItem(function_line)
+    # function_line = plt.addItem(function_line)
 
     sizes = 1 / np.linspace(.1, 1, len(cobweb_x_vals))
     sizes = np.maximum(5, sizes)
