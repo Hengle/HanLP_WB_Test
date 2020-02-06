@@ -1071,7 +1071,7 @@ class Student(SchoolMember):
 
     def __init__(self, name, age, marks):
         # SchoolMember.__init__(self, name, age)
-        super().__init__(self, name, age)
+        super().__init__(name, age)  # 跟上面一行的作用相同
         self.marks = marks
         print('(Initialized Student: {})'.format(self.name))
 
@@ -1107,3 +1107,12 @@ def describe_pet(pet_name, animal_type='dog'):
 # describe_pet(pet_name='harry2', animal_type='hamster')
 # describe_pet('harry', 'hamster')
 # describe_pet('xxx')
+
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('《 Python Cookbook 》第三版中文v3.0.0 2017 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+# ==========================================
+# Python Cookbook 第三版中文v3.0.0 2017.pdf
+# ==========================================
+# 第四章：迭代器与生成器
+print(' 第四章：迭代器与生成器 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
