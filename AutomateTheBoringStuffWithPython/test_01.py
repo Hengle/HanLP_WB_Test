@@ -1070,7 +1070,8 @@ class Student(SchoolMember):
     """代表一位学生。"""
 
     def __init__(self, name, age, marks):
-        SchoolMember.__init__(self, name, age)
+        # SchoolMember.__init__(self, name, age)
+        super().__init__(self, name, age)
         self.marks = marks
         print('(Initialized Student: {})'.format(self.name))
 
@@ -1103,6 +1104,6 @@ def describe_pet(pet_name, animal_type='dog'):
     print("My " + animal_type + "'s name is " + pet_name + ".")
 
 
-describe_pet(pet_name='harry2', animal_type='hamster')
-describe_pet('harry', 'hamster')
-describe_pet('xxx')
+# describe_pet(pet_name='harry2', animal_type='hamster')
+# describe_pet('harry', 'hamster')
+# describe_pet('xxx')
