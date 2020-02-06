@@ -1166,10 +1166,11 @@ for ch in root:
 
 
 def my_range(start, stop, increment):
-    x = start
-    while x < stop:
-        yield x
-        x += increment
+    my_x = start
+    while my_x < stop:
+        yield my_x
+        my_x += increment
+
 
 for n in my_range(0, 4, 0.5):
     print(n)
