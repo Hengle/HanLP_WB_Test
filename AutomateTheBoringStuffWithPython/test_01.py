@@ -1174,3 +1174,16 @@ def my_range(start, stop, increment):
 
 for n in my_range(0, 4, 0.5):
     print(n)
+
+x = (my_range(0, 4, 0.5))
+print(x)
+print(next(x))
+print(next(x))
+print(next(x))
+print(next(x))
+print(next(x))
+print(next(x))
+print(next(x))
+print(next(x))
+print(next(x))
+print(next(x))
