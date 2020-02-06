@@ -1139,3 +1139,27 @@ def manual_iter():
 
 
 manual_iter()
+
+
+class Node:
+    def __init__(self, value):
+        self._value = value
+        self._children = []
+
+    def __repr__(self):  # 将 print() 操作代理到这里
+        return 'Node value = {!r}'.format(self._value)
+
+    def add_child(self, node):
+        self._children.append(node)
+
+    def __iter__(self):  # 将 for in 操作代理到列表 self._children 上
+        return iter(self._children)
+
+
+root = Node(0)
+child1 = Node(1)
+child2 = Node(2)
+root.add_child(child1)
+root.add_child(child2)
+for ch in root:
+    print(ch)
