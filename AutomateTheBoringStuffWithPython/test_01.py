@@ -1163,3 +1163,13 @@ root.add_child(child1)
 root.add_child(child2)
 for ch in root:
     print(ch)
+
+
+def my_range(start, stop, increment):
+    x = start
+    while x < stop:
+        yield x
+        x += increment
+
+for n in my_range(0, 4, 0.5):
+    print(n)
