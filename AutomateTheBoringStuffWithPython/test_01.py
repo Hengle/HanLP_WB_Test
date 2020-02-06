@@ -1120,12 +1120,22 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def manual_iter():
     with open(r'c:\LibAntiPrtSc_INFORMATION.log') as fi:
-        # try:
+        try:
+            while True:
+                line = next(fi)  # 函数 next(iterator[, default]) 返回迭代器的下一项
+                print(line, end='')
+        except StopIteration:  # StopIteration表示迭代结束
+            pass
+
+        print('~~~~~ 另一种写法~~~~~')
+        fi.seek(0)  # 回到文件开头
         while True:
-            line = next(fi)
-            print(line, end='')
-        # except StopIteration:
-            # pass
+            line = next(fi, None)  # 函数 next(iterator[, default]) 返回迭代器的下一项
+            if line:
+                print(line, end='')
+            else:
+                print('-=WB=-')
+                break
 
 
 manual_iter()
