@@ -1104,15 +1104,15 @@ def describe_pet(pet_name, animal_type='dog'):
     print("My " + animal_type + "'s name is " + pet_name + ".")
 
 
-# describe_pet(pet_name='harry2', animal_type='hamster')
-# describe_pet('harry', 'hamster')
-# describe_pet('xxx')
+describe_pet(pet_name='harry2', animal_type='hamster')
+describe_pet('harry', 'hamster')
+describe_pet('xxx')
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-print('《 Python Cookbook 》第三版中文v3.0.0 2017 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('《 Python Cookbook 》第三版中文v3.0.0 2017')
 # ==========================================
 # Python Cookbook 第三版中文v3.0.0 2017.pdf
 # ==========================================
 # 第四章：迭代器与生成器
-print(' 第四章：迭代器与生成器 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print(' 第四章：迭代器与生成器')
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
