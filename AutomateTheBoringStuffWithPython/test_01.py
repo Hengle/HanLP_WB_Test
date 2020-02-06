@@ -1116,3 +1116,13 @@ print('《 Python Cookbook 》第三版中文v3.0.0 2017')
 # 第四章：迭代器与生成器
 print(' 第四章：迭代器与生成器')
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+
+
+def manual_iter():
+    with open(r'c:\LibAntiPrtSc_INFORMATION.log') as f:
+        try:
+            while True:
+                line = next(f)
+                print(line, end='')
+        except StopIteration:
+            pass
