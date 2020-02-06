@@ -1168,7 +1168,7 @@ for ch in root:
 def my_range(start, stop, increment):
     my_x = start
     while my_x < stop:
-        yield my_x
+        yield my_x  # Éú³ÉÆ÷
         my_x += increment
 
 
