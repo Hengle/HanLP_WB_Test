@@ -1120,9 +1120,12 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def manual_iter():
     with open(r'c:\LibAntiPrtSc_INFORMATION.log') as fi:
-        try:
-            while True:
-                line = next(fi)
-                print(line, end='')
-        except StopIteration:
-            pass
+        # try:
+        while True:
+            line = next(fi)
+            print(line, end='')
+        # except StopIteration:
+            # pass
+
+
+manual_iter()
