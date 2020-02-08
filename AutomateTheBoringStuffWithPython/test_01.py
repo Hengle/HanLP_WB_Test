@@ -1252,15 +1252,15 @@ yield 一次返回一个结果，在每个结果中间，挂起函数的状态，以便下次从它离开
 """
 
 
-def f_fib(fibmax):
-    a, b = 0, 1
-    while a < fibmax:
-        yield a
-        a, b = b, a + b
+def f_fib(count):
+    fib_n, fib_a, fib_b = 0, 0, 1
+    while n < count:
+        yield fib_a
+        fib_n, fib_a, fib_b = fib_n + 1, fib_b, fib_a + fib_b
     return '亲！没有数据了...'
 
 
-f = f_fib(100)
+f = f_fib(12)
 print(f)
 while True:
     try:
