@@ -1225,7 +1225,11 @@ class Fib:
 print(list(Fib(200)))
 
 fx = Fib(3)
-for idx in range(13):
+# for 循环会使用内置的 iter() 函数代替 __iter__()
+# 所以我们可以看到 __iter__() 不会被执行
+# 因此，不要在 __iter__() 中执行 return self 以外的代码
+for idx in range(3):
+
     print('斐波那契数列的第 {} 个数是：{}'.format(idx+1, next(fx)))
 
 print(list(Fib(3)))
