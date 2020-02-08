@@ -1216,7 +1216,6 @@ class Fib:
         return self
 
     def __next__(self):
-
         fib = self.a  # 返回的值从 0 开始
         if fib > self.fibmax:  # 超过最大值，抛出异常
             raise StopIteration
@@ -1228,3 +1227,7 @@ class Fib:
 
 
 print(list(Fib(200)))
+
+x = Fib(200)
+for i in range(13):
+    print('斐波那契数列的第 {} 个数是：{}'.format(i+1, next(x)))
