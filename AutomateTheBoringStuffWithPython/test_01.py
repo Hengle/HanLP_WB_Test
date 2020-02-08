@@ -1185,6 +1185,7 @@ print(list(my_range(0, 4, 0.5)))
 """
 =====
 迭代器
+任何实现了 __next__ 方法的对象(object)都可以称为迭代器
 =====
 1、对象需要提供 __next__ 方法，它要么返回下一项，要么引起一个 StopIteration 异常
 2、python要求迭代器本身也是可迭代的，所以我们要为迭代器实现 __iter__ 方法，
@@ -1223,16 +1224,22 @@ class Fib:
 
 
 print('--------------------------------------')
-fx = Fib(3)
+print('隐式使用 for 循环')
+print(list(Fib(3)))
+
 print('--------------------------------------')
-# for 循环会使用内置的 iter() 函数代替 __iter__()
-# 所以我们可以看到 __iter__() 不会被执行
-# 因此，不要在 __iter__() 中执行 return self 以外的代码
+print('显示使用 for 循环')
+fx = Fib(3)
+print(fx)
+print([i for i in fx])
+
+print('--------------------------------------')
+print('不使用 for 循环')
+print('注意，这里的 for 循环迭代的对象不是 fx')
+print('__iter__ 函数不会调用')
+fx = Fib(3)
 for idx in range(3):
     print('斐波那契数列的第 {} 个数是：{}'.format(idx + 1, next(fx)))
-print('--------------------------------------')
-print('无法再次遍历 fx')
-print(list(fx))
 print('--------------------------------------')
 
 """
