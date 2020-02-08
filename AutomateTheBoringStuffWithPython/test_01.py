@@ -1141,6 +1141,7 @@ def manual_iter():
 manual_iter()
 
 
+# 代理迭代
 class Node:
     def __init__(self, value):
         self._value = value
@@ -1165,6 +1166,7 @@ for ch in root:
     print(ch)
 
 
+# 生成器产生迭代
 def my_range(start, stop, increment):
     my_x = start
     while my_x < stop:
@@ -1185,5 +1187,44 @@ print(next(x))
 print(next(x))
 print(next(x))
 print(next(x))
-print(next(x))
-print(next(x))
+print(list(my_range(0, 4, 0.5)))
+
+"""
+========
+迭代器协议
+========
+1、对象需要提供 __next__ 方法，它要么返回下一项，要么引起一个 StopIteration 异常
+2、python要求迭代器本身也是可迭代的，所以我们要为迭代器实现 __iter__ 方法，
+   而_iter_方法要返回一个迭代器，迭代器自身正是一个迭代器，
+   所以迭代器的 __iter__ 方法返回自身self即可。
+
+在 ython 中一个实现了 _iter_ 方法和 _next_ 方法的类对象，就是迭代器。
+
+迭代器与列表的区别在于，构建迭代器的时候，不需要像列表那样，把所有元素一次性加载
+到内存，而是以一种延迟计算（lazy evaluation）的方式返回元素，这正是它的优点。
+如下案例是计算菲波那切数列的案例。
+"""
+
+
+class Fib:
+    def __init__(self, fibmax):
+        self.a = 0
+        self.b = 1
+        self.fibmax = fibmax
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+
+        fib = self.a  # 返回的值从 0 开始
+        if fib > self.fibmax:  # 超过最大值，抛出异常
+            raise StopIteration
+
+        # 更新 self.a, self.b 的值
+        # 备 __iter__ 调用
+        self.a, self.b = self.b, self.a + self.b
+        return fib  # 返回的值从 0 开始
+
+
+print(list(Fib(200)))
