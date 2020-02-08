@@ -1183,9 +1183,9 @@ print(next(x))
 print(list(my_range(0, 4, 0.5)))
 
 """
-========
-迭代器协议
-========
+=====
+迭代器
+=====
 1、对象需要提供 __next__ 方法，它要么返回下一项，要么引起一个 StopIteration 异常
 2、python要求迭代器本身也是可迭代的，所以我们要为迭代器实现 __iter__ 方法，
    而_iter_方法要返回一个迭代器，迭代器自身正是一个迭代器，
@@ -1207,7 +1207,7 @@ class Fib:
         self.fibmax = fibmax
 
     def __iter__(self):
-        print('~~~ __iter__()~~~')
+        print('~~~ __iter__()~~~ ***')
         return self
 
     def __next__(self):
@@ -1221,6 +1221,8 @@ class Fib:
         self.a, self.b = self.b, self.a + self.b
         return fib  # 返回的值从 0 开始
 
+
+print('--------------------------------------')
 fx = Fib(3)
 print('--------------------------------------')
 # for 循环会使用内置的 iter() 函数代替 __iter__()
@@ -1229,5 +1231,40 @@ print('--------------------------------------')
 for idx in range(3):
     print('斐波那契数列的第 {} 个数是：{}'.format(idx + 1, next(fx)))
 print('--------------------------------------')
-print(list(Fib(3)))
+print('无法再次遍历 fx')
+print(list(fx))
 print('--------------------------------------')
+
+"""
+=====
+生成器
+=====
+生成器是特殊的迭代器
+
+第一类：
+生成器函数：使用 def 定义函数，但是，使用 yield 而非 return 返回结果
+yield 一次返回一个结果，在每个结果中间，挂起函数的状态，以便下次从它离开
+的地方继续执行
+
+第二类：
+生成器表达式：类似列表推导，只不过把一对中括号[]变成一对小括号()。
+生成器表达式是按需产生一个生成器结果对象，要想拿到每一个元素，就需要循环遍历。
+"""
+
+
+def f_fib(fibmax):
+    a, b = 0, 1
+    while a < fibmax:
+        yield a
+        a, b = b, a + b
+    return '亲！没有数据了...'
+
+
+f = f_fib(100)
+print(f)
+while True:
+    try:
+        print('f = ', next(f))
+    except StopIteration as e:
+        print('生成器最后的返回值是：', e.value)
+        break
