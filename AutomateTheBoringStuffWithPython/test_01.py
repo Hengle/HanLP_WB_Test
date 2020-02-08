@@ -1180,13 +1180,6 @@ for n in my_range(0, 4, 0.5):
 x = (my_range(0, 4, 0.5))
 print(x)
 print(next(x))
-print(next(x))
-print(next(x))
-print(next(x))
-print(next(x))
-print(next(x))
-print(next(x))
-print(next(x))
 print(list(my_range(0, 4, 0.5)))
 
 """
@@ -1208,14 +1201,17 @@ print(list(my_range(0, 4, 0.5)))
 
 class Fib:
     def __init__(self, fibmax):
+        print('~~~ __init__()~~~')
         self.a = 0
         self.b = 1
         self.fibmax = fibmax
 
     def __iter__(self):
+        print('~~~ __iter__()~~~')
         return self
 
     def __next__(self):
+        print('~~~ __next__()~~~')
         fib = self.a  # 返回的值从 0 开始
         if fib > self.fibmax:  # 超过最大值，抛出异常
             raise StopIteration
@@ -1228,6 +1224,8 @@ class Fib:
 
 print(list(Fib(200)))
 
-fx = Fib(200)
+fx = Fib(3)
 for idx in range(13):
     print('斐波那契数列的第 {} 个数是：{}'.format(idx+1, next(fx)))
+
+print(list(Fib(3)))
