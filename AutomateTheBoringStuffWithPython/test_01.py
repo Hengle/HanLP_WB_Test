@@ -1228,6 +1228,6 @@ class Fib:
 
 print(list(Fib(200)))
 
-x = Fib(200)
-for i in range(13):
-    print('斐波那契数列的第 {} 个数是：{}'.format(i+1, next(x)))
+fx = Fib(200)
+for idx in range(13):
+    print('斐波那契数列的第 {} 个数是：{}'.format(idx+1, next(fx)))
