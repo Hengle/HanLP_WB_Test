@@ -1264,10 +1264,20 @@ def f_fib(count):  # 定义一个生成器函数
 
 
 f = f_fib(12)  # 生成器函数被调用
-print(f)  # 返回给 f 的是一个生成器 generator object
+
+print('--------------------------------------')
+print('返回给 f 的是一个生成器（generator object），而不是具体的值')
+print('f = ', f)
+print('不使用 for 循环，直接使用 next()')
 while True:
     try:
-        print('{} '.format(next(f)), end='')
+        print('{} '.format(next(f)), end='')  # 生成器返回的值
     except StopIteration as e:
         print('\n生成器最后的返回值是：', e.value)
         break
+
+print('--------------------------------------')
+print('使用 for 循环')
+for fib_val in f_fib(12):
+    print('%d ' % fib_val, end='')
+    # print('', fib_val, end='')
