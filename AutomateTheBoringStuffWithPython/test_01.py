@@ -1252,7 +1252,7 @@ yield 一次返回一个结果，在每个结果中间，挂起函数的状态，以便下次从它离开
 """
 
 
-def f_fib(count):
+def f_fib(count):  # 定义一个生成器
     fib_n, fib_a, fib_b = 0, 0, 1
     while fib_n < count:
         yield fib_a
@@ -1260,11 +1260,11 @@ def f_fib(count):
     return '亲！没有数据了...'
 
 
-f = f_fib(12)
-print(f)
+f = f_fib(12)  # 调用生成器生成12个数
+print(f)  # 数字还没出来
 while True:
     try:
-        print('f = ', next(f))
+        print('{} '.format(next(f)), end='')
     except StopIteration as e:
-        print('生成器最后的返回值是：', e.value)
+        print('\n生成器最后的返回值是：', e.value)
         break
