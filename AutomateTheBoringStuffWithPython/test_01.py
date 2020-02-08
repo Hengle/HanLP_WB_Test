@@ -146,13 +146,13 @@ print('´úÂëÊµ¼ù 4.10.1 ¶ººÅ´úÂë')
 
 
 def xxx(input1):
-    s = ''
+    ss = ''
     for i in range(len(input1)):
         if i == len(input1) - 1:
-            s += 'and ' + input1[i]
+            ss += 'and ' + input1[i]
         else:
-            s += input1[i] + ", "
-    print(s)
+            ss += input1[i] + ", "
+    print(ss)
 
 
 string2 = ['apples', 'bananas', 'tofu', 'cats', 'a', 'b', 'c', 'd']
