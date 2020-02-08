@@ -1254,7 +1254,7 @@ yield 一次返回一个结果，在每个结果中间，挂起函数的状态，以便下次从它离开
 
 def f_fib(count):
     fib_n, fib_a, fib_b = 0, 0, 1
-    while n < count:
+    while fib_n < count:
         yield fib_a
         fib_n, fib_a, fib_b = fib_n + 1, fib_b, fib_a + fib_b
     return '亲！没有数据了...'
