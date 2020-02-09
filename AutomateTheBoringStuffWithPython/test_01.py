@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import shelve
 import json
+import time
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('控制流')
@@ -1306,20 +1307,20 @@ print(list(f_fib(12)))
 """
 print('--------------------------------------')
 print('列表')
-l = [x*2 for x in range(11)]
+l = [x * 2 for x in range(11)]
 print(l)
 
 print('--------------------------------------')
 print('生成器表达式')
 print('隐式使用 for 循环')
-g = (x*2 for x in range(11))
+g = (x * 2 for x in range(11))
 print(g)
 print(list(g))
 
 print('--------------------------------------')
 print('生成器表达式')
 print('显式使用 for 循环')
-g = (x*2 for x in range(11))
+g = (x * 2 for x in range(11))
 print([i for i in g])
 
 """
@@ -1341,10 +1342,11 @@ generator 函数被显示或隐式调用 __next__ 的时候被执行，遇到 yield
 """
 
 """
-对yield的总结
-（1）通常的for..in...循环中，in后面是一个数组，这个数组就是一个可迭代对象，
-类似的还有链表，字符串，文件。
-他可以是a = [1,2,3]，也可以是a = [x*x for x in range(3)]。
+对 yield 的总结
+
+（1）在 for ... in ... 循环中，in后面是一个数组，
+这个数组就是一个可迭代对象，类似的还有链表，字符串，文件等等，
+它可以是a = [1,2,3]，也可以是a = [x*x for x in range(3)]。
 它的缺点也很明显，就是所有数据都在内存里面，如果有海量的数据，将会非常耗内存。
 
 （2）生成器是可以迭代的，但是只可以读取它一次。
@@ -1367,14 +1369,45 @@ generator 函数被显示或隐式调用 __next__ 的时候被执行，遇到 yield
 （7）带有 yield 的函数不仅仅是只用于 for 循环，而且可用于某个函数的参数，
 只要这个函数的参数也允许迭代参数。
 
-（8）send() 和 next() 的区别就在于 send 可传递参数给 yield 表达式，
-这时候传递的参数就会作为 yield 表达式的值，而 yield 的参数是返回给调用者
-的值，也就是说 send 可以强行修改上一个 yield 表达式值。
+（8）send() 和 next() 的区别就在于 send() 可传递参数给 yield，
+这时候传递的参数就会作为 yield 的值。
 
 （9）send() 和 next() 都有返回值，他们的返回值是当前迭代遇到的 yield 
-的时候，yield 右边表达式的值，其实就是当前迭代 yield 右边的参数。
+的时候，yield 右边表达式的值。
 
-（10）第一次调用时候必须先 next() 或 send()，否则会报错，send() 后
-之所以为 None 是因为这时候没有上一个 yield，所以也可以认为 next()等同于
-send(None)
+（10）第一次调用时候必须先 next() 或 send() 或 send(None)，否则会报错。
 """
+
+print('--------------------------------------')
+print('yield 放在表达式的右侧')
+
+
+def consumer(teacher_name):
+    print('[%s]老师来了，准备上课啦!' % teacher_name)
+    while True:
+        # yield 出现在表达式的右边，如果没有参数传进来
+        # yield 的值取 None
+        lesson = yield
+        print('[%s]老师讲第[%s]课。。。' % (teacher_name, lesson))
+
+
+def producer():
+    c1 = consumer('张')
+    c2 = consumer('王')
+    print(c1)
+    print(c2)
+    c1.send(None)  # c1.__next__()
+    c1.__next__()
+    c2.__next__()
+    c1.__next__()
+    print('同学们开始上课了!')
+    for i in range(3):
+        time.sleep(1)
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print('现在开始请老师们上第[%d]课' % i)
+        c1.send(i)  # 请张老师上第i课，传递参数 i
+        c2.send(i)  # 请王老师上第i课，传递参数 i
+        print('老师们的第[%d]课都上完了' % i)
+
+
+producer()
