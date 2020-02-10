@@ -1434,10 +1434,11 @@ def scope_test():
     print("After local assignment:", spam)
     do_nonlocal()
     print("After nonlocal assignment:", spam)
-    do_global()
+    do_global()  # 注意，函数修改了全局变量
+    # 但是打印函数中的 spam 参数不是全局变量
     print("After global assignment:", spam)
 
-
-spam = 'xxx'
+spam = '-=xxx=-'
 scope_test()
+# 这里打印函数中的 spam 参数才是全局变量
 print("In global scope:", spam)
