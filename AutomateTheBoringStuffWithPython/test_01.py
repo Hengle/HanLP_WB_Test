@@ -9,7 +9,7 @@ from pathlib import Path
 import shelve
 import json
 import time
-import AutomateTheBoringStuffWithPython.myCats
+import AutomateTheBoringStuffWithPython.myCats as Cat
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('¿ØÖÆÁ÷')
