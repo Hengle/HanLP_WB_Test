@@ -9,7 +9,7 @@ from pathlib import Path
 import shelve
 import json
 import time
-import AutomateTheBoringStuffWithPython.myCats as cat
+import AutomateTheBoringStuffWithPython.myCats as myCat
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('¿ØÖÆÁ÷')
@@ -392,17 +392,17 @@ def multi_line_comment():
 
 
 def string_cut():
-    spam = 'Hello, World!'
-    print(spam[0])
-    print(spam[4])
-    print(spam[-1])
-    print(spam[0:5])
-    print(spam[:2])
-    print(spam[5:])
-    print(spam[:])
-    print(spam.lower())
-    print(spam.upper())
-    print(spam)
+    my_spam = 'Hello, World!'
+    print(my_spam[0])
+    print(my_spam[4])
+    print(my_spam[-1])
+    print(my_spam[0:5])
+    print(my_spam[:2])
+    print(my_spam[5:])
+    print(my_spam[:])
+    print(my_spam.lower())
+    print(my_spam.upper())
+    print(my_spam)
 
 
 string_cut()
@@ -1413,8 +1413,8 @@ def producer():
 
 producer()
 
-print(cat.cats)
-print(cat.__doc__)
+print(myCat.cats)
+print(myCat.__doc__)
 
 
 def scope_test():
