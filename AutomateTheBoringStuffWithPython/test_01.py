@@ -1438,6 +1438,7 @@ def scope_test():
     # 但是打印函数中的 spam 参数不是全局变量
     print("After global assignment:", spam)
 
+
 spam = '-=xxx=-'
 scope_test()
 # 这里打印函数中的 spam 参数才是全局变量
