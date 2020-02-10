@@ -9,6 +9,7 @@ from pathlib import Path
 import shelve
 import json
 import time
+import AutomateTheBoringStuffWithPython.myCats
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('控制流')
@@ -1307,8 +1308,8 @@ print(list(f_fib(12)))
 """
 print('--------------------------------------')
 print('列表')
-l = [x * 2 for x in range(11)]
-print(l)
+list_test = [x * 2 for x in range(11)]
+print(list_test)
 
 print('--------------------------------------')
 print('生成器表达式')
