@@ -9,7 +9,7 @@ from pathlib import Path
 import shelve
 import json
 import time
-import AutomateTheBoringStuffWithPython.myCats as Cat
+import AutomateTheBoringStuffWithPython.myCats as cat
 
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('控制流')
@@ -1403,7 +1403,7 @@ def producer():
     c1.__next__()
     print('同学们开始上课了!')
     for i in range(3):
-        time.sleep(1)
+        time.sleep(0.1)
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
         print('现在开始请老师们上第[%d]课' % i)
         c1.send(i)  # 请张老师上第i课，传递参数 i
@@ -1412,3 +1412,32 @@ def producer():
 
 
 producer()
+
+print(cat.cats)
+print(cat.__doc__)
+
+
+def scope_test():
+    def do_local():
+        spam = "local spam"
+
+    def do_nonlocal():
+        nonlocal spam
+        spam = "nonlocal spam"
+
+    def do_global():
+        global spam
+        spam = "global spam"
+
+    spam = "test spam"
+    do_local()
+    print("After local assignment:", spam)
+    do_nonlocal()
+    print("After nonlocal assignment:", spam)
+    do_global()
+    print("After global assignment:", spam)
+
+
+spam = 'xxx'
+scope_test()
+print("In global scope:", spam)
