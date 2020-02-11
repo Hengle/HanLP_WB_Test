@@ -1446,7 +1446,8 @@ print("In global scope:", spam)
 
 
 class MyClass:
-    i = 12345
+    i = [0, 1, 2, 3, 4]
+    j = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4}
 
     def fu(self):
         print('xxx')
@@ -1457,4 +1458,8 @@ print(MyClass)
 print(c)
 print(MyClass.fu)
 print(c.fu)
-c.fu()
+print(len(c.i))
+print(c.i[2])
+print(c.i.__getitem__(2))
+print(c.j['e'])
+print(c.j.__getitem__('e'))
