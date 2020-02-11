@@ -1443,3 +1443,18 @@ spam = '-=xxx=-'
 scope_test()
 # 这里打印函数中的 spam 参数才是全局变量
 print("In global scope:", spam)
+
+
+class MyClass:
+    i = 12345
+
+    def fu(self):
+        print('xxx')
+
+
+c = MyClass()
+print(MyClass)
+print(c)
+print(MyClass.fu)
+print(c.fu)
+c.fu()
