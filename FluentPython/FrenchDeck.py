@@ -42,13 +42,13 @@ print('随机抽一张牌：{}'.format(random.choice(deck)))  # __getitem__
 
 print('~~修改~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('打印第 1，2 张牌：{}'.format(deck[:2]))  # __getitem__
-# deck[0] = Card('2', 'hearts')  # __setitem__
+deck[0] = Card('2', 'hearts')  # __setitem__
 print('打印第 1，2 张牌：{}'.format(deck[:2]))  # __getitem__
 
 print('~~排序~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('按牌的大小，降序排列，使用多变量循环限制打印数量为 3 张')
-# for i, card in zip(range(4), sorted(deck, key=spades_high, reverse=False)):
-#     print(card)
+for i, card in zip(range(4), sorted(deck, key=spades_high, reverse=False)):
+    print(card)
 
 print('~~洗牌~~~~~~~~~~~~~~~~~~~~~~~~~~')
 length = len(deck)
