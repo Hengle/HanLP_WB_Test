@@ -42,7 +42,7 @@ print('随机抽一张牌：{}'.format(random.choice(deck)))  # __getitem__
 
 print('~~修改~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('打印第 1，2 张牌：{}'.format(deck[:2]))  # __getitem__
-deck[0] = Card('2', 'hearts')  # __setitem__
+deck[0] = Card('4', 'hearts')  # __setitem__
 print('打印第 1，2 张牌：{}'.format(deck[:2]))  # __getitem__
 
 print('~~排序~~~~~~~~~~~~~~~~~~~~~~~~~~')
@@ -62,12 +62,14 @@ for i in range(0, length - 1):
     list_temp = deck[:len(deck) - i]  # 当前待抽牌的列表
     random_card = random.choice(list_temp)  # 随机抽一张
     random_card_idx = list_temp.index(random_card)  # 得到索引
-    print('~~ 随机抽到的牌是第 {} 张：{} ~~~~~~~~~~~~~~~'.format(random_card_idx, random_card))
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    print('随机抽到的牌是第 {} 张：{}'.format(random_card_idx, random_card))
 
     # 将抽到的牌与第 len(deck) - i 张交换，其索引是 len(deck) - i - 1
     deck[random_card_idx] = deck[len(deck) - i - 1]
     deck[len(deck) - i - 1] = random_card
 
-print('洗牌完成后的结果：\n ~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('洗牌完成，最终的结果是：')
 for card in deck:
     print(card)
