@@ -5,6 +5,8 @@ import collections
 import random
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
+
+
 # print(Card)
 # field_names = 'rank, suit'
 # if isinstance(field_names, str):
@@ -33,11 +35,20 @@ class FrenchDeck:
         return self._cards[position]
 
 
-deck = FrenchDeck()
-print(len(deck))
-print(random.choice(deck))
-print(random.choice(deck))
+deck = FrenchDeck()  # 构建一副牌
+print('牌的数量 = %d' % len(deck))
+print('随机抽一张牌：{}'.format(random.choice(deck)))
 
+suit_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
+
+
+def spades_high(card):
+    rank_value = FrenchDeck.ranks.index(card.rank)
+    return rank_value * len(suit_values) + suit_values[card.suit]
+
+
+# for card in deck:  # doctest: +ELLIPSIS
+#     print(card)
 '''
 print(A.__len__())
 print(A.__getitem__(2))
