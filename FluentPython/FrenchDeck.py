@@ -29,7 +29,7 @@ class FrenchDeck:
         return '-= XXX 没有 __str__ 的时候才调用 =-'
 
     def __str__(self):
-        return '-= 这个打印的时候优先使用 =-'
+        return '-= 打印的时候优先使用这个函数 =-'
 
 
 # 花色等级
