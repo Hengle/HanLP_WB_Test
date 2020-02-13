@@ -26,8 +26,10 @@ class FrenchDeck:
         self._cards[position] = card_value
 
     def __repr__(self):
-        return '-= XXX =-'
+        return '-= XXX 没有 __str__ 的时候才调用 =-'
 
+    def __str__(self):
+        return '-= 这个打印的时候优先使用 =-'
 
 # 花色等级
 suit_values = dict(xxx=4, spades=3, hearts=2, diamonds=1, clubs=0)
