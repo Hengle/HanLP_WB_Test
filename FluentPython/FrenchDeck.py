@@ -8,7 +8,7 @@ Card = collections.namedtuple('Card', ['rank', 'suit'])
 
 
 class FrenchDeck:
-    ranks = [str(n) for n in range(2, 11)] + list('JQKA')
+    ranks = [str(n) for n in range(9, 11)] + list('JQKA')
     # suits = 'spades diamonds clubs hearts'.split()
     suits = 'xxx'.split()
 
@@ -31,6 +31,7 @@ class FrenchDeck:
     def __str__(self):
         return '-= 这个打印的时候优先使用 =-'
 
+
 # 花色等级
 suit_values = dict(xxx=4, spades=3, hearts=2, diamonds=1, clubs=0)
 
@@ -50,7 +51,7 @@ print('随机抽一张牌：{}'.format(random.choice(deck)))  # __getitem__
 
 print('~~修改~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('打印第 1，2 张牌：{}'.format(deck[:2]))  # __getitem__
-deck[0] = Card('4', 'hearts')  # __setitem__
+deck[1] = Card('Q', 'hearts')  # __setitem__
 print('打印第 1，2 张牌：{}'.format(deck[:2]))  # __getitem__
 
 print('~~排序~~~~~~~~~~~~~~~~~~~~~~~~~~')
