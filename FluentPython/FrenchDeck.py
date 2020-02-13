@@ -25,6 +25,9 @@ class FrenchDeck:
     def __setitem__(self, position, card_value):
         self._cards[position] = card_value
 
+    def __repr__(self):
+        return '-= XXX =-'
+
 
 # 花色等级
 suit_values = dict(xxx=4, spades=3, hearts=2, diamonds=1, clubs=0)
@@ -37,6 +40,9 @@ def spades_high(my_card):
 
 print('~~构建~~~~~~~~~~~~~~~~~~~~~~~~~~')
 deck = FrenchDeck()  # 构建一副牌 __init__
+print(FrenchDeck)
+print(FrenchDeck())
+print(deck)  # __repr__ 注意其 self 参数，是一个实例函数
 print('牌的数量 = %d' % len(deck))  # __len__
 print('随机抽一张牌：{}'.format(random.choice(deck)))  # __getitem__
 
@@ -51,8 +57,7 @@ for i, card in zip(range(4), sorted(deck, key=spades_high, reverse=False)):
     print(card)
 
 print('~~洗牌~~~~~~~~~~~~~~~~~~~~~~~~~~')
-length = len(deck)
-for i in range(0, length - 1):
+for i in range(0, len(deck) - 1):
 
     print('i = {}'.format(i))
     for card in deck:
