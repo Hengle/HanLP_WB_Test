@@ -82,3 +82,13 @@ print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('洗牌完成，最终的结果是：')
 for card in deck:
     print(card)
+
+symbols = '我们'
+print([ord(s) for s in symbols if ord(s) > 20204])
+
+a = [5, 7, 6, 3, 4, 1, 2]
+print(sorted(a, reverse=True))
+students = [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+print(sorted(students, key=lambda s: s[2]))
+t = 20, 8
+divmod(*t)
