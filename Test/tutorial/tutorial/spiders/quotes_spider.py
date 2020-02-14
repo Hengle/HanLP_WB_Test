@@ -17,7 +17,7 @@ import scrapy
 """
 
 
-# 运行命令：scrapy crawl quotes -o quotes.json
+# 运行命令：scrapy crawl quotes -o out_quotes.json
 class QuotesSpider(scrapy.Spider):
     name = "quotes"  # 爬虫的唯一标识
     # start_urls_0 = [  # 开始爬取的资源链接列表
@@ -56,7 +56,7 @@ class QuotesSpider(scrapy.Spider):
             }
 
 
-# 运行命令：scrapy crawl douban -o douban.json
+# 运行命令：scrapy crawl douban -o out_douban.json
 class DoubanSpider(scrapy.Spider):
     name = "douban"
 
