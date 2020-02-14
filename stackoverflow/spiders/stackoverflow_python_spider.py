@@ -5,6 +5,7 @@ from stackoverflow.items import StackoverflowItem
 import scrapy
 
 
+# ‘À––√¸¡Ó£∫scrapy crawl stackoverflow-python
 class StackoverflowPythonSpider(scrapy.Spider):
     name = "stackoverflow-python"
 
