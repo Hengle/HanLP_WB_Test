@@ -393,7 +393,7 @@ CLASSES
      |      Raises ValueError if the value is not present.
 
 FUNCTIONS
-    click(x=None, y=None, clicks=1, interval=0.0, button='primary', duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=None, _pause=True)
+    click(x=None, y=None, clicks=1, interval=0.0, button='primary', duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=None, _pause=True)
         Performs pressing a mouse button down and then immediately releasing it.
         
         The x and y parameters detail where the mouse event happens. If None, the
@@ -427,7 +427,7 @@ FUNCTIONS
         This function is meant to be run from the command line. It will
         automatically display the location and RGB of the mouse cursor.
     
-    doubleClick(x=None, y=None, interval=0.0, button='left', duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=None, _pause=True)
+    doubleClick(x=None, y=None, interval=0.0, button='left', duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=None, _pause=True)
         Performs a double click.
         
         This is a wrapper function for click('left', x, y, 2, interval).
@@ -456,7 +456,7 @@ FUNCTIONS
           ValueError: If button is not one of 'left', 'middle', 'right', 1, 2, 3, 4,
             5, 6, or 7
     
-    drag = dragRel(xOffset=0, yOffset=0, duration=0.0, tween=<function linear at 0x000002264D586048>, button='primary', pause=None, logScreenshot=None, _pause=True, mouseDownUp=True)
+    drag = dragRel(xOffset=0, yOffset=0, duration=0.0, tween=<function linear at 0x000001F155800558>, button='primary', pause=None, logScreenshot=None, _pause=True, mouseDownUp=True)
         Performs a mouse drag (mouse movement while a button is held down) to a
         point on the screen, relative to its current position.
         
@@ -483,7 +483,7 @@ FUNCTIONS
         Returns:
           None
     
-    dragRel(xOffset=0, yOffset=0, duration=0.0, tween=<function linear at 0x000002264D586048>, button='primary', pause=None, logScreenshot=None, _pause=True, mouseDownUp=True)
+    dragRel(xOffset=0, yOffset=0, duration=0.0, tween=<function linear at 0x000001F155800558>, button='primary', pause=None, logScreenshot=None, _pause=True, mouseDownUp=True)
         Performs a mouse drag (mouse movement while a button is held down) to a
         point on the screen, relative to its current position.
         
@@ -510,7 +510,7 @@ FUNCTIONS
         Returns:
           None
     
-    dragTo(x=None, y=None, duration=0.0, tween=<function linear at 0x000002264D586048>, button='primary', pause=None, logScreenshot=None, _pause=True, mouseDownUp=True)
+    dragTo(x=None, y=None, duration=0.0, tween=<function linear at 0x000001F155800558>, button='primary', pause=None, logScreenshot=None, _pause=True, mouseDownUp=True)
         Performs a mouse drag (mouse movement while a button is held down) to a
         point on the screen.
         
@@ -626,7 +626,7 @@ FUNCTIONS
         Returns:
           None
     
-    leftClick(x=None, y=None, interval=0.0, duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=None, _pause=True)
+    leftClick(x=None, y=None, interval=0.0, duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=None, _pause=True)
         Performs a right mouse button click.
         
         This is a wrapper function for click('right', x, y).
@@ -655,7 +655,7 @@ FUNCTIONS
         
         Copied from pytweening module.
     
-    middleClick(x=None, y=None, interval=0.0, duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=None, _pause=True)
+    middleClick(x=None, y=None, interval=0.0, duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=None, _pause=True)
         Performs a middle mouse button click.
         
         This is a wrapper function for click('right', x, y).
@@ -676,7 +676,7 @@ FUNCTIONS
         Returns:
           None
     
-    mouseDown(x=None, y=None, button='primary', duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=None, _pause=True)
+    mouseDown(x=None, y=None, button='primary', duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=None, _pause=True)
         Performs pressing a mouse button down (but not up).
         
         The x and y parameters detail where the mouse event happens. If None, the
@@ -701,7 +701,7 @@ FUNCTIONS
     
     mouseInfo()
     
-    mouseUp(x=None, y=None, button='primary', duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=None, _pause=True)
+    mouseUp(x=None, y=None, button='primary', duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=None, _pause=True)
         Performs releasing a mouse button up (but not down beforehand).
         
         The x and y parameters detail where the mouse event happens. If None, the
@@ -724,7 +724,7 @@ FUNCTIONS
         Raises:
           ValueError: If button is not one of 'left', 'middle', 'right', 1, 2, or 3
     
-    move = moveRel(xOffset=None, yOffset=None, duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=False, _pause=True)
+    move = moveRel(xOffset=None, yOffset=None, duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=False, _pause=True)
         Moves the mouse cursor to a point on the screen, relative to its current
         position.
         
@@ -748,7 +748,7 @@ FUNCTIONS
         Returns:
           None
     
-    moveRel(xOffset=None, yOffset=None, duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=False, _pause=True)
+    moveRel(xOffset=None, yOffset=None, duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=False, _pause=True)
         Moves the mouse cursor to a point on the screen, relative to its current
         position.
         
@@ -772,7 +772,7 @@ FUNCTIONS
         Returns:
           None
     
-    moveTo(x=None, y=None, duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=False, _pause=True)
+    moveTo(x=None, y=None, duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=False, _pause=True)
         Moves the mouse cursor to a point on the screen.
         
         The x and y parameters detail where the mouse event happens. If None, the
@@ -842,7 +842,7 @@ FUNCTIONS
         Returns:
           None
     
-    rightClick(x=None, y=None, interval=0.0, duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=None, _pause=True)
+    rightClick(x=None, y=None, interval=0.0, duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=None, _pause=True)
         Performs a right mouse button click.
         
         This is a wrapper function for click('right', x, y).
@@ -938,7 +938,7 @@ FUNCTIONS
     
     sleep(seconds)
     
-    tripleClick(x=None, y=None, interval=0.0, button='left', duration=0.0, tween=<function linear at 0x000002264D586048>, pause=None, logScreenshot=None, _pause=True)
+    tripleClick(x=None, y=None, interval=0.0, button='left', duration=0.0, tween=<function linear at 0x000001F155800558>, pause=None, logScreenshot=None, _pause=True)
         Performs a triple click..
         
         This is a wrapper function for click('left', x, y, 3, interval).
@@ -1056,6 +1056,6 @@ VERSION
     0.9.48
 
 FILE
-    c:\users\bwang\anaconda3\envs\hanlp\lib\site-packages\pyautogui\__init__.py
+    c:\users\bwang\anaconda3\envs\wbtest\lib\site-packages\pyautogui\__init__.py
 
 
