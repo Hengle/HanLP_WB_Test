@@ -17,22 +17,23 @@ import scrapy
 """
 
 
+# 运行命令：scrapy crawl quotes -o quotes.json
 class QuotesSpider(scrapy.Spider):
     name = "quotes"  # 爬虫的唯一标识
-    start_urls_0 = [  # 开始爬取的资源链接列表
-        'http://quotes.toscrape.com/page/1/',
-        'http://quotes.toscrape.com/page/2/',
-    ]
-    start_urls = ['https://movie.douban.com/chart']
+    # start_urls_0 = [  # 开始爬取的资源链接列表
+    #     'http://quotes.toscrape.com/page/1/',
+    #     'http://quotes.toscrape.com/page/2/',
+    # ]
+    # start_urls = ['https://movie.douban.com/chart']
 
     # 生成网页链接：可以返回链接的列表，或者写一个链接生成器。
-    # def start_requests(self):
-    #    urls = [
-    #        'http://quotes.toscrape.com/page/1/',
-    #        'http://quotes.toscrape.com/page/2/',
-    #    ]
-    #    for url in urls:
-    #        yield scrapy.Request(url=url, callback=self.parse)
+    def start_requests(self):
+        urls = [
+            'http://quotes.toscrape.com/page/1/',
+            'http://quotes.toscrape.com/page/2/',
+        ]
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
 
     # parse()方法用来解析每个 Request 所下载的响应。它提取爬取的数据作为字典，
     # 还查找要遵循的新 URL 并从中创建新请求（Request）。
@@ -55,6 +56,7 @@ class QuotesSpider(scrapy.Spider):
             }
 
 
+# 运行命令：scrapy crawl douban -o douban.json
 class DoubanSpider(scrapy.Spider):
     name = "douban"
 
