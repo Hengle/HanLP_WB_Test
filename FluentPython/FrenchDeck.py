@@ -83,8 +83,8 @@ print('洗牌完成，最终的结果是：')
 for card in deck:
     print(card)
 
-symbols = '我们'
-print([ord(s) for s in symbols if ord(s) > 20204])
+symbols = '我们?'
+print([ord(s) for s in symbols if ord(s) > 0])
 
 a = [5, 7, 6, 3, 4, 1, 2]
 print(sorted(a, reverse=True))
@@ -92,3 +92,15 @@ students = [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
 print(sorted(students, key=lambda s: s[2]))
 t = 20, 8
 divmod(*t)
+
+metro_areas = [
+    ('Tokyo', 'JP', 36.933, (35.689722, 139.691667)),
+    ('Delhi NCR', 'IN', 21.935, (28.613889, 77.208889)),
+    ('Mexico City', 'MX', 20.142, (19.433333, -99.133333)),
+    ('New York-Newark', 'US', 20.104, (40.808611, -74.020386)),
+    ('Sao Paulo', 'BR', 19.649, (-23.547778, -46.635833)),
+]
+print('{:15} | {:^9} | {:^9} |'.format('', 'lat.', 'long.'))
+str_fmt = '{:15} | {:9.4f} | {:9.4f} |'
+for name, cc, pop, (latitude, longitude) in metro_areas:
+    print(str_fmt.format(name, latitude, longitude))
