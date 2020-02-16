@@ -77,7 +77,6 @@ for i in range(0, len(deck) - 1):
     # 将抽到的牌与第 len(deck) - i 张交换，其索引是 len(deck) - i - 1
     deck[random_card_idx] = deck[len(deck) - i - 1]
     deck[len(deck) - i - 1] = random_card
-
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print('洗牌完成，最终的结果是：')
 for card in deck:
@@ -104,3 +103,48 @@ print('{:15} | {:^9} | {:^9} |'.format('', 'lat.', 'long.'))
 str_fmt = '{:15} | {:9.4f} | {:9.4f} |'
 for name, cc, pop, (latitude, longitude) in metro_areas:
     print(str_fmt.format(name, latitude, longitude))
+
+# 具名元组，类
+City = collections.namedtuple('City', 'name country population coordinates')
+tokyo = City('Tokyo', 'JP', 36.933, (35.689722, 139.691667))
+
+LatLong = collections.namedtuple('LatLong', 'lat long')  # 具名元组
+delhi_data = ('Delhi NCR', 'IN', 21.935, LatLong(28.613889, 77.208889))  # 元组
+delhi_data2 = ('Delhi NCR', 'IN', 21.935, (28.613889, 77.208889))
+delhi_data3 = ['Delhi NCR', 'IN', 21.935, LatLong(28.613889, 77.208889)]
+delhi_data4 = ['Delhi NCR', 'IN', 21.935, [28.613889, 77.208889]]
+delhi = City._make(delhi_data)
+delhi2 = City._make(delhi_data2)
+delhi3 = City._make(delhi_data3)
+delhi4 = City._make(delhi_data4)
+print(type(delhi))
+print(type(delhi2))
+print(type(delhi3))
+print(type(delhi4))
+print(delhi)
+print(delhi2)
+print(delhi3)
+print(delhi4)
+
+for key, value in delhi._asdict().items():
+    print(key + ':', value)
+
+"""
+print(tokyo)
+print(City.coordinates)
+print(tokyo[0])
+print(City._asdict(tokyo))  # 实例方法
+print(tokyo._asdict())  # 实例方法
+print(City._fields)  # 类方法
+# print(tokyo._field_types)
+print(type(delhi_data))
+print(type(tokyo))
+"""
+
+invoice = """
+0.....6................................40........52...55........
+1909  Pimoroni PiBrella                    $17.50    3    $52.50
+1489  6mm Tactile Switch x20                $4.95    2     $9.90
+1510  Panavise Jr. - PV-201                $28.00    1    $28.00
+1601  PiTFT Mini Kit 320x240               $34.95    1    $34.95
+"""
