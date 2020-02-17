@@ -156,3 +156,24 @@ ITEM_TOTAL = slice(55, None)
 line_items = invoice.split('\n')[2:]
 for item in line_items:
     print(item[DESCRIPTION], item[UNIT_PRICE])
+
+temp_l = list(range(10))
+# 以下语句错误，如果赋值的对象是一个切片，那么赋值语句的右侧必须是个可迭代对象。
+# 即便只有单独一个值，也要把它转换成可迭代的序列。
+# temp_l[2:5] = 100
+print(temp_l)
+temp_l[2:5] = [100, 100, 100, 100]
+print(temp_l)
+
+board1 = ('-',) * 3  # 构成元组
+board2 = ['-', ] * 3  # 构成列表
+board3 = [['-'] * 3 for i in range(3)]  # 3 个列表构成的列表
+board4 = [['-'] * 3] * 3  # 错误的，这 3 个列表是对同一个列表的引用
+print(board1)
+print(board2)
+print(board3)
+print(board4)
+board3[1][2] = 'X'
+board4[1][2] = 'X'
+print(board3)
+print(board4)
