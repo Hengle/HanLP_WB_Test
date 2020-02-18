@@ -179,13 +179,11 @@ print(board3)
 print(board4)
 
 tl = [1, 2, 3]
-print(tl)
-print(id(tl))
-tl *= 2
-print(tl)
-print(id(tl))
+print(tl, id(tl))
+tl += [2]
+print(tl, id(tl))  # tl 仍然指向原来的地址
 
 tl2 = 1, 2, 3
 print(tl2, id(tl2))
-tl2 += 2
-print(tl2, id(tl2))
+tl2 += (2,)
+print(tl2, id(tl2))  # tl2 指向新的地址
