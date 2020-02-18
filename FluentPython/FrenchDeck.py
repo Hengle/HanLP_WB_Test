@@ -3,6 +3,8 @@
 
 import collections
 import random
+import bisect
+import os
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
 
@@ -178,12 +180,36 @@ board4[1][2] = 'X'
 print(board3)
 print(board4)
 
-tl = [1, 2, 3]
-print(tl, id(tl))
-tl += [2]
-print(tl, id(tl))  # tl 仍然指向原来的地址
+tl1 = [1, 2, 3]
+print(tl1, id(tl1))
+tl1 += [2]
+print(tl1, id(tl1))  # tl 仍然指向原来的地址
 
 tl2 = 1, 2, 3
 print(tl2, id(tl2))
 tl2 += (2,)
-print(tl2, id(tl2))  # tl2 指向新的地址
+print(tl2, id(tl2), 'sss', tl2)  # tl2 指向新的地址
+
+HAYSTACK = [1, 4, 5, 6, 8, 12, 15, 20, 21, 23, 23, 26, 29, 30]
+NEEDLES = [0, 1, 2, 5, 8, 10, 22, 23, 29, 30, 31]
+# ----------0--------1----------2--0
+ROW_FMT = '{0:2d} @ {1:2d}    {2}{0:<2d}'
+
+
+def demo(bisect_fn):
+    for needle in reversed(NEEDLES):
+        position = bisect_fn(HAYSTACK, needle, lo=4, hi=8)
+        offset = position * '  |'
+        print(ROW_FMT.format(needle, position, offset))
+
+
+fn = bisect.bisect
+# fn = bisect.bisect_left
+print('DEMO:', fn.__name__)
+print('haystack ->', ' '.join('%2d' % n for n in HAYSTACK))
+demo(fn)
+
+
+def grade(score, breakpoints=[60, 70, 80, 90], grades='EDCBA'):
+    idx = bisect.bisect(breakpoints, score)
+    return grades[i]
