@@ -177,3 +177,15 @@ board3[1][2] = 'X'
 board4[1][2] = 'X'
 print(board3)
 print(board4)
+
+tl = [1, 2, 3]
+print(tl)
+print(id(tl))
+tl *= 2
+print(tl)
+print(id(tl))
+
+tl2 = 1, 2, 3
+print(tl2, id(tl2))
+tl2 += 2
+print(tl2, id(tl2))
