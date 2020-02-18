@@ -5,6 +5,7 @@ import collections
 import random
 import bisect
 import array
+import numpy
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
 
@@ -192,7 +193,7 @@ print(tl2, id(tl2), 'sss', tl2)  # tl2 指向新的地址
 
 HAYSTACK = [1, 4, 5, 6, 8, 12, 15, 20, 21, 23, 23, 26, 29, 30]
 NEEDLES = [0, 1, 2, 5, 8, 10, 22, 23, 29, 30, 31]
-# ----------0--------1----------2--0
+# ----------0--------1---------2--0
 ROW_FMT = '{0:2d} @ {1:2d}    {2}{0:<2d}'
 
 
@@ -248,3 +249,5 @@ print(memv_oct.tolist())
 memv_oct[4] = 78  # 低字节 1*78 + 256*0 = 78
 memv_oct[7] = 1  # 高字节 1*1 + 256*1 = 257
 print(numbers)
+
+# NmuPy 二维数组
