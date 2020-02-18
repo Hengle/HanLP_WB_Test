@@ -4,7 +4,7 @@
 import collections
 import random
 import bisect
-import os
+import array
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
 
@@ -209,7 +209,42 @@ print('DEMO:', fn.__name__)
 print('haystack ->', ' '.join('%2d' % n for n in HAYSTACK))
 demo(fn)
 
+breakpoints = [60, 70, 80, 90]
 
-def grade(score, breakpoints=[60, 70, 80, 90], grades='EDCBA'):
-    idx = bisect.bisect(breakpoints, score)
-    return grades[i]
+
+def grade(score, bps=breakpoints, grades='EDCBA'):
+    idx = bisect.bisect(bps, score)
+    return grades[idx]
+
+
+print([grade(score) for score in [33, 99, 77, 70, 89, 90, 100]])
+
+for score in [33, 99, 77, 70, 89, 90, 100]:
+    bisect.insort(breakpoints, score)
+    print('%3d ->' % score, breakpoints)
+
+# 一个很大的浮点数组
+# floats = array.array('d', [random.random() for i in range(10**8)])  # 消耗4G内存
+floats = array.array('d', (random.random() for i in range(10 ** 6)))  # 消耗1G内存
+fp = open('floats.bin', 'wb')
+floats.tofile(fp)
+fp.close()
+print(len(floats))
+print(floats[-1])
+print('------------------')
+floats2 = array.array('d')
+fp = open('floats.bin', 'rb')
+floats2.fromfile(fp, 10 ** 6)
+fp.close()
+print(floats2[-1])
+print(floats2.typecode)
+
+# 内存视图
+numbers = array.array('h', [-2, -1, 0, 1, 2])
+memv = memoryview(numbers)
+print('len =', len(memv), '\n', 'memv[0] =', memv[0])
+memv_oct = memv.cast('B')
+print(memv_oct.tolist())
+memv_oct[4] = 78  # 低字节 1*78 + 256*0 = 78
+memv_oct[7] = 1  # 高字节 1*1 + 256*1 = 257
+print(numbers)
