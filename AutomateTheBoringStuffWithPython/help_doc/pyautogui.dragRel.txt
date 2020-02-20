@@ -1,6 +1,6 @@
 Help on function dragRel in pyautogui:
 
-pyautogui.dragRel = dragRel(xOffset=0, yOffset=0, duration=0.0, tween=<function linear at 0x000001F17EDA6048>, button='primary', pause=None, logScreenshot=None, _pause=True, mouseDownUp=True)
+pyautogui.dragRel = dragRel(xOffset=0, yOffset=0, duration=0.0, tween=<function linear at 0x0000016916101558>, button='primary', pause=None, logScreenshot=None, _pause=True, mouseDownUp=True)
     Performs a mouse drag (mouse movement while a button is held down) to a
     point on the screen, relative to its current position.
     
