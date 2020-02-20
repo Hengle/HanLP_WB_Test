@@ -251,4 +251,6 @@ memv_oct[7] = 1  # 高字节 1*1 + 256*1 = 257
 print(numbers)
 
 # NmuPy 二维数组
-##
+a = numpy.arange(12)
+print(a, type(a), a.shape)
+# sss
