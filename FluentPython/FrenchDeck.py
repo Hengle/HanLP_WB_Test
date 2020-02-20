@@ -227,14 +227,14 @@ for score in [33, 99, 77, 70, 89, 90, 100]:
 # 一个很大的浮点数组
 # floats = array.array('d', [random.random() for i in range(10**8)])  # 消耗4G内存
 floats = array.array('d', (random.random() for i in range(10 ** 1)))  # 消耗1G内存
-fp = open('floats.bin', 'wb')
+fp = open(r'BinData\floats.bin', 'wb')
 floats.tofile(fp)
 fp.close()
 print(len(floats))
 print(floats[-1])
 print('------------------')
 floats2 = array.array('d')
-fp = open('floats.bin', 'rb')
+fp = open(r'BinData\floats.bin', 'rb')
 floats2.fromfile(fp, 10 ** 1)
 fp.close()
 print(floats2[-1])
