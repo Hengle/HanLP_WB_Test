@@ -253,4 +253,3 @@ print(numbers)
 # NmuPy ถþฮฌสýื้
 a = numpy.arange(12)
 print(a, type(a), a.shape)
-# sss
