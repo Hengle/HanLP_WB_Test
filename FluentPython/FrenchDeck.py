@@ -253,3 +253,7 @@ print(numbers)
 # NmuPy ถþฮฌสýื้
 a = numpy.arange(12)
 print(a, type(a), a.shape)
+a.shape = 3, 4
+print(a, '\n~~~~~~~~~~~~~\n', a[2], '\n~~~~~~~~~~~~~\n',
+      a[2, 1], '\n~~~~~~~~~~~~~\n', a[:, 1], '\n~~~~~~~~~~~~~\n',
+      a.transpose())
