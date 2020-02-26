@@ -11,3 +11,6 @@ def tree_test():
     tree.create_node("Mary", "mary", parent="diane")
     tree.create_node("Mark", "mark", parent="jane")
     tree.show()
+
+
+# tree_test()
