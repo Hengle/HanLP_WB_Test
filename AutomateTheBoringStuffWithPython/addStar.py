@@ -1,13 +1,13 @@
 #! python3
-# coding=gbk
+# coding=utf-8
 
 import pyperclip
 
 text = pyperclip.paste()
 
-lines = text.split('\n')  # ·ÖÀëÎÄ±¾ÖĞµÄĞĞ£¬Ìí¼ÓĞÇºÅ¡£
-for i in range(len(lines)):  # Ã¿Ò»ĞĞ¶¼¼Ó¸öĞÇºÅ
+lines = text.split('\n')  # åˆ†ç¦»æ–‡æœ¬ä¸­çš„è¡Œï¼Œæ·»åŠ æ˜Ÿå·ã€‚
+for i in range(len(lines)):  # æ¯ä¸€è¡Œéƒ½åŠ ä¸ªæ˜Ÿå·
     lines[i] = '* ' + lines[i]
-text = '\n'.join(lines)  # ÖØĞÂÁ¬³ÉÎÄ±¾
+text = '\n'.join(lines)  # é‡æ–°è¿æˆæ–‡æœ¬
 
 pyperclip.copy(text)

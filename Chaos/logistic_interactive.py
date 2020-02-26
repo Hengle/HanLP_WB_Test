@@ -1,3 +1,4 @@
+# coding=utf-8
 """
     Written by Jonny Hyman, 2020
         www.jonnyhyman.com

@@ -1,5 +1,5 @@
 #! python3
-# coding=gbk
+# coding=utf-8
 """
 mcb.pyw - Saves and loads pieces of text to the clipboard.
 
@@ -13,12 +13,12 @@ import sys
 
 mcbShelf = shelve.open('data/mcb')
 
-if len(sys.argv) == 3 and sys.argv[1].lower() == 'save':  # ±£´æµ½¼ôÌù°å
-    mcbShelf[sys.argv[2]] = pyperclip.paste()  # ½«¼ôÌù°åÖĞµÄÄÚÈİ±£´æµ½ shelve£¬¹Ø¼ü×ÖÓÉµÚ¶ş¸ö²ÎÊı´«µİ½øÀ´
-elif len(sys.argv) == 2:  # ÓĞ¿ÉÄÜÊÇĞèÒª´Ó¼ôÌù°å¶ÁÈ¡ÎÄ±¾£¬Ò²ÓĞ¿ÉÄÜÊÇÒª´òÓ¡¹Ø¼ü×ÖÁĞ±í
-    if sys.argv[1].lower() == 'list':  # Òª´òÓ¡ÁĞ±í
-        pyperclip.copy(str(list(mcbShelf.keys())))  # ½«¹Ø¼ü×ÖÁĞ±í´æÈë¼ôÌù°å
-    elif sys.argv[1] in mcbShelf:  # shelve ÖĞÓĞÕâ¸ö¹Ø¼ü×Ö
-        pyperclip.copy(mcbShelf[sys.argv[1]])  # ½«¶ÔÓ¦µÄÎÄ±¾¿½±´µ½¼ôÌù°å
+if len(sys.argv) == 3 and sys.argv[1].lower() == 'save':  # ä¿å­˜åˆ°å‰ªè´´æ¿
+    mcbShelf[sys.argv[2]] = pyperclip.paste()  # å°†å‰ªè´´æ¿ä¸­çš„å†…å®¹ä¿å­˜åˆ° shelveï¼Œå…³é”®å­—ç”±ç¬¬äºŒä¸ªå‚æ•°ä¼ é€’è¿›æ¥
+elif len(sys.argv) == 2:  # æœ‰å¯èƒ½æ˜¯éœ€è¦ä»å‰ªè´´æ¿è¯»å–æ–‡æœ¬ï¼Œä¹Ÿæœ‰å¯èƒ½æ˜¯è¦æ‰“å°å…³é”®å­—åˆ—è¡¨
+    if sys.argv[1].lower() == 'list':  # è¦æ‰“å°åˆ—è¡¨
+        pyperclip.copy(str(list(mcbShelf.keys())))  # å°†å…³é”®å­—åˆ—è¡¨å­˜å…¥å‰ªè´´æ¿
+    elif sys.argv[1] in mcbShelf:  # shelve ä¸­æœ‰è¿™ä¸ªå…³é”®å­—
+        pyperclip.copy(mcbShelf[sys.argv[1]])  # å°†å¯¹åº”çš„æ–‡æœ¬æ‹·è´åˆ°å‰ªè´´æ¿
 
 mcbShelf.close()

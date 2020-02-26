@@ -1,11 +1,11 @@
 #! python3
-# coding=gbk
+# coding=utf-8
 # randomQuizGenerator.py - Creates quizzes with questions and answers in
 # random order, along with the answer key.
 
 import random
 
-# ¿¼ÊÔÓÃµÄÊı¾İ¡£¼üÊÇÖİ£¬ÖµÊÇÖİÊ×¸®¡£
+# è€ƒè¯•ç”¨çš„æ•°æ®ã€‚é”®æ˜¯å·ï¼Œå€¼æ˜¯å·é¦–åºœã€‚
 capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
             'Arkansas': 'Little Rock', 'California': 'Sacramento', 'Colorado': 'Denver',
             'Connecticut': 'Hartford', 'Delaware': 'Dover', 'Florida': 'Tallahassee',
@@ -24,41 +24,41 @@ capitals = {'Alabama': 'Montgomery', 'Alaska': 'Juneau', 'Arizona': 'Phoenix',
             'Virginia': 'Richmond', 'Washington': 'Olympia', 'WestVirginia': 'Charleston',
             'Wisconsin': 'Madison', 'Wyoming': 'Cheyenne'}
 
-# ´´½¨ 3 ·İÊÔ¾í¡£
+# åˆ›å»º 3 ä»½è¯•å·ã€‚
 for quizNum in range(3):
 
-    # ´´½¨¿¼¾íÎÄ¼şºÍ´ğ°¸ÎÄ¼ş
-    quizFile = open(r'data\capitalsquiz%s.txt' % (quizNum + 1), 'w')  # ´´½¨¿¼¾íÎÄ¼ş
-    answerKeyFile = open(r'data\capitalsquiz_answers%s.txt' % (quizNum + 1), 'w')  # ´´½¨´ğ°¸ÎÄ¼ş
+    # åˆ›å»ºè€ƒå·æ–‡ä»¶å’Œç­”æ¡ˆæ–‡ä»¶
+    quizFile = open(r'data\capitalsquiz%s.txt' % (quizNum + 1), 'w')  # åˆ›å»ºè€ƒå·æ–‡ä»¶
+    answerKeyFile = open(r'data\capitalsquiz_answers%s.txt' % (quizNum + 1), 'w')  # åˆ›å»ºç­”æ¡ˆæ–‡ä»¶
 
-    # ´´½¨¿¼¾íÍ·µÄÄÚÈİ
-    quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')  # ¿¼¾íÍ·£ºĞÕÃû£¬ÈÕÆÚ£¬°à¼¶
-    quizFile.write((' ' * 20) + 'State Capitals Quiz (Form %s)' % (quizNum + 1))  # ¿¼¾íµÄÎ¨Ò»±àºÅ
+    # åˆ›å»ºè€ƒå·å¤´çš„å†…å®¹
+    quizFile.write('Name:\n\nDate:\n\nPeriod:\n\n')  # è€ƒå·å¤´ï¼šå§“åï¼Œæ—¥æœŸï¼Œç­çº§
+    quizFile.write((' ' * 20) + 'State Capitals Quiz (Form %s)' % (quizNum + 1))  # è€ƒå·çš„å”¯ä¸€ç¼–å·
     quizFile.write('\n\n')
 
-    # Ëæ»ú´òÂÒÌâÄ¿µÄË³Ğò
-    states = list(capitals.keys())  # »ñÈ¡ÖİÁĞ±í
-    random.shuffle(states)  # Ëæ»ú´òÂÒÖÜÁĞ±í
+    # éšæœºæ‰“ä¹±é¢˜ç›®çš„é¡ºåº
+    states = list(capitals.keys())  # è·å–å·åˆ—è¡¨
+    random.shuffle(states)  # éšæœºæ‰“ä¹±å‘¨åˆ—è¡¨
 
-    # ¸ù¾İ´òÂÒË³ĞòºóµÄÌâÄ¿£¬´´½¨´ğ°¸Ñ¡Ïî
+    # æ ¹æ®æ‰“ä¹±é¡ºåºåçš„é¢˜ç›®ï¼Œåˆ›å»ºç­”æ¡ˆé€‰é¡¹
     for questionNum in range(50):
-        correctAnswer = capitals[states[questionNum]]  # ÕıÈ·µÄ´ğ°¸
-        wrongAnswers = list(capitals.values())  # 50 ¸öÔ­Ê¼Ë³ĞòµÄÖµ¹¹³ÉµÄÁĞ±í
-        del wrongAnswers[wrongAnswers.index(correctAnswer)]  # ¸ù¾İÕıÈ·µÄ´ğ°¸£¬ËûÊÇÖµ£¬ÕÒµ½ÆäË÷Òı£¬¸ù¾İË÷ÒıÉ¾³ıÕâ¸ö´ğ°¸
-        wrongAnswers = random.sample(wrongAnswers, 3)  # ÔÚÊ£ÏÂµÄ´íÎó´ğ°¸ÖĞ£¬Ëæ»úÑ¡ 3 ¸ö
-        answerOptions = wrongAnswers + [correctAnswer]  # ºÏ²¢´íÎóµÄ´ğ°¸ºÍ´íÎóµÄ´ğ°¸£¬×¢Òâ£¬ÕıÈ·´ğ°¸ ´Ó ×Ö·û´® ×ªÎª ÁĞ±í
-        random.shuffle(answerOptions)  # ´òÂÒºÏ²¢ºóµÄ´ğ°¸
+        correctAnswer = capitals[states[questionNum]]  # æ­£ç¡®çš„ç­”æ¡ˆ
+        wrongAnswers = list(capitals.values())  # 50 ä¸ªåŸå§‹é¡ºåºçš„å€¼æ„æˆçš„åˆ—è¡¨
+        del wrongAnswers[wrongAnswers.index(correctAnswer)]  # æ ¹æ®æ­£ç¡®çš„ç­”æ¡ˆï¼Œä»–æ˜¯å€¼ï¼Œæ‰¾åˆ°å…¶ç´¢å¼•ï¼Œæ ¹æ®ç´¢å¼•åˆ é™¤è¿™ä¸ªç­”æ¡ˆ
+        wrongAnswers = random.sample(wrongAnswers, 3)  # åœ¨å‰©ä¸‹çš„é”™è¯¯ç­”æ¡ˆä¸­ï¼Œéšæœºé€‰ 3 ä¸ª
+        answerOptions = wrongAnswers + [correctAnswer]  # åˆå¹¶é”™è¯¯çš„ç­”æ¡ˆå’Œé”™è¯¯çš„ç­”æ¡ˆï¼Œæ³¨æ„ï¼Œæ­£ç¡®ç­”æ¡ˆ ä» å­—ç¬¦ä¸² è½¬ä¸º åˆ—è¡¨
+        random.shuffle(answerOptions)  # æ‰“ä¹±åˆå¹¶åçš„ç­”æ¡ˆ
 
-        # ½«ÌâÄ¿Ğ´ÈëÊÔ¾íÎÄ¼ş
+        # å°†é¢˜ç›®å†™å…¥è¯•å·æ–‡ä»¶
         quizFile.write('%s. What is the capital of %s?\n' % (questionNum + 1, states[questionNum]))
 
-        # ½«´ğÌâÑ¡ÏîĞ´ÈëÊÔ¾íÎÄ¼ş
+        # å°†ç­”é¢˜é€‰é¡¹å†™å…¥è¯•å·æ–‡ä»¶
         for i in range(4):
             quizFile.write(' %s. %s\n' % ('ABCD'[i], answerOptions[i]))
         quizFile.write('\n')
 
-        # ½«ÕıÈ·´ğ°¸Ğ´Èë´ğ°¸ÎÄ¼ş
+        # å°†æ­£ç¡®ç­”æ¡ˆå†™å…¥ç­”æ¡ˆæ–‡ä»¶
         answerKeyFile.write('%s. %s\n' % (questionNum + 1, 'ABCD'[answerOptions.index(correctAnswer)]))
 
-    quizFile.close()  # ¹Ø±ÕÊÔ¾íÎÄ¼ş
-    answerKeyFile.close()  # ¹Ø±Õ´ğ°¸ÎÄ¼ş
+    quizFile.close()  # å…³é—­è¯•å·æ–‡ä»¶
+    answerKeyFile.close()  # å…³é—­ç­”æ¡ˆæ–‡ä»¶

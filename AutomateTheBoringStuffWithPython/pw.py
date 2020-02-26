@@ -1,14 +1,14 @@
 #! python3
-# coding=gbk
+# coding=utf-8
 # pw.py - An insecure password locker program.
 """
-µÚÒ»ÐÐ¿ªÍ·µÄÐ´·¨"#!"ÊÇÒ»ÖÖ Unix/Linux ÌØÐÔ£¬ÕâÐ©²Ù×÷ÏµÍ³ÉÏÃæµÄ ½âÊÍÆ÷ Ö¸Áî ÔÊÐí½Å±¾ºÍÊý¾ÝÎÄ¼þ³äµ±ÏµÍ³ÃüÁî£¬
-ÎÞÐèÔÚµ÷ÓÃÊ±ÓÉÓÃ»§Ö¸¶¨½âÊÍÆ÷£¬´Ó¶ø¶ÔÓÃ»§ºÍÆäËü³ÌÐòÒþ²ØÆäÊµÏÖÏ¸½Ú¡£
-¼ÙÉè /usr/local/bin/foo ÖÐÓÐÒ»ÒÔÏÂÐÐ¿ªÍ·µÄ Bourne shell ½Å±¾: #!/bin/sh -x
-¶øËü±»Èç´Ëµ÷ÓÃ£¨"$"ÊÇÃüÁîÌáÊ¾·û£©: $ foo bar
-ÕâÀïµÄ foo ºÍ bar ÀàËÆÎÒÃÇÐ¡Ê±ºòÐ´×÷ÎÄÀïÃæµÄ Ð¡Ã÷ ºÍ Ð¡ºì£¬Ö»ÊÇËæ±ãÆðµÄÃû×Ö£¬
-¸ÃÃüÁîµÄÊä³öµÈÍ¬ÓÚ: $ /bin/sh -x /usr/local/bin/foo bar
-×¢Òâ£º´ËÐÐÔÚ windows ÏµÍ³ÏÂÍ¨³£ÎÞÒâÒå£¬windows Ê¹ÓÃÏµÍ³»·¾³±äÁ¿À´Ö¸¶¨ ½âÊÍÆ÷ µÄÎ»ÖÃ¡£
+ç¬¬ä¸€è¡Œå¼€å¤´çš„å†™æ³•"#!"æ˜¯ä¸€ç§ Unix/Linux ç‰¹æ€§ï¼Œè¿™äº›æ“ä½œç³»ç»Ÿä¸Šé¢çš„ è§£é‡Šå™¨ æŒ‡ä»¤ å…è®¸è„šæœ¬å’Œæ•°æ®æ–‡ä»¶å……å½“ç³»ç»Ÿå‘½ä»¤ï¼Œ
+æ— éœ€åœ¨è°ƒç”¨æ—¶ç”±ç”¨æˆ·æŒ‡å®šè§£é‡Šå™¨ï¼Œä»Žè€Œå¯¹ç”¨æˆ·å’Œå…¶å®ƒç¨‹åºéšè—å…¶å®žçŽ°ç»†èŠ‚ã€‚
+å‡è®¾ /usr/local/bin/foo ä¸­æœ‰ä¸€ä»¥ä¸‹è¡Œå¼€å¤´çš„ Bourne shell è„šæœ¬: #!/bin/sh -x
+è€Œå®ƒè¢«å¦‚æ­¤è°ƒç”¨ï¼ˆ"$"æ˜¯å‘½ä»¤æç¤ºç¬¦ï¼‰: $ foo bar
+è¿™é‡Œçš„ foo å’Œ bar ç±»ä¼¼æˆ‘ä»¬å°æ—¶å€™å†™ä½œæ–‡é‡Œé¢çš„ å°æ˜Ž å’Œ å°çº¢ï¼Œåªæ˜¯éšä¾¿èµ·çš„åå­—ï¼Œ
+è¯¥å‘½ä»¤çš„è¾“å‡ºç­‰åŒäºŽ: $ /bin/sh -x /usr/local/bin/foo bar
+æ³¨æ„ï¼šæ­¤è¡Œåœ¨ windows ç³»ç»Ÿä¸‹é€šå¸¸æ— æ„ä¹‰ï¼Œwindows ä½¿ç”¨ç³»ç»ŸçŽ¯å¢ƒå˜é‡æ¥æŒ‡å®š è§£é‡Šå™¨ çš„ä½ç½®ã€‚
 """
 import sys
 import pyperclip
@@ -21,9 +21,9 @@ if len(sys.argv) < 2:
     print('Usage: python pw.py [account] - copy account password')
     sys.exit()
 
-account = sys.argv[1]  # µÚÒ»¸öÃüÁîÐÐ²ÎÊýÊÇ¡°ÕË»§Ãû¡±
+account = sys.argv[1]  # ç¬¬ä¸€ä¸ªå‘½ä»¤è¡Œå‚æ•°æ˜¯â€œè´¦æˆ·åâ€
 if account in PASSWORDS:
     pyperclip.copy(PASSWORDS[account])
-    print(account + ' µÄÃÜÂëÒÑ¾­¸´ÖÆµ½¼ôÌù°å£¬Ö±½Ó°´ Ctrl + V ¼´¿ÉÕ³Ìùµ½Ö¸¶¨Î»ÖÃ¡£')
+    print(account + ' çš„å¯†ç å·²ç»å¤åˆ¶åˆ°å‰ªè´´æ¿ï¼Œç›´æŽ¥æŒ‰ Ctrl + V å³å¯ç²˜è´´åˆ°æŒ‡å®šä½ç½®ã€‚')
 else:
-    print('Ã»ÓÐÕÒµ½ ' + account + ' ÕË»§¡£')
+    print('æ²¡æœ‰æ‰¾åˆ° ' + account + ' è´¦æˆ·ã€‚')

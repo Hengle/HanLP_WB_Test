@@ -1,11 +1,11 @@
 #! python3
-# coding=gbk
+# coding=utf-8
 
 from stackoverflow.items import StackoverflowItem
 import scrapy
 
 
-# ÔËĞĞÃüÁî£ºscrapy crawl stackoverflow-python
+# è¿è¡Œå‘½ä»¤ï¼šscrapy crawl stackoverflow-python
 class StackoverflowPythonSpider(scrapy.Spider):
     name = "stackoverflow-python"
 

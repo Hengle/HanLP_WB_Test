@@ -1,5 +1,5 @@
 #! python3
-# coding=gbk
+# coding=utf-8
 import pyautogui
 import time
 

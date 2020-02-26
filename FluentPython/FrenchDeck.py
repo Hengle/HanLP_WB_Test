@@ -1,5 +1,5 @@
 #! python3
-# coding=gbk
+# coding=utf-8
 
 import collections
 import random
@@ -30,13 +30,13 @@ class FrenchDeck:
         self._cards[position] = card_value
 
     def __repr__(self):
-        return '-= XXX Ã»ÓÐ __str__ µÄÊ±ºò²Åµ÷ÓÃ =-'
+        return '-= XXX æ²¡æœ‰ __str__ çš„æ—¶å€™æ‰è°ƒç”¨ =-'
 
     def __str__(self):
-        return '-= ´òÓ¡µÄÊ±ºòÓÅÏÈÊ¹ÓÃÕâ¸öº¯Êý =-'
+        return '-= æ‰“å°çš„æ—¶å€™ä¼˜å…ˆä½¿ç”¨è¿™ä¸ªå‡½æ•° =-'
 
 
-# »¨É«µÈ¼¶
+# èŠ±è‰²ç­‰çº§
 suit_values = dict(xxx=4, spades=3, hearts=2, diamonds=1, clubs=0)
 
 
@@ -45,47 +45,47 @@ def spades_high(my_card):
     return rank_value * len(suit_values) + suit_values[my_card.suit]
 
 
-print('~~¹¹½¨~~~~~~~~~~~~~~~~~~~~~~~~~~')
-deck = FrenchDeck()  # ¹¹½¨Ò»¸±ÅÆ __init__
+print('~~æž„å»º~~~~~~~~~~~~~~~~~~~~~~~~~~')
+deck = FrenchDeck()  # æž„å»ºä¸€å‰¯ç‰Œ __init__
 print(FrenchDeck)
 print(FrenchDeck())
-print(deck)  # __repr__ ×¢ÒâÆä self ²ÎÊý£¬ÊÇÒ»¸öÊµÀýº¯Êý
-print('ÅÆµÄÊýÁ¿ = %d' % len(deck))  # __len__
-print('Ëæ»ú³éÒ»ÕÅÅÆ£º{}'.format(random.choice(deck)))  # __getitem__
+print(deck)  # __repr__ æ³¨æ„å…¶ self å‚æ•°ï¼Œæ˜¯ä¸€ä¸ªå®žä¾‹å‡½æ•°
+print('ç‰Œçš„æ•°é‡ = %d' % len(deck))  # __len__
+print('éšæœºæŠ½ä¸€å¼ ç‰Œï¼š{}'.format(random.choice(deck)))  # __getitem__
 
-print('~~ÐÞ¸Ä~~~~~~~~~~~~~~~~~~~~~~~~~~')
-print('´òÓ¡µÚ 1£¬2 ÕÅÅÆ£º{}'.format(deck[:2]))  # __getitem__
+print('~~ä¿®æ”¹~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('æ‰“å°ç¬¬ 1ï¼Œ2 å¼ ç‰Œï¼š{}'.format(deck[:2]))  # __getitem__
 deck[1] = Card('Q', 'hearts')  # __setitem__
-print('´òÓ¡µÚ 1£¬2 ÕÅÅÆ£º{}'.format(deck[:2]))  # __getitem__
+print('æ‰“å°ç¬¬ 1ï¼Œ2 å¼ ç‰Œï¼š{}'.format(deck[:2]))  # __getitem__
 
-print('~~ÅÅÐò~~~~~~~~~~~~~~~~~~~~~~~~~~')
-print('°´ÅÆµÄ´óÐ¡£¬½µÐòÅÅÁÐ£¬Ê¹ÓÃ¶à±äÁ¿Ñ­»·ÏÞÖÆ´òÓ¡ÊýÁ¿Îª 3 ÕÅ')
+print('~~æŽ’åº~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('æŒ‰ç‰Œçš„å¤§å°ï¼Œé™åºæŽ’åˆ—ï¼Œä½¿ç”¨å¤šå˜é‡å¾ªçŽ¯é™åˆ¶æ‰“å°æ•°é‡ä¸º 3 å¼ ')
 for i, card in zip(range(4), sorted(deck, key=spades_high, reverse=False)):
     print(card)
 
-print('~~Ï´ÅÆ~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print('~~æ´—ç‰Œ~~~~~~~~~~~~~~~~~~~~~~~~~~')
 for i in range(0, len(deck) - 1):
 
     print('i = {}'.format(i))
     for card in deck:
         print(card)
 
-    # ³éÅÆ
-    list_temp = deck[:len(deck) - i]  # µ±Ç°´ý³éÅÆµÄÁÐ±í
-    random_card = random.choice(list_temp)  # Ëæ»ú³éÒ»ÕÅ
-    random_card_idx = list_temp.index(random_card)  # µÃµ½Ë÷Òý
+    # æŠ½ç‰Œ
+    list_temp = deck[:len(deck) - i]  # å½“å‰å¾…æŠ½ç‰Œçš„åˆ—è¡¨
+    random_card = random.choice(list_temp)  # éšæœºæŠ½ä¸€å¼ 
+    random_card_idx = list_temp.index(random_card)  # å¾—åˆ°ç´¢å¼•
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-    print('Ëæ»ú³éµ½µÄÅÆÊÇµÚ {} ÕÅ£º{}'.format(random_card_idx, random_card))
+    print('éšæœºæŠ½åˆ°çš„ç‰Œæ˜¯ç¬¬ {} å¼ ï¼š{}'.format(random_card_idx, random_card))
 
-    # ½«³éµ½µÄÅÆÓëµÚ len(deck) - i ÕÅ½»»»£¬ÆäË÷ÒýÊÇ len(deck) - i - 1
+    # å°†æŠ½åˆ°çš„ç‰Œä¸Žç¬¬ len(deck) - i å¼ äº¤æ¢ï¼Œå…¶ç´¢å¼•æ˜¯ len(deck) - i - 1
     deck[random_card_idx] = deck[len(deck) - i - 1]
     deck[len(deck) - i - 1] = random_card
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-print('Ï´ÅÆÍê³É£¬×îÖÕµÄ½á¹ûÊÇ£º')
+print('æ´—ç‰Œå®Œæˆï¼Œæœ€ç»ˆçš„ç»“æžœæ˜¯ï¼š')
 for card in deck:
     print(card)
 
-symbols = 'ÎÒÃÇ?'
+symbols = 'æˆ‘ä»¬?'
 print([ord(s) for s in symbols if ord(s) > 0])
 
 a = [5, 7, 6, 3, 4, 1, 2]
@@ -107,12 +107,12 @@ str_fmt = '{:15} | {:9.4f} | {:9.4f} |'
 for name, cc, pop, (latitude, longitude) in metro_areas:
     print(str_fmt.format(name, latitude, longitude))
 
-# ¾ßÃûÔª×é£¬Àà
+# å…·åå…ƒç»„ï¼Œç±»
 City = collections.namedtuple('City', 'name country population coordinates')
 tokyo = City('Tokyo', 'JP', 36.933, (35.689722, 139.691667))
 
-LatLong = collections.namedtuple('LatLong', 'lat long')  # ¾ßÃûÔª×é
-delhi_data = ('Delhi NCR', 'IN', 21.935, LatLong(28.613889, 77.208889))  # Ôª×é
+LatLong = collections.namedtuple('LatLong', 'lat long')  # å…·åå…ƒç»„
+delhi_data = ('Delhi NCR', 'IN', 21.935, LatLong(28.613889, 77.208889))  # å…ƒç»„
 delhi_data2 = ('Delhi NCR', 'IN', 21.935, (28.613889, 77.208889))
 delhi_data3 = ['Delhi NCR', 'IN', 21.935, LatLong(28.613889, 77.208889)]
 delhi_data4 = ['Delhi NCR', 'IN', 21.935, [28.613889, 77.208889]]
@@ -136,9 +136,9 @@ for key, value in delhi._asdict().items():
 print(tokyo)
 print(City.coordinates)
 print(tokyo[0])
-print(City._asdict(tokyo))  # ÊµÀý·½·¨
-print(tokyo._asdict())  # ÊµÀý·½·¨
-print(City._fields)  # Àà·½·¨
+print(City._asdict(tokyo))  # å®žä¾‹æ–¹æ³•
+print(tokyo._asdict())  # å®žä¾‹æ–¹æ³•
+print(City._fields)  # ç±»æ–¹æ³•
 # print(tokyo._field_types)
 print(type(delhi_data))
 print(type(tokyo))
@@ -161,17 +161,17 @@ for item in line_items:
     print(item[DESCRIPTION], item[UNIT_PRICE])
 
 temp_l = list(range(10))
-# ÒÔÏÂÓï¾ä´íÎó£¬Èç¹û¸³ÖµµÄ¶ÔÏóÊÇÒ»¸öÇÐÆ¬£¬ÄÇÃ´¸³ÖµÓï¾äµÄÓÒ²à±ØÐëÊÇ¸ö¿Éµü´ú¶ÔÏó¡£
-# ¼´±ãÖ»ÓÐµ¥¶ÀÒ»¸öÖµ£¬Ò²Òª°ÑËü×ª»»³É¿Éµü´úµÄÐòÁÐ¡£
+# ä»¥ä¸‹è¯­å¥é”™è¯¯ï¼Œå¦‚æžœèµ‹å€¼çš„å¯¹è±¡æ˜¯ä¸€ä¸ªåˆ‡ç‰‡ï¼Œé‚£ä¹ˆèµ‹å€¼è¯­å¥çš„å³ä¾§å¿…é¡»æ˜¯ä¸ªå¯è¿­ä»£å¯¹è±¡ã€‚
+# å³ä¾¿åªæœ‰å•ç‹¬ä¸€ä¸ªå€¼ï¼Œä¹Ÿè¦æŠŠå®ƒè½¬æ¢æˆå¯è¿­ä»£çš„åºåˆ—ã€‚
 # temp_l[2:5] = 100
 print(temp_l)
 temp_l[2:5] = [100, 100, 100, 100]
 print(temp_l)
 
-board1 = ('-',) * 3  # ¹¹³ÉÔª×é
-board2 = ['-', ] * 3  # ¹¹³ÉÁÐ±í
-board3 = [['-'] * 3 for i in range(3)]  # 3 ¸öÁÐ±í¹¹³ÉµÄÁÐ±í
-board4 = [['-'] * 3] * 3  # ´íÎóµÄ£¬Õâ 3 ¸öÁÐ±íÊÇ¶ÔÍ¬Ò»¸öÁÐ±íµÄÒýÓÃ
+board1 = ('-',) * 3  # æž„æˆå…ƒç»„
+board2 = ['-', ] * 3  # æž„æˆåˆ—è¡¨
+board3 = [['-'] * 3 for i in range(3)]  # 3 ä¸ªåˆ—è¡¨æž„æˆçš„åˆ—è¡¨
+board4 = [['-'] * 3] * 3  # é”™è¯¯çš„ï¼Œè¿™ 3 ä¸ªåˆ—è¡¨æ˜¯å¯¹åŒä¸€ä¸ªåˆ—è¡¨çš„å¼•ç”¨
 print(board1)
 print(board2)
 print(board3)
@@ -184,12 +184,12 @@ print(board4)
 tl1 = [1, 2, 3]
 print(tl1, id(tl1))
 tl1 += [2]
-print(tl1, id(tl1))  # tl ÈÔÈ»Ö¸ÏòÔ­À´µÄµØÖ·
+print(tl1, id(tl1))  # tl ä»ç„¶æŒ‡å‘åŽŸæ¥çš„åœ°å€
 
 tl2 = 1, 2, 3
 print(tl2, id(tl2))
 tl2 += (2,)
-print(tl2, id(tl2), 'sss', tl2)  # tl2 Ö¸ÏòÐÂµÄµØÖ·
+print(tl2, id(tl2), 'sss', tl2)  # tl2 æŒ‡å‘æ–°çš„åœ°å€
 
 HAYSTACK = [1, 4, 5, 6, 8, 12, 15, 20, 21, 23, 23, 26, 29, 30]
 NEEDLES = [0, 1, 2, 5, 8, 10, 22, 23, 29, 30, 31]
@@ -224,9 +224,9 @@ for score in [33, 99, 77, 70, 89, 90, 100]:
     bisect.insort(breakpoints, score)
     print('%3d ->' % score, breakpoints)
 
-# Ò»¸öºÜ´óµÄ¸¡µãÊý×é
-# floats = array.array('d', [random.random() for i in range(10**8)])  # ÏûºÄ4GÄÚ´æ
-floats = array.array('d', (random.random() for i in range(10 ** 1)))  # ÏûºÄ1GÄÚ´æ
+# ä¸€ä¸ªå¾ˆå¤§çš„æµ®ç‚¹æ•°ç»„
+# floats = array.array('d', [random.random() for i in range(10**8)])  # æ¶ˆè€—4Gå†…å­˜
+floats = array.array('d', (random.random() for i in range(10 ** 1)))  # æ¶ˆè€—1Gå†…å­˜
 fp = open(r'BinData\floats.bin', 'wb')
 floats.tofile(fp)
 fp.close()
@@ -240,17 +240,17 @@ fp.close()
 print(floats2[-1])
 print(floats2.typecode)
 
-# ÄÚ´æÊÓÍ¼
+# å†…å­˜è§†å›¾
 numbers = array.array('h', [-2, -1, 0, 1, 2])
 memv = memoryview(numbers)
 print('len =', len(memv), '\n', 'memv[0] =', memv[0])
 memv_oct = memv.cast('B')
 print(memv_oct.tolist())
-memv_oct[4] = 78  # µÍ×Ö½Ú 1*78 + 256*0 = 78
-memv_oct[7] = 1  # ¸ß×Ö½Ú 1*1 + 256*1 = 257
+memv_oct[4] = 78  # ä½Žå­—èŠ‚ 1*78 + 256*0 = 78
+memv_oct[7] = 1  # é«˜å­—èŠ‚ 1*1 + 256*1 = 257
 print(numbers)
 
-# NmuPy ¶þÎ¬Êý×é
+# NmuPy äºŒç»´æ•°ç»„
 a = numpy.arange(12)
 print(a, type(a), a.shape)
 a.shape = 3, 4

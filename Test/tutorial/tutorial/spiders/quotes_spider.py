@@ -1,12 +1,12 @@
 #! python3
-# coding=gbk
+# coding=utf-8
 import logging
 import scrapy
 
 """
-Ê¹ÓÃ scrapy shell ÊÖ¶¯²âÊÔÍøÒ³µÄÏìÓ¦£º
+ä½¿ç”¨ scrapy shell æ‰‹åŠ¨æµ‹è¯•ç½‘é¡µçš„å“åº”ï¼š
     scrapy shell -s USER_AGENT='Mozilla/5.0' https://movie.douban.com/chart
-»òÕß£º
+æˆ–è€…ï¼š
     scrapy shell -s USER_AGENT='Mozilla/5.0'
     fetch('https://movie.douban.com/chart')
 
@@ -17,16 +17,16 @@ import scrapy
 """
 
 
-# ÔËĞĞÃüÁî£ºscrapy crawl quotes -o out_quotes.json
+# è¿è¡Œå‘½ä»¤ï¼šscrapy crawl quotes -o out_quotes.json
 class QuotesSpider(scrapy.Spider):
-    name = "quotes"  # ÅÀ³æµÄÎ¨Ò»±êÊ¶
-    # start_urls_0 = [  # ¿ªÊ¼ÅÀÈ¡µÄ×ÊÔ´Á´½ÓÁĞ±í
+    name = "quotes"  # çˆ¬è™«çš„å”¯ä¸€æ ‡è¯†
+    # start_urls_0 = [  # å¼€å§‹çˆ¬å–çš„èµ„æºé“¾æ¥åˆ—è¡¨
     #     'http://quotes.toscrape.com/page/1/',
     #     'http://quotes.toscrape.com/page/2/',
     # ]
     # start_urls = ['https://movie.douban.com/chart']
 
-    # Éú³ÉÍøÒ³Á´½Ó£º¿ÉÒÔ·µ»ØÁ´½ÓµÄÁĞ±í£¬»òÕßĞ´Ò»¸öÁ´½ÓÉú³ÉÆ÷¡£
+    # ç”Ÿæˆç½‘é¡µé“¾æ¥ï¼šå¯ä»¥è¿”å›é“¾æ¥çš„åˆ—è¡¨ï¼Œæˆ–è€…å†™ä¸€ä¸ªé“¾æ¥ç”Ÿæˆå™¨ã€‚
     def start_requests(self):
         urls = [
             'http://quotes.toscrape.com/page/1/',
@@ -35,9 +35,9 @@ class QuotesSpider(scrapy.Spider):
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
-    # parse()·½·¨ÓÃÀ´½âÎöÃ¿¸ö Request ËùÏÂÔØµÄÏìÓ¦¡£ËüÌáÈ¡ÅÀÈ¡µÄÊı¾İ×÷Îª×Öµä£¬
-    # »¹²éÕÒÒª×ñÑ­µÄĞÂ URL ²¢´ÓÖĞ´´½¨ĞÂÇëÇó£¨Request£©¡£
-    # response ²ÎÊıÊÇ TextResponse µÄÒ»¸öÊµÀı£¬Ëü±£´æ×ÅÏÂÔØÏÂÀ´µÄÒ³ÃæÄÚÈİ¡£
+    # parse()æ–¹æ³•ç”¨æ¥è§£ææ¯ä¸ª Request æ‰€ä¸‹è½½çš„å“åº”ã€‚å®ƒæå–çˆ¬å–çš„æ•°æ®ä½œä¸ºå­—å…¸ï¼Œ
+    # è¿˜æŸ¥æ‰¾è¦éµå¾ªçš„æ–° URL å¹¶ä»ä¸­åˆ›å»ºæ–°è¯·æ±‚ï¼ˆRequestï¼‰ã€‚
+    # response å‚æ•°æ˜¯ TextResponse çš„ä¸€ä¸ªå®ä¾‹ï¼Œå®ƒä¿å­˜ç€ä¸‹è½½ä¸‹æ¥çš„é¡µé¢å†…å®¹ã€‚
     def parse(self, response):
         """
         page = response.url.split("/")[-2]
@@ -56,7 +56,7 @@ class QuotesSpider(scrapy.Spider):
             }
 
 
-# ÔËĞĞÃüÁî£ºscrapy crawl douban -o out_douban.json
+# è¿è¡Œå‘½ä»¤ï¼šscrapy crawl douban -o out_douban.json
 class DoubanSpider(scrapy.Spider):
     name = "douban"
 
@@ -66,12 +66,12 @@ class DoubanSpider(scrapy.Spider):
 
     def parse_rank(self, response):
         for item in response.css('tr.item'):
-            detail_url = item.css('a.nbg::attr(href)').extract_first()  # µçÓ°µÄÏêÇéÁ´½Ó
-            img_url = item.css('a.nbg > img::attr(src)').extract_first()  # µçÓ°µÄÍ¼Æ¬Á´½Ó
-            main_name = item.css('div.pl2 > a::text').extract_first()  # µçÓ°µÄµÚÒ»¸öÃû×Ö
-            other_name = item.css('div.pl2 > a > span::text').extract_first(default='/')  # µçÓ°µÄÆäËüÃû×Ö£¬Ã»ÕÒµ½·µ»ØÒ»¸ö¿Õ¸ñ
-            brief = item.css('p.pl::text').extract_first()  # µçÓ°¼ò½é
-            main_name = main_name.replace('\n', '').replace(' ', '')  # È¥µôµçÓ°Ãû×ÖÖĞµÄ»»ĞĞ·ûºÍ¿Õ¸ñ
+            detail_url = item.css('a.nbg::attr(href)').extract_first()  # ç”µå½±çš„è¯¦æƒ…é“¾æ¥
+            img_url = item.css('a.nbg > img::attr(src)').extract_first()  # ç”µå½±çš„å›¾ç‰‡é“¾æ¥
+            main_name = item.css('div.pl2 > a::text').extract_first()  # ç”µå½±çš„ç¬¬ä¸€ä¸ªåå­—
+            other_name = item.css('div.pl2 > a > span::text').extract_first(default='/')  # ç”µå½±çš„å…¶å®ƒåå­—ï¼Œæ²¡æ‰¾åˆ°è¿”å›ä¸€ä¸ªç©ºæ ¼
+            brief = item.css('p.pl::text').extract_first()  # ç”µå½±ç®€ä»‹
+            main_name = main_name.replace('\n', '').replace(' ', '')  # å»æ‰ç”µå½±åå­—ä¸­çš„æ¢è¡Œç¬¦å’Œç©ºæ ¼
             other_name = other_name.replace('\n', '').replace(' ', '')
 
             yield {
@@ -81,9 +81,9 @@ class DoubanSpider(scrapy.Spider):
                 'brief': brief
             }
 
-            # yield scrapy.Request(url=detail_url + 'comments?status=P',  # »ñÈ¡¶ÌÆÀÂÛÒ³ÃæÁ´½Ó
-            #                     callback=self.parse_comments,  # Ö¸¶¨½âÎöº¯Êı
-            #                     meta={'movie': main_name})  # ´«µİµçÓ°Ãû×Ö
+            # yield scrapy.Request(url=detail_url + 'comments?status=P',  # è·å–çŸ­è¯„è®ºé¡µé¢é“¾æ¥
+            #                     callback=self.parse_comments,  # æŒ‡å®šè§£æå‡½æ•°
+            #                     meta={'movie': main_name})  # ä¼ é€’ç”µå½±åå­—
 
     def parse_comments(self, response):
         for comments in response.css('.comment-item'):
@@ -96,7 +96,7 @@ class DoubanSpider(scrapy.Spider):
                 'comment': comment
             }
 
-        nexturl = response.css('a.next::attr(href)').extract_first()  # ÏÂÒ»Ò³¶ÎÆÀÂÛ
+        nexturl = response.css('a.next::attr(href)').extract_first()  # ä¸‹ä¸€é¡µæ®µè¯„è®º
         if nexturl:
             yield scrapy.Request(url=response.url[:response.url.find('?')] + nexturl,
                                  callback=self.parse_comments,

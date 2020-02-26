@@ -1,9 +1,9 @@
 #! python3
-# coding=gbk
+# coding=utf-8
 import logging
 
 
-# ²»Ê¹ÓÃ×°ÊÎÆ÷
+# ä¸ä½¿ç”¨è£…é¥°å™¨
 def test_01():
     def use_logging(func):
         logging.warning('%s is running' % func.__name__)
@@ -17,14 +17,14 @@ def test_01():
 
 # test_01()
 """
-* ºÍ **
-    Êµ¼ÊÉÏ£¬ÕæÕýµÄ Python ²ÎÊý´«µÝÓï·¨ÊÇ * ºÍ **¡£*args ºÍ **kwargs Ö»ÊÇÒ»ÖÖÔ¼¶¨Ë×³ÉµÄ±à³ÌÊµ¼ù¡£ÎÒÃÇÒ²¿ÉÒÔÐ´³É *vars ºÍ **kvars¡£
-    ÕâÁ½¸öÊÇ python ÖÐµÄ¿É±ä²ÎÊý¡£*args ±íÊ¾ÈÎºÎ¶à¸öÎÞÃû²ÎÊý£¬ËüÊÇÒ»¸ö tuple£¬**kwargs ±íÊ¾¹Ø¼ü×Ö²ÎÊý£¬ËüÊÇÒ»¸ö dict¡£
-    ²¢ÇÒÍ¬Ê±Ê¹ÓÃ *args ºÍ **kwargs Ê±£¬±ØÐë½« *args ·ÅÔÚ **kwargs Ö®Ç°¡£
+* å’Œ **
+    å®žé™…ä¸Šï¼ŒçœŸæ­£çš„ Python å‚æ•°ä¼ é€’è¯­æ³•æ˜¯ * å’Œ **ã€‚*args å’Œ **kwargs åªæ˜¯ä¸€ç§çº¦å®šä¿—æˆçš„ç¼–ç¨‹å®žè·µã€‚æˆ‘ä»¬ä¹Ÿå¯ä»¥å†™æˆ *vars å’Œ **kvarsã€‚
+    è¿™ä¸¤ä¸ªæ˜¯ python ä¸­çš„å¯å˜å‚æ•°ã€‚*args è¡¨ç¤ºä»»ä½•å¤šä¸ªæ— åå‚æ•°ï¼Œå®ƒæ˜¯ä¸€ä¸ª tupleï¼Œ**kwargs è¡¨ç¤ºå…³é”®å­—å‚æ•°ï¼Œå®ƒæ˜¯ä¸€ä¸ª dictã€‚
+    å¹¶ä¸”åŒæ—¶ä½¿ç”¨ *args å’Œ **kwargs æ—¶ï¼Œå¿…é¡»å°† *args æ”¾åœ¨ **kwargs ä¹‹å‰ã€‚
 """
 
 
-# ¼òµ¥×°ÊÎÆ÷
+# ç®€å•è£…é¥°å™¨
 def test_02():
     def decorator(func):
         def wrapper(*args, **kwargs):
@@ -37,34 +37,34 @@ def test_02():
         print('i am bar')
 
     """
-    ÕâÒ»¾ä´úÂëÖÐ£¬½« bar º¯Êý×÷Îª±äÁ¿´«Èë decorator ×°ÊÎÆ÷ÖÐ£¬È»ºó bar ·½·¨ÔÚ decorator ÖÐµÄº¯Êý wrapper º¯ÊýÊµÏÖ£¬
-    Í¬Ê±°ü×°ÐÂµÄ¹¦ÄÜ£¬½«ÐÂµÄº¯Êý wrapper ×÷Îª±äÁ¿·µ»Ø £¬ËùÒÔ bar µÄÐÂÖµÊÇ ¾­¹ý decorator ×°ÊÎµÄ wrapper ÐÂ·½·¨¡£
-    ËùÒÔ£¬×°ÊÎÆ÷×°ÊÎº¯ÊýµÄÊ±ºò£¬ÊÇ½«º¯Êý×÷Îª±äÁ¿´«Èë×°ÊÎÆ÷ÄÚ²¿£¬Êµ¼Êµ÷ÓÃµÄÊÇ×°ÊÎÆ÷ÄÚ²¿µÄº¯Êý£¨Ìí¼ÓÐÂ¹¦ÄÜÖ®ºóµÄº¯Êý£©
+    è¿™ä¸€å¥ä»£ç ä¸­ï¼Œå°† bar å‡½æ•°ä½œä¸ºå˜é‡ä¼ å…¥ decorator è£…é¥°å™¨ä¸­ï¼Œç„¶åŽ bar æ–¹æ³•åœ¨ decorator ä¸­çš„å‡½æ•° wrapper å‡½æ•°å®žçŽ°ï¼Œ
+    åŒæ—¶åŒ…è£…æ–°çš„åŠŸèƒ½ï¼Œå°†æ–°çš„å‡½æ•° wrapper ä½œä¸ºå˜é‡è¿”å›ž ï¼Œæ‰€ä»¥ bar çš„æ–°å€¼æ˜¯ ç»è¿‡ decorator è£…é¥°çš„ wrapper æ–°æ–¹æ³•ã€‚
+    æ‰€ä»¥ï¼Œè£…é¥°å™¨è£…é¥°å‡½æ•°çš„æ—¶å€™ï¼Œæ˜¯å°†å‡½æ•°ä½œä¸ºå˜é‡ä¼ å…¥è£…é¥°å™¨å†…éƒ¨ï¼Œå®žé™…è°ƒç”¨çš„æ˜¯è£…é¥°å™¨å†…éƒ¨çš„å‡½æ•°ï¼ˆæ·»åŠ æ–°åŠŸèƒ½ä¹‹åŽçš„å‡½æ•°ï¼‰
     """
-    bar = decorator(bar)  # ÉñÆæ£¬º¯Êý¿ÉÒÔ±»×÷Îª²ÎÊý´«µÝ£¬Ò²¿ÉÒÔ½ÓÊÜÁíÍâÒ»¸öº¯ÊýµÄ·µ»Ø
+    bar = decorator(bar)  # ç¥žå¥‡ï¼Œå‡½æ•°å¯ä»¥è¢«ä½œä¸ºå‚æ•°ä¼ é€’ï¼Œä¹Ÿå¯ä»¥æŽ¥å—å¦å¤–ä¸€ä¸ªå‡½æ•°çš„è¿”å›ž
     bar()
 
 
 # test_02()
 
 
-def modify(func):  # ¶¨Òåº¯Êý×°ÊÎÆ÷ ´«Èë Ô­±¾ÐèÒªÖ´ÐÐµÄº¯Êý
-    def w(*args):  # ¶¨Òå °ü¹üº¯Êý ´«Èë ²ÎÊý£¬ÔÚ´Ëº¯ÊýÖÐ£¬½« ×°ÊÎÆ÷´úÂë ºÍ Ô­±¾ÐèÒªÖ´ÐÐµÄ´úÂë °ü¹üÔÚÒ»Æð
-        logging.warning('%s is running' % func.__name__)  # ×°ÊÎÆ÷´úÂë
-        return func(*args)  # Ô­°æÐèÒªÖ´ÐÐµÄ´úÂë
+def modify(func):  # å®šä¹‰å‡½æ•°è£…é¥°å™¨ ä¼ å…¥ åŽŸæœ¬éœ€è¦æ‰§è¡Œçš„å‡½æ•°
+    def w(*args):  # å®šä¹‰ åŒ…è£¹å‡½æ•° ä¼ å…¥ å‚æ•°ï¼Œåœ¨æ­¤å‡½æ•°ä¸­ï¼Œå°† è£…é¥°å™¨ä»£ç  å’Œ åŽŸæœ¬éœ€è¦æ‰§è¡Œçš„ä»£ç  åŒ…è£¹åœ¨ä¸€èµ·
+        logging.warning('%s is running' % func.__name__)  # è£…é¥°å™¨ä»£ç 
+        return func(*args)  # åŽŸç‰ˆéœ€è¦æ‰§è¡Œçš„ä»£ç 
 
-    return w  # °Ñ °ü¹üº¯Êý ÈÓ»ØÈ¥
+    return w  # æŠŠ åŒ…è£¹å‡½æ•° æ‰”å›žåŽ»
 
 
-@modify  # ´úÌæ b = modify(b)£¬Python ÖÐ£¬ÔÚº¯Êý¶¨ÒåµÄÊ±ºò¾Í¼ÓÉÏ @+×°ÊÎÆ÷Ãû×Ö ¿ÉÒÔ´úÌæ¸³ÖµÓï¾ä¡£
-def b(myinput):  # Ô­°æÐèÒªÖ´ÐÐµÄº¯Êý
+@modify  # ä»£æ›¿ b = modify(b)ï¼ŒPython ä¸­ï¼Œåœ¨å‡½æ•°å®šä¹‰çš„æ—¶å€™å°±åŠ ä¸Š @+è£…é¥°å™¨åå­— å¯ä»¥ä»£æ›¿èµ‹å€¼è¯­å¥ã€‚
+def b(myinput):  # åŽŸç‰ˆéœ€è¦æ‰§è¡Œçš„å‡½æ•°
     print('-= %s =-' % myinput)
 
 
 b('WB')
 
 
-class Foo(object):  # ¶¨ÒåÀà×°ÊÎÆ÷
+class Foo(object):  # å®šä¹‰ç±»è£…é¥°å™¨
     def __init__(self, func):
         self._func = func
 
