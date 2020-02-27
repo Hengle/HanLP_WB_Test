@@ -3,6 +3,7 @@ from treelib import Node, Tree
 
 
 def tree_test():
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     tree = Tree()
     tree.create_node("Harry", "harry")  # root node
     tree.create_node("Jane", "jane", parent="harry")
@@ -11,6 +12,6 @@ def tree_test():
     tree.create_node("Mary", "mary", parent="diane")
     tree.create_node("Mark", "mark", parent="jane")
     tree.show()
-
+    print('+++++++++++++++++++++++++++++++++++++++++++')
 
 # tree_test()
